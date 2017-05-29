@@ -1,20 +1,24 @@
-class TripAdvisor
-  attr_accessor :array
+# https://deliveroo.fr/fr/restaurants/lyon/villeurbanne-grange-blanche?geohash=u05kpp8cp7m3
+# Obtenir le geohash via la gem
+
+
+class Foodora
 
   def initialize
-    TripAdvisor.scrap_index
-    @array = TripAdvisor.scrap_show
+    Foodora.scrap_index_by_location
   end
 
-  def self.scrap_index
+  def self.scrap_index_by_location
     # Sélectionne la page à scrapper
-    url = RestClient.get 'https://www.tripadvisor.fr/Restaurants-g187265-Lyon_Rhone_Auvergne_Rhone_Alpes.html'
+    url = RestClient.get 'https://deliveroo.fr/fr/restaurants/lyon/villeurbanne-grange-blanche?geohash=u05kpp8cp7m3'
 
     # Parser la page sélectionnée
     scrapping = Nokogiri::HTML.parse(url)
 
-    # Création du tableau d'url vide
+    # Création du tableau de hashs
     @resto_url = []
+
+
 
     # Récupérer tableau de liens de restaurants
     scrapping.search('.property_title').each do |resto|
@@ -25,11 +29,9 @@ class TripAdvisor
     @resto_url = @resto_url.map { |rest| rest.value }
   end
 
-  def self.scrap_show
+end
 
-  results = []
-
-  @resto_url.each do |url|
+@resto_url.each do |url|
     sleep(1)
     complete_url = RestClient.get ("https://www.tripadvisor.fr" + url)
     scrapping = Nokogiri::HTML.parse(complete_url)
@@ -38,8 +40,3 @@ class TripAdvisor
       address: scrapping.search('.street-address').first.text,
       ranking: scrapping.search('.ui_bubble_rating.bubble_45').first.attribute('content').text.gsub(/,/, '.').to_f
     }
-  end
-  results
-  end
-end
-
