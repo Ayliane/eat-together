@@ -27,24 +27,16 @@ class TripAdvisor
   end
 
   def self.scrap_show
-    results = []
 
-  semi_url = @resto_url.first
-good_url = RestClient.get ('https://www.tripadvisor.fr/' + semi_url)
-scrapping = Nokogiri::HTML.parse(good_url)
+  results = []
 
-
-results << { name: scrapping.search('.heading_name').text.strip, address: scrapping.search('.street-address').text.strip, ranking: scrapping.search('ui_bubble_rating') }
-
-  #   results = []
-
-  #   @resto_url.each do |url|
-  #     complete_url = RestClient.get "https://www.tripadvisor.fr/#{url}"
-  #     scrapping = Nokogiri::HTML.parse(complete_url)
-
-  #     results << { name: scrapping.search('heading_name'), address: scrapping.search('street-address'), ranking: scrapping.search('ui_bubble_rating') }
-  #   end
-  #   results
+  @resto_url.each do |url|
+    sleep(1)
+    complete_url = RestClient.get ("https://www.tripadvisor.fr" + url)
+    scrapping = Nokogiri::HTML.parse(complete_url)
+    results << { name: scrapping.search('#HEADING').text.strip, address: scrapping.search('.street-address').first.text, ranking: scrapping.search('.ui_bubble_rating.bubble_45').first.attribute('content').text }
+  end
+  results
   end
 end
 
