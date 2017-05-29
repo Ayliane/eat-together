@@ -34,7 +34,11 @@ class TripAdvisor
     sleep(1)
     complete_url = RestClient.get ("https://www.tripadvisor.fr" + url)
     scrapping = Nokogiri::HTML.parse(complete_url)
-    results << { name: scrapping.search('#HEADING').text.strip, address: scrapping.search('.street-address').first.text, ranking: scrapping.search('.ui_bubble_rating.bubble_45').first.attribute('content').text }
+    results << {
+      name: scrapping.search('#HEADING').text.strip,
+      address: scrapping.search('.street-address').first.text,
+      ranking: scrapping.search('.ui_bubble_rating.bubble_45').first.attribute('content').text.gsub(/,/, '.').to_f
+    }
   end
   results
   end
