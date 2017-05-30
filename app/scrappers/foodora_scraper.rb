@@ -3,7 +3,9 @@ require 'json'
 class FoodoraScraper
   attr_accessor :array
 
-  def initialize
+  def initialize (address, food_type)
+    @address = address
+    @food_type = food_type
     @foodora_list = FoodoraScraper.scrap_index_by_location
     # @array = Foodora.scrap_show
   end
@@ -38,6 +40,7 @@ class FoodoraScraper
       name = resto['name']
       address = resto['address'], resto['post_code'], resto['city']['name']
       address = address.join(', ')
+      delivery_time = resto['minimum_delivery_time']
       photo_url = resto['image_high_resolution']
       price_fork = resto['price']
       food_characteristics = resto['food_characteristics']
@@ -48,6 +51,7 @@ class FoodoraScraper
         # comment gérer le fait que les resto soient ouverts ou non ?
         name: name,
         address: address,
+        delivery_time: delivery_time,
         photo_url: photo_url,
         price_fork: price_fork,
         food_characteristics: food_characteristics,
