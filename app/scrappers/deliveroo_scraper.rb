@@ -3,7 +3,7 @@ class DeliverooScraper
 
   def initialize(args)
     @address = args[:address]
-    @food_type = args[:food_type]
+    @food_type_1 = args[:food_type]
     @url = args[:url]
     @url.blank? ? "" : @scraping_index = get_scrap_from_index(@url)
   end
@@ -17,7 +17,8 @@ class DeliverooScraper
     coordinates = results.first.coordinates.reverse
     response = RestClient.post "https://deliveroo.fr/fr/api/restaurants", {"location":{"coordinates": coordinates }}, {content_type: "application/json"}
     ok_response = JSON.parse(response.body)
-    "https://deliveroo.fr" + ok_response['url']
+    unfiltered_url = "https://deliveroo.fr" + ok_response['url']
+    scrap_index_by_food_type
   end
 
   private
@@ -53,3 +54,7 @@ class DeliverooScraper
 
   end
 end
+
+# Adresse avec choix de food-type
+# https://deliveroo.fr/fr/restaurants/lyon/villeurbanne-grange-blanche?geohash=u05kpp8cp7m2&day=today&time=ASAP&tags=french
+# Du coup il faut transformer les category en anglais

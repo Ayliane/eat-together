@@ -1,7 +1,7 @@
 class RestaurantRemote
 
-  CATEGORIES = ["Français", "Burgers", "Américain", "Thaï", "International", "Végétalien", "Bagels", "Asiatique", "Italien", "Indien", "Tacos",
-                "Vietnamien", "Sushi", "Pizza"]
+  CATEGORIES = ["french", "burgers", "american", "thai", "international", "vegan", "bagels", "asian", "italian", "indian", "tacos",
+                "vietnamese", "sushi", "pizza"]
 
   attr_accessor :name, :delivery_time, :address, :photo_url, :price_fork, :food_type
 
