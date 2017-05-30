@@ -1,20 +1,31 @@
-<form class="form" action="<%= restaurants_path %>" method="get">
+<form class="form" action="" method="get">
   <div class="form-inline">
-  <div class="form-group">
-         <select class="selectpicker" multiple title="Choose one of the following...">
-            <option>Mustard</option>
-            <option>Ketchup</option>
-            <option>Relish</option>
+
+  <div class="form-group ">
+         <select class="form-control" name="foodtype1">
+            <option selected>My food type</option>
+            <% RestaurantRemote::CATEGORIES.sort.each do |category| %>
+              <option><%= category %></option>
+            <% end %>
           </select>
+  </div>
+  <div class="form-group">
+    <label for="address" ></label>
+    <input type="text" class="form-control" id="address" name="address" placeholder="Where ?">
 
   </div>
   <div class="form-group">
-    <label for="exampleInputEmail2" ></label>
-    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Where ?">
+       <select class="form-control" name="foodtype2">
+            <option selected>His/Her food type</option>
+            <% RestaurantRemote::CATEGORIES.sort.each do |category| %>
+              <option><%= category %></option>
+            <% end %>
+        </select>
   </div>
-  <div class="form-group">
-    <input type="text" class="form-control" id="exampleInputName2" placeholder="His food style">
-  </div>
+
   </div>
   <button type="submit" class="btn btn-primary btn-lg">EAT NOW</button>
 </form>
+
+
+<!-- <input type="text" class="form-control" id="exampleInputName2" placeholder="His food style"> -->

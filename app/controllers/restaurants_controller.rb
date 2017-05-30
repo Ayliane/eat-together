@@ -1,10 +1,11 @@
 require 'json'
 
 class RestaurantsController < ApplicationController
-  # before_action :set_deliveroo_host
 
   def index
     # Cette méthode est vide, c'est normal, les requêtes seront faites par Ajax :)
+    set_deliveroo_host
+    redirect_to deliveroo_path
   end
 
   def deliveroo
@@ -26,14 +27,21 @@ class RestaurantsController < ApplicationController
 
   # Cette méthode permet de set l'adresse à utiliser pour le scraping de l'index :)
   def set_deliveroo_host
-  #   deliveroo_scrapper = DeliverooScraper.new("address_utilisateur", "food_style")
-  #   session["deliveroo_host"] = deliveroo_scrapper.host
+    address = params[:address]
+    ds = DeliverooScraper.new(address: address)
+    session[:deliveroo_url] = ds.host
   end
 
   # Cette méthode permet de set l'adresse à utiliser pour le scraping de l'index :)
   def set_foodora_host
+
   #   foodora_scrapper = FoodoraScraper.new("address_utilisateur", "food_style")
   #   session["foodora_host"] = foodora_scrapper.host
   end
 
+  def restaurant_params
+    params.require(:restaurants).permit(:address, :url)
+  end
+
 end
+
