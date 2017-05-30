@@ -1,3 +1,5 @@
+require 'json'
+
 class RestaurantsController < ApplicationController
 
   def index
@@ -7,13 +9,17 @@ class RestaurantsController < ApplicationController
   end
 
   def deliveroo
-    list = DeliverooScraper.new(url: session[:deliveroo_url])
-    @restaurants = list.scrap
+    list = DeliverooScraper.new("delivery_address", "food_type")
+    @deliveroo_restaurants = list.scrap
   end
 
   def foodora
-    list = FoodoraScraper.new("delivery_address", "food_type")
-    @foodora_restaurants = list.scrap
+    # list = FoodoraScraper.new("delivery_address", "food_type")
+    # @foodora_restaurants = list.scrap
+    @foodora_restaurants = JSON.parse(File.open('vendor/fixtures/foodora.json').read).map do |hash|
+      hash.with_indifferent_access
+    end
+    render :layout => false if request.xhr?
   end
 
   private

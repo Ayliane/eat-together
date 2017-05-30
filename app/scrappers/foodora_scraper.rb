@@ -34,7 +34,7 @@ class FoodoraScraper
 
     # Parser la page sélectionnée
     foodora_scraping = Nokogiri::HTML.parse(foodora_url)
-    foodora_scraping.search('.vendor-list.opened li a')
+    foodora_scraping.search('.vendor-list li a')
   end
 
   def scrap_index_by_location
@@ -45,7 +45,7 @@ class FoodoraScraper
     @foodora_restaurants = []
     # binding.pry
 
-    restaurants_data = foodora_scraping.search('.vendor-list.opened li a').map do |obj|
+    restaurants_data = foodora_scraping.search('.vendor-list li a').map do |obj|
       data_hash = JSON.parse(obj.attribute('data-vendor'))
       price = obj.search('.categories li').first.text.strip
       data_hash['price'] = price
