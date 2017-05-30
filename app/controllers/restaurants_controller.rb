@@ -9,7 +9,7 @@ class RestaurantsController < ApplicationController
 
   def deliveroo
     list = DeliverooScraper.new("delivery_address", "food_type")
-    @restaurants = list.scrap
+    @deliveroo_restaurants = list.scrap
   end
 
   def foodora
@@ -18,7 +18,7 @@ class RestaurantsController < ApplicationController
     @foodora_restaurants = JSON.parse(File.open('vendor/fixtures/foodora.json').read).map do |hash|
       hash.with_indifferent_access
     end
-    render :layout => false
+    render :layout => false if request.xhr?
   end
 
   private
