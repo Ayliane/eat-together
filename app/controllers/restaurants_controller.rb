@@ -18,6 +18,12 @@ class RestaurantsController < ApplicationController
 
   # Cette méthode permet de set l'adresse à utiliser pour le scraping de l'index :)
   def set_deliveroo_host
+
+# `POST https://deliveroo.fr/fr/api/restaurants` avec dans le body
+# `{"location":{"coordinates":[4.879278099999965,45.7445129]}}`
+# et dans les header un champ `Content-Type: application/json`
+
+
   #   deliveroo_scrapper = DeliverooScraper.new("address_utilisateur", "food_style")
   #   session["deliveroo_host"] = deliveroo_scrapper.host
   end
