@@ -11,6 +11,8 @@ class RestaurantsController < ApplicationController
   end
 
   def foodora
+    list = FoodoraScraper.new("delivery_address", "food_type")
+    @foodora_restaurants = list.scrap
   end
 
   private
@@ -26,6 +28,12 @@ class RestaurantsController < ApplicationController
 
   #   deliveroo_scrapper = DeliverooScraper.new("address_utilisateur", "food_style")
   #   session["deliveroo_host"] = deliveroo_scrapper.host
+  end
+
+  # Cette méthode permet de set l'adresse à utiliser pour le scraping de l'index :)
+  def set_foodora_host
+  #   foodora_scrapper = FoodoraScraper.new("address_utilisateur", "food_style")
+  #   session["foodora_host"] = foodora_scrapper.host
   end
 
 end
