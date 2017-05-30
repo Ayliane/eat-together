@@ -1,12 +1,12 @@
 <form class="form" action="" method="get">
   <div class="form-inline">
-    
+
   <div class="form-group ">
          <select class="form-control" name="foodtype1">
             <option selected>My food type</option>
-            <option>Burgers</option>
-            <option>Francais</option>
-            <option>Italien</option>
+            <% RestaurantRemote::CATEGORIES.sort.each do |category| %>
+              <option><%= category %></option>
+            <% end %>
           </select>
   </div>
   <div class="form-group">
@@ -16,10 +16,10 @@
   </div>
   <div class="form-group">
        <select class="form-control" name="foodtype2">
-            <option selected>His food type</option>
-            <option>japonais</option>
-            <option>francais</option>
-            <option>italien</option>
+            <option selected>His/Her food type</option>
+            <% RestaurantRemote::CATEGORIES.sort.each do |category| %>
+              <option><%= category %></option>
+            <% end %>
         </select>
   </div>
 

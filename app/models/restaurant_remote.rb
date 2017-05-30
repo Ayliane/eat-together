@@ -1,4 +1,8 @@
 class RestaurantRemote
+
+  CATEGORIES = ["Français", "Burgers", "Américain", "Thaï", "International", "Végétalien", "Bagels", "Asiatique", "Italien", "Indien", "Tacos",
+                "Vietnamien", "Sushi", "Pizza"]
+
   attr_accessor :name, :delivery_time, :address, :photo_url, :price_fork, :food_type
 
   def initialize(args)
