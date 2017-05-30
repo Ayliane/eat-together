@@ -1,20 +1,31 @@
-<form class="form" action="<%= restaurants_path %>" method="get">
+<form class="form" action="" method="get">
   <div class="form-inline">
-  <div class="form-group">
-         <select class="selectpicker" multiple title="Choose one of the following...">
+    
+  <div class="form-group ">
+         <select class="form-control" name="foodtype1">
+            <option selected>My food type</option>
             <option>Burgers</option>
-            <option>Français</option>
+            <option>Francais</option>
             <option>Italien</option>
           </select>
-
   </div>
   <div class="form-group">
     <label for="address" ></label>
     <input type="text" class="form-control" id="address" name="address" placeholder="Where ?">
+
   </div>
   <div class="form-group">
-    <input type="text" class="form-control" id="exampleInputName2" placeholder="His food style">
+       <select class="form-control" name="foodtype2">
+            <option selected>His food type</option>
+            <option>japonais</option>
+            <option>francais</option>
+            <option>italien</option>
+        </select>
   </div>
+
   </div>
   <button type="submit" class="btn btn-primary btn-lg">EAT NOW</button>
 </form>
+
+
+<!-- <input type="text" class="form-control" id="exampleInputName2" placeholder="His food style"> -->
