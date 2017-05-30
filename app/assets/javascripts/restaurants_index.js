@@ -4,7 +4,7 @@ $(function() {
       type: 'GET',
       url: '/foodora',
       success: function(response) {
-        $('#restaurants-list').append();
+        $('#restaurants-list').append(response);
       }
     })
   }
