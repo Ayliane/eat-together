@@ -3,7 +3,7 @@ require 'json'
 class FoodoraScraper
   attr_accessor :address, :food_type, :scraping_index
 
-  def initialize ()
+  def initialize (address, food_type)
     @address = address
     @food_type = food_type
     # @scraping_index = get_scrap_from_index
