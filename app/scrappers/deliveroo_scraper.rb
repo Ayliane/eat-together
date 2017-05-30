@@ -1,37 +1,30 @@
-# Pour appeler le scrapper de l'index :
-# list = DeliverooScraper.new("delivery_address", "food_type")
-# @restaurants = list.scrap
-
 class DeliverooScraper
-  attr_accessor :address, :food_type, :scraping_index
-  def initialize(address, food_type)
-    @address = address
-    @food_type = food_type
-    @scraping_index = get_scrap_from_index
+  attr_accessor :address, :food_type, :scraping_index, :url
+
+  def initialize(args)
+    @address = args[:address]
+    @food_type = args[:food_type]
+    @url = args[:url]
+    @url.blank? ? "" : @scraping_index = get_scrap_from_index(@url)
   end
 
   def scrap
     scrap_index_by_location
   end
 
-  private
-
-  def host # <-- cette méthode doit servir à fabriquer l'url de l'adresse user sur deliveroo :)
-    # ATTENTION !!
-    # Prévoir dans le controller restaurant_remote un before_action :set_deliveroo_host
-    # Qui prendra def set_deliveroo_host
-    # ds = DeliverooScrapper.new(address)
-    # session["deliveroo_host"] = ds.host
-    # end
+  def host
+    results = Geocoder.search("#{address}")
+    coordinates = results.first.coordinates.reverse
+    response = RestClient.post "https://deliveroo.fr/fr/api/restaurants", {"location":{"coordinates": coordinates }}, {content_type: "application/json"}
+    ok_response = JSON.parse(response.body)
+    "https://deliveroo.fr" + ok_response['url']
   end
 
-  def get_scrap_from_index
-    # Sélectionne la page à scrapper
-    url = RestClient.get 'https://deliveroo.fr/fr/restaurants/lyon/villeurbanne-grange-blanche?geohash=u05kpp8cp7m3'
-    # remplacer l'url par self.host =)
+  private
 
-    # Parser la page sélectionnée
-    scrap = Nokogiri::HTML.parse(url)
+  def get_scrap_from_index(stored_url)
+    ok_url = RestClient.get "#{stored_url}"
+    scrap = Nokogiri::HTML.parse(ok_url)
     scrap.search(".js-react-on-rails-component")
   end
 
