@@ -1,5 +1,5 @@
 class RestaurantRemote
-  attr_accessor :name, :address, :photo_url, :price_fork, :food_type
+  attr_accessor :name, :delivery_time, :address, :photo_url, :price_fork, :food_type
 
   def initialize(args)
     @name = args[:name]
@@ -7,5 +7,6 @@ class RestaurantRemote
     @photo_url = args[:photo_url]
     @price_fork = args[:price_fork]
     @food_type = args[:food_type]
+    @delivery_time = args[:delivery_time]
   end
 end
