@@ -1,3 +1,7 @@
+# Pour appeler le scrapper de l'index :
+# list = DeliverooScraper.new("delivery_address", "food_type")
+# @restaurants = list.scrap
+
 class DeliverooScraper
   attr_accessor :address, :food_type, :scraping_index
   def initialize(address, food_type)
@@ -45,6 +49,7 @@ class DeliverooScraper
         photo_url: resto["image_url"]
       }
     end
+    @restaurants_list
   end
 
   def self.get_scrap_from_show
@@ -55,43 +60,3 @@ class DeliverooScraper
 
   end
 end
-
-  # Pour le each
-    # @restaurants_list = []
-    # @scraping_index.search('.js-react-on-rails-component').each do |resto|
-    #   @restaurants_list << {
-    #     url: "",
-    #     name: "",
-    #     food_type: "",
-    #     price_fork: "",
-    #     delivery_time: "",
-    #     photo_url: ""
-    #   }
-
-
-
-# # Création du tableau de hashs contenant chaque card de resto
-#  @resto_url = []
-#     scraping.search('.restaurant-index-page--grid-row').each do |resto|
-#       @resto_url << resto
-
-
-#     # Récupérer tableau de liens de restaurants
-#     scraping.search('.property_title').each do |resto|
-#       @resto_url << resto.attribute('href')
-#     end
-
-#     # Tableau des liens sans le préfixe https://www.tripadvisor.fr/
-#     @resto_url = @resto_url.map { |rest| rest.value }
-
-# @resto_url.each do |url|
-#     sleep(1)
-#     complete_url = RestClient.get ("https://www.tripadvisor.fr" + url)
-#     scraping = Nokogiri::HTML.parse(complete_url)
-#     results << {
-#       name: scraping.search('#HEADING').text.strip,
-#       address: scraping.search('.street-address').first.text,
-#       ranking: scraping.search('.ui_bubble_rating.bubble_45').first.attribute('content').text.gsub(/,/, '.').to_f
-#     }
-
-# end
