@@ -1,3 +1,5 @@
+require 'json'
+
 class RestaurantsController < ApplicationController
   # before_action :set_deliveroo_host
 
@@ -11,8 +13,11 @@ class RestaurantsController < ApplicationController
   end
 
   def foodora
-    list = FoodoraScraper.new("delivery_address", "food_type")
-    @foodora_restaurants = list.scrap
+    # list = FoodoraScraper.new("delivery_address", "food_type")
+    # @foodora_restaurants = list.scrap
+    @foodora_restaurants = JSON.parse(File.open('vendor/fixtures/foodora.json').read).map do |hash|
+      hash.with_indifferent_access
+    end
   end
 
   private
