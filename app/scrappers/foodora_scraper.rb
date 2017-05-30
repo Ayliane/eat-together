@@ -1,8 +1,10 @@
+require 'json'
+
 class FoodoraScraper
   attr_accessor :array
 
   def initialize
-    @foodora_list = FoodoraScrapper.scrap_index_by_location
+    @foodora_list = FoodoraScraper.scrap_index_by_location
     # @array = Foodora.scrap_show
   end
 
@@ -16,6 +18,8 @@ class FoodoraScraper
     # Parser la page sélectionnée
     foodora_scraping = Nokogiri::HTML.parse(foodora_url)
 
+    data = JSON.parse(foodora_scraping.search('.vendor-list.closed li a')[4].attr('data-vendor'))
+    # binding.pry
     # Création du tableau d'url vide
     @foodora_restaurants = []
 
@@ -24,7 +28,22 @@ class FoodoraScraper
     #   @foodora_restaurants <<
     # end
 
-    @foodora_restaurants << foodora_scraping.search('.vendor-list > ').attribute('')
+    name = data['name']
+    address = data['address'], data['post_code'], data['city']['name']
+    address = address.join(', ')
+    photo_url = data['image_high_resolution']
+    food_characteristics = data['food_characteristics']
+
+    @foodora_restaurants << {
+      # comment gérer le fait que les resto soient ouverts ou non ?
+      name: name,
+      address: address,
+      photo_url: photo_url,
+      price_fork: foodora_scraping.search('.categories > li').first.text.strip,
+      food_characteristics: food_characteristics
+      food_type: foodora_scraping.search('.categories > li').attribute('data-id'),
+      }
+
 
     @foodora_restaurants
 
