@@ -59,8 +59,9 @@ footer {
   background-color:black;
 }
 
-footer P {
-  color:white;
+footer h5 {
+  color:$brand-primary;
+  margin-top:20px;
 }
 
 #color_icon1 {
@@ -73,4 +74,15 @@ footer P {
 
 #color_icon3 {
   color:$brand-primary;
+}
+ul {
+  margin-top:15px;
+}
+
+.fa {
+  margin-right:20px,
+}
+
+.list-inline {
+  display: inline-block;
 }
