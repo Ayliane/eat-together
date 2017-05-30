@@ -7,7 +7,7 @@ class FoodoraScraper
     @address = address
     @food_type = food_type
     # @scraping_index = get_scrap_from_index
-    @foodora_list = FoodoraScraper.scrap_index_by_location
+    # @foodora_list = FoodoraScraper.scrap_index_by_location
   end
 
   def scrap
@@ -17,12 +17,12 @@ class FoodoraScraper
   private
 
   def host
-    # <-- cette méthode doit servir à fabriquer l'url de l'adresse user sur deliveroo :)
+    # <-- cette méthode doit servir à fabriquer l'url de l'adresse user sur foodora
     # ATTENTION !!
-    # Prévoir dans le controller restaurant_remote un before_action :set_deliveroo_host
-    # Qui prendra def set_deliveroo_host
-    # ds = DeliverooScrapper.new(address)
-    # session["deliveroo_host"] = ds.host
+    # Prévoir dans le controller restaurant_remote un before_action :set_foodora_host
+    # Qui prendra def set_foodora_host
+    # fs = FoodoraScrapper.new(address)
+    # session["foodora_host"] = fs.host
     # end
   end
 
@@ -73,8 +73,16 @@ class FoodoraScraper
         food_type: resto['characteristics']['primary_cuisine']['name'],
       }
     end
-
     @foodora_restaurants
   end
+
+  def self.get_scrap_from_show
+
+  end
+
+  def self.scrap_show
+
+  end
+
 end
 
