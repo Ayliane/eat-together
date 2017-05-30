@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  before_action :set_deliveroo_host
+  # before_action :set_deliveroo_host
 
   def index
     # Cette méthode est vide, c'est normal, les requêtes seront faites par Ajax :)
