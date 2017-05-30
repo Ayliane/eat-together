@@ -18,6 +18,7 @@ class RestaurantsController < ApplicationController
     @foodora_restaurants = JSON.parse(File.open('vendor/fixtures/foodora.json').read).map do |hash|
       hash.with_indifferent_access
     end
+    render :layout => false
   end
 
   private

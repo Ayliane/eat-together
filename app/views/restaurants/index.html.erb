@@ -1,0 +1,33 @@
+<!-- Appeler ici le footer et la navbar, ainsi que la structure de la page
+(deux colones pour les résultats). Le contenu des cards de résultat
+sera appelé via requête AJAX. Pour créer le css et le contenu des cards
+il faut le faire dans foodora.html.erb et deliveroo.html.erb
+ -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>EATOGETHER - Your favorite restaurants delivered at the same time !</title>
+    <%= csrf_meta_tags %>
+    <%= action_cable_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+  </head>
+  <body>
+
+    <header>This is the header</header>
+
+    <%= yield %>
+
+    <div id="restaurants-list">
+
+    </div>
+
+    <footer>This is the footer</footer>
+
+    <%= javascript_include_tag 'restaurants_index' %>
+  </body>
+</html>
+
+
