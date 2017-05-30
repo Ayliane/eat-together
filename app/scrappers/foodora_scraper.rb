@@ -18,8 +18,14 @@ class FoodoraScraper
     # Parser la page sélectionnée
     foodora_scraping = Nokogiri::HTML.parse(foodora_url)
 
-    data = JSON.parse(foodora_scraping.search('.vendor-list.closed li a')[4].attr('data-vendor'))
-    # binding.pry
+    restaurants_data = foodora_scraping.search('.vendor-list.opened li a').map do |obj|
+      data_hash = JSON.parse(obj.attribute('data-vendor'))
+      price = obj.search('.categories li').first.text.strip
+      data_hash['price'] = price
+      data_hash
+    end
+
+    binding.pry
     # Création du tableau d'url vide
     @foodora_restaurants = []
 
@@ -28,22 +34,26 @@ class FoodoraScraper
     #   @foodora_restaurants <<
     # end
 
-    name = data['name']
-    address = data['address'], data['post_code'], data['city']['name']
-    address = address.join(', ')
-    photo_url = data['image_high_resolution']
-    food_characteristics = data['food_characteristics']
+    restaurants_data.each do |resto|
+      name = resto['name']
+      address = resto['address'], resto['post_code'], resto['city']['name']
+      address = address.join(', ')
+      photo_url = resto['image_high_resolution']
+      price_fork = resto['price']
+      food_characteristics = resto['food_characteristics']
+      food_characteristics = food_characteristics.map { |type| type['name']}
+      food_type = resto['characteristics']['primary_cuisine']['name']
 
-    @foodora_restaurants << {
-      # comment gérer le fait que les resto soient ouverts ou non ?
-      name: name,
-      address: address,
-      photo_url: photo_url,
-      price_fork: foodora_scraping.search('.categories > li').first.text.strip,
-      food_characteristics: food_characteristics
-      food_type: foodora_scraping.search('.categories > li').attribute('data-id'),
+      @foodora_restaurants << {
+        # comment gérer le fait que les resto soient ouverts ou non ?
+        name: name,
+        address: address,
+        photo_url: photo_url,
+        price_fork: price_fork,
+        food_characteristics: food_characteristics,
+        food_type: food_type,
       }
-
+    end
 
     @foodora_restaurants
 
