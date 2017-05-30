@@ -1,15 +1,16 @@
 class RestaurantsController < ApplicationController
   before_action :set_deliveroo_host
 
-  def deliveroo_restaurants
+  def index
+    # Cette méthode est vide, c'est normal, les requêtes seront faites par Ajax :)
+  end
+
+  def deliveroo
     list = DeliverooScraper.new("delivery_address", "food_type")
     @restaurants = list.scrap
   end
 
-  def foodora_restaurants
-  end
-
-  def uberats_restaurants
+  def foodora
   end
 
   private
