@@ -37,13 +37,13 @@ class FoodoraScraper
     foodora_scraping.search('.vendor-list.opened li a')
   end
 
-  def self.scrap_index_by_location
+  def scrap_index_by_location
 
     foodora_url = RestClient.get "https://www.foodora.fr/restaurants/lat/45.7693079/lng/4.8372633999999834/plz/69001/city/Lyon/address/19%2520Place%2520Tolozan%252C%252069001%2520Lyon%252C%2520France/Place%2520Tolozan/19"
     foodora_scraping = Nokogiri::HTML.parse(foodora_url)
 
     @foodora_restaurants = []
-    binding.pry
+    # binding.pry
 
     restaurants_data = foodora_scraping.search('.vendor-list.opened li a').map do |obj|
       data_hash = JSON.parse(obj.attribute('data-vendor'))
@@ -52,8 +52,7 @@ class FoodoraScraper
       data_hash
     end
 
-    binding.pry
-
+    # binding.pry
     restaurants_data.each do |resto|
 
       address = resto['address'], resto['post_code'], resto['city']['name']

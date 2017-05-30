@@ -1,8 +1,9 @@
 <h2>Foodora's restaurants list</h2>
 
 <ul>
-<% @restaurants.each do |resto| %>
-  <li><%= resto[:name] %></li>
-  <li><%= resto[:food_type] %></li>
+<% @foodora_restaurants.each do |resto| %>
+  <li>
+  <%= resto[:name] %> - <%= resto[:food_type] %>
+  </li>
 <% end %>
 </ul>
