@@ -3,12 +3,13 @@ class DeliverooScraper
 
   def initialize(args)
     @address = args[:address]
-    @food_type_1 = args[:food_type]
+    @food_type = args[:food_type]
     @url = args[:url]
-    @url.blank? ? "" : @scraping_index = get_scrap_from_index(@url)
+    @url.blank? ? "" : @scraping_index = get_scrap_from_index(@url, @food_type)
   end
 
   def scrap
+    get_scrap_from_index(@url, @food_type)
     scrap_index_by_location
   end
 
@@ -17,14 +18,15 @@ class DeliverooScraper
     coordinates = results.first.coordinates.reverse
     response = RestClient.post "https://deliveroo.fr/fr/api/restaurants", {"location":{"coordinates": coordinates }}, {content_type: "application/json"}
     ok_response = JSON.parse(response.body)
+    # food_type_url = "&day=today&time=ASAP&tags=" + @food_type
     "https://deliveroo.fr" + ok_response['url']
     # scrap_index_by_food_type
   end
 
   private
 
-  def get_scrap_from_index(stored_url)
-    ok_url = RestClient.get "#{stored_url}"
+  def get_scrap_from_index(url, food_type)
+    ok_url = RestClient.get url + "&day=today&time=ASAP&tags=" + food_type
     scrap = Nokogiri::HTML.parse(ok_url)
     scrap.search(".js-react-on-rails-component")
   end
@@ -54,7 +56,3 @@ class DeliverooScraper
 
   end
 end
-
-# Adresse avec choix de food-type
-# https://deliveroo.fr/fr/restaurants/lyon/villeurbanne-grange-blanche?geohash=u05kpp8cp7m2&day=today&time=ASAP&tags=french
-# Du coup il faut transformer les category en anglais
