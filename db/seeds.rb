@@ -1,5 +1,4 @@
-happy_seeds = TripAdvisor.new
-hashy_seeds = happy_seeds.array
+happy_seeds = TripAdvisor.new.scrap
 
 puts "Creating seeds"
 
