@@ -1,9 +1,12 @@
-happy_seeds = TripAdvisor.new
-hashy_seeds = happy_seeds.array
+happy_seeds = TripAdvisor.new.scrap
 
 puts "Creating seeds"
 
+
+i = 0
+
 hashy_seeds.each do |elem|
   Restaurant.create!(name: elem[:name], address: elem[:address], ranking: elem[:ranking])
-  puts "Seed ok"
+  i += 1
+  puts "Seed #{i} ok"
 end
