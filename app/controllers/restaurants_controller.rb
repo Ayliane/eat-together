@@ -3,8 +3,9 @@ require 'json'
 class RestaurantsController < ApplicationController
 
   def index
-    # Cette méthode est vide, c'est normal, les requêtes seront faites par Ajax :)
+    # Cette méthode génère l'adresse de requête pour le scrapping
     set_deliveroo_host
+    # Ce chemin renvoie sur deliveroo_path pour tester
     redirect_to deliveroo_path
   end
 
