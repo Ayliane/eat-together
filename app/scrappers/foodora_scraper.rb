@@ -64,7 +64,7 @@ class FoodoraScraper
       }
     end
     @foodora_restaurants.select do |resto|
-      resto[:food_characteristics].include?(RestaurantRemote::CATEGORIES[@food_type.to_sym]) || resto[:food_type].include?(RestaurantRemote::CATEGORIES[@food_type.to_sym])
+      resto[:food_characteristics].include?(RestaurantRemote::CATEGORIES[@food_type.downcase.to_sym]) || resto[:food_type].include?(RestaurantRemote::CATEGORIES[@food_type.downcase.to_sym])
     end
   end
 
