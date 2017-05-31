@@ -47,7 +47,6 @@ class RestaurantsController < ApplicationController
     address = params[:address]
     ds = FoodoraScraper.new(address: address)
     session[:foodora_url] = ds.host
-
   #   foodora_scrapper = FoodoraScraper.new("address_utilisateur", "food_style")
   #   session["foodora_host"] = foodora_scrapper.host
   end
