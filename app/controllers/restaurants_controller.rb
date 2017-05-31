@@ -4,6 +4,7 @@ class RestaurantsController < ApplicationController
 
   def index
     set_deliveroo_host
+    set_foodora_host
     # Ce chemin renvoie sur deliveroo_path pour tester
     redirect_to deliveroo_path
   end
@@ -22,8 +23,9 @@ class RestaurantsController < ApplicationController
   end
 
   def foodora
+    host = FoodoraScraper.new(address: params[:address]).host
 
-    @foodora_restaurants = FoodoraScraper.new("delivery_address", "food_type").scrap
+    @foodora_restaurants = FoodoraScraper.new(url: host, params[:food_type]).scrap
     # @foodora_restaurants = JSON.parse(File.open('vendor/fixtures/foodora.json').read).map do |hash|
     #   hash.with_indifferent_access
     # end
@@ -42,6 +44,9 @@ class RestaurantsController < ApplicationController
 
   # Cette méthode permet de set l'adresse à utiliser pour le scraping de l'index :)
   def set_foodora_host
+    address = params[:address]
+    ds = FoodoraScraper.new(address: address)
+    session[:foodora_url] = ds.host
 
   #   foodora_scrapper = FoodoraScraper.new("address_utilisateur", "food_style")
   #   session["foodora_host"] = foodora_scrapper.host

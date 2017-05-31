@@ -13,23 +13,22 @@ class FoodoraScraper
   end
 
   def scrap
+    get_scrap_from_index(@url, @food_type)
     scrap_index_by_location
   end
 
-  private
-
   def host
-    # <-- cette méthode doit servir à fabriquer l'url de l'adresse user sur foodora
-    # ATTENTION !!
-    # Prévoir dans le controller restaurant_remote un before_action :set_foodora_host
-    # Qui prendra def set_foodora_host
-    # fs = FoodoraScrapper.new(address)
-    # session["foodora_host"] = fs.host
-    # end
+    results = Geocoder.search("#{@address}")
+    mini_address = { post_code: results.first.postal_code, city: results.first.city, street: results.first.street_address }
+    latitude = results.first.latitude.to_s
+    longitude = results.first.longitude.to_s
+    "https://www.foodora.fr/restaurants/lat/" + latitude +"/lng/" + longitude + "/plz/" + mini_address[:post_code] + "/city/" + mini_address[:city] + "/address/" +  mini_address[:street]
   end
 
-  def get_scrap_from_index
 
+  private
+
+  def get_scrap_from_index(url, food_type)
     # Sélectionne la page à scrapper
     foodora_url = RestClient.get "https://www.foodora.fr/restaurants/lat/45.7693079/lng/4.8372633999999834/plz/69001/city/Lyon/address/19%2520Place%2520Tolozan%252C%252069001%2520Lyon%252C%2520France/Place%2520Tolozan/19"
     # remplacer l'url par self.host

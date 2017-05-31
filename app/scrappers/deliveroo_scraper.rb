@@ -14,7 +14,7 @@ class DeliverooScraper
   end
 
   def host
-    results = Geocoder.search("#{address}")
+    results = Geocoder.search("#{@address}")
     coordinates = results.first.coordinates.reverse
     response = RestClient.post "https://deliveroo.fr/fr/api/restaurants", {"location":{"coordinates": coordinates }}, {content_type: "application/json"}
     ok_response = JSON.parse(response.body)
