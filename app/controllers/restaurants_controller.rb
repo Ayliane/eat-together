@@ -25,7 +25,7 @@ class RestaurantsController < ApplicationController
   def foodora
     host = FoodoraScraper.new(address: params[:address]).host
 
-    @foodora_restaurants = FoodoraScraper.new(url: host, params[:food_type]).scrap
+    @foodora_restaurants = FoodoraScraper.new(url: host, food_type: params[:food_type]).scrap
     # @foodora_restaurants = JSON.parse(File.open('vendor/fixtures/foodora.json').read).map do |hash|
     #   hash.with_indifferent_access
     # end

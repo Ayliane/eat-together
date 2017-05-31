@@ -22,7 +22,7 @@ class FoodoraScraper
     mini_address = { post_code: results.first.postal_code, city: results.first.city, street: results.first.street_address }
     latitude = results.first.latitude.to_s
     longitude = results.first.longitude.to_s
-    "https://www.foodora.fr/restaurants/lat/" + latitude +"/lng/" + longitude + "/plz/" + mini_address[:post_code] + "/city/" + mini_address[:city] + "/address/" +  mini_address[:street]
+    URI.encode("https://www.foodora.fr/restaurants/lat/" + latitude +"/lng/" + longitude + "/plz/" + mini_address[:post_code] + "/city/" + mini_address[:city] + "/address/" +  mini_address[:street])
   end
 
 
@@ -30,31 +30,22 @@ class FoodoraScraper
 
   def get_scrap_from_index(url, food_type)
     # Sélectionne la page à scrapper
-    foodora_url = RestClient.get "https://www.foodora.fr/restaurants/lat/45.7693079/lng/4.8372633999999834/plz/69001/city/Lyon/address/19%2520Place%2520Tolozan%252C%252069001%2520Lyon%252C%2520France/Place%2520Tolozan/19"
-    # remplacer l'url par self.host
-
-    # Parser la page sélectionnée
-    foodora_scraping = Nokogiri::HTML.parse(foodora_url)
-    foodora_scraping.search('.vendor-list li a')
+    foodora_url = RestClient.get url
+    scrap = Nokogiri::HTML.parse(foodora_url)
+    scrap.search('.vendor-list li a')
   end
 
   def scrap_index_by_location
 
-    foodora_url = RestClient.get "https://www.foodora.fr/restaurants/lat/45.7693079/lng/4.8372633999999834/plz/69001/city/Lyon/address/19%2520Place%2520Tolozan%252C%252069001%2520Lyon%252C%2520France/Place%2520Tolozan/19"
-    foodora_scraping = Nokogiri::HTML.parse(foodora_url)
-
     @foodora_restaurants = []
-    # binding.pry
-
-    restaurants_data = foodora_scraping.search('.vendor-list li a').map do |obj|
+    results_scrap = @scraping_index.map do |obj|
       data_hash = JSON.parse(obj.attribute('data-vendor'))
       price = obj.search('.categories li').first.text.strip
       data_hash['price'] = price
       data_hash
     end
 
-    # binding.pry
-    restaurants_data.each do |resto|
+    results_scrap.each do |resto|
 
       address = resto['address'], resto['post_code'], resto['city']['name']
       address = address.join(', ')
@@ -63,7 +54,6 @@ class FoodoraScraper
       food_characteristics = food_characteristics.map { |type| type['name']}
 
       @foodora_restaurants << {
-        # comment gérer le fait que les resto soient ouverts ou non ?
         name: resto['name'],
         address: address,
         delivery_time: resto['minimum_delivery_time'],
@@ -73,7 +63,9 @@ class FoodoraScraper
         food_type: resto['characteristics']['primary_cuisine']['name'],
       }
     end
-    @foodora_restaurants
+    @foodora_restaurants.select do |resto|
+      resto[:food_characteristics].include?(@food_type) || resto[:food_type].include?(@food_type)
+    end
   end
 
   def self.get_scrap_from_show
