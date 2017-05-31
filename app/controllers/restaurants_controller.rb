@@ -5,30 +5,30 @@ class RestaurantsController < ApplicationController
   def index
     set_deliveroo_host
     # Ce chemin renvoie sur deliveroo_path pour tester
-    redirect_to deliveroo_path
+    # redirect_to deliveroo_path
   end
 
-  def deliveroo
-    # Ici le code n'est pas final : cela fonctionne pour tester
-    # mais il faudra séparer ces requêtes dans différentes méthodes
-    # car une partie d'entre elles seront déclenchées par la requête ajax
-    # plutôt que dans cette méthode !
-    host = DeliverooScraper.new(address: params[:address]).host
+  # def deliveroo
+  #   # Ici le code n'est pas final : cela fonctionne pour tester
+  #   # mais il faudra séparer ces requêtes dans différentes méthodes
+  #   # car une partie d'entre elles seront déclenchées par la requête ajax
+  #   # plutôt que dans cette méthode !
+  #   host = DeliverooScraper.new(address: params[:address]).host
 
-    @deliveroo_restaurants = DeliverooScraper.new(url: host, food_type: params[:food_type]).scrap
-    # list = DeliverooScraper.new(url: params[:url], food_type: params[:food_type])
-    # list = DeliverooScraper.new(url: session[:host], food_type: params[:food_type])
-    # @deliveroo_restaurants = list.scrap
-  end
+  #   @deliveroo_restaurants = DeliverooScraper.new(url: host, food_type: params[:food_type]).scrap
+  #   # list = DeliverooScraper.new(url: params[:url], food_type: params[:food_type])
+  #   # list = DeliverooScraper.new(url: session[:host], food_type: params[:food_type])
+  #   # @deliveroo_restaurants = list.scrap
+  # end
 
-  def foodora
-    # list = FoodoraScraper.new("delivery_address", "food_type")
-    # @foodora_restaurants = list.scrap
-    @foodora_restaurants = JSON.parse(File.open('vendor/fixtures/foodora.json').read).map do |hash|
-      hash.with_indifferent_access
-    end
-    render :layout => false if request.xhr?
-  end
+  # def foodora
+  #   # list = FoodoraScraper.new("delivery_address", "food_type")
+  #   # @foodora_restaurants = list.scrap
+  #   @foodora_restaurants = JSON.parse(File.open('vendor/fixtures/foodora.json').read).map do |hash|
+  #     hash.with_indifferent_access
+  #   end
+  #   render :layout => false if request.xhr?
+  # end
 
   private
 
