@@ -17,8 +17,8 @@ class DeliverooScraper
     coordinates = results.first.coordinates.reverse
     response = RestClient.post "https://deliveroo.fr/fr/api/restaurants", {"location":{"coordinates": coordinates }}, {content_type: "application/json"}
     ok_response = JSON.parse(response.body)
-    unfiltered_url = "https://deliveroo.fr" + ok_response['url']
-    scrap_index_by_food_type
+    "https://deliveroo.fr" + ok_response['url']
+    # scrap_index_by_food_type
   end
 
   private
