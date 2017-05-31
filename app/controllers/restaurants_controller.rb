@@ -3,22 +3,32 @@ require 'json'
 class RestaurantsController < ApplicationController
 
   def index
-    # Cette méthode est vide, c'est normal, les requêtes seront faites par Ajax :)
     set_deliveroo_host
+    set_foodora_host
+    # Ce chemin renvoie sur deliveroo_path pour tester
     redirect_to deliveroo_path
   end
 
   def deliveroo
-    list = DeliverooScraper.new("delivery_address", "food_type")
-    @deliveroo_restaurants = list.scrap
+    # Ici le code n'est pas final : cela fonctionne pour tester
+    # mais il faudra séparer ces requêtes dans différentes méthodes
+    # car une partie d'entre elles seront déclenchées par la requête ajax
+    # plutôt que dans cette méthode !
+    host = DeliverooScraper.new(address: params[:address]).host
+
+    @deliveroo_restaurants = DeliverooScraper.new(url: host, food_type: params[:food_type]).scrap
+    # list = DeliverooScraper.new(url: params[:url], food_type: params[:food_type])
+    # list = DeliverooScraper.new(url: session[:host], food_type: params[:food_type])
+    # @deliveroo_restaurants = list.scrap
   end
 
   def foodora
-    # list = FoodoraScraper.new("delivery_address", "food_type")
-    # @foodora_restaurants = list.scrap
-    @foodora_restaurants = JSON.parse(File.open('vendor/fixtures/foodora.json').read).map do |hash|
-      hash.with_indifferent_access
-    end
+    host = FoodoraScraper.new(address: params[:address]).host
+
+    @foodora_restaurants = FoodoraScraper.new(url: host, food_type: params[:food_type]).scrap
+    # @foodora_restaurants = JSON.parse(File.open('vendor/fixtures/foodora.json').read).map do |hash|
+    #   hash.with_indifferent_access
+    # end
     render :layout => false if request.xhr?
   end
 
@@ -34,7 +44,9 @@ class RestaurantsController < ApplicationController
 
   # Cette méthode permet de set l'adresse à utiliser pour le scraping de l'index :)
   def set_foodora_host
-
+    address = params[:address]
+    ds = FoodoraScraper.new(address: address)
+    session[:foodora_url] = ds.host
   #   foodora_scrapper = FoodoraScraper.new("address_utilisateur", "food_style")
   #   session["foodora_host"] = foodora_scrapper.host
   end

@@ -61,4 +61,31 @@ footer {
 
 footer P {
   color:white;
+
+footer h5 {
+  color:$brand-primary;
+  margin-top:20px;
+}
+
+#color_icon1 {
+  color:$brand-danger;
+}
+
+#color_icon2 {
+  color:$brand-success;
+}
+
+#color_icon3 {
+  color:$brand-primary;
+}
+ul {
+  margin-top:15px;
+}
+
+.fa {
+  margin-right:20px,
+}
+
+.list-inline {
+  display: inline-block;
 }
