@@ -7,7 +7,14 @@ il faut le faire dans foodora.html.erb et deliveroo.html.erb
 <header>This is a header.</header>
 
 <div id="restaurants-list">
+  <input type="hidden" id="food_type_1" value="<%= params[:food_type_1] %>">
   <%= yield %>
+
+</div>
+
+<div id="restaurants-list-2">
+  <input type="hidden" id="food_type_2" value="<%= params[:food_type_2] %>">
+
 </div>
 
 <footer>This is a footer.</footer>
