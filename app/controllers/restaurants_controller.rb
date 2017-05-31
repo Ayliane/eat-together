@@ -3,15 +3,22 @@ require 'json'
 class RestaurantsController < ApplicationController
 
   def index
-    # Cette méthode génère l'adresse de requête pour le scrapping
     set_deliveroo_host
     # Ce chemin renvoie sur deliveroo_path pour tester
     redirect_to deliveroo_path
   end
 
   def deliveroo
-    list = DeliverooScraper.new("delivery_address", "food_type")
-    @deliveroo_restaurants = list.scrap
+    # Ici le code n'est pas final : cela fonctionne pour tester
+    # mais il faudra séparer ces requêtes dans différentes méthodes
+    # car une partie d'entre elles seront déclenchées par la requête ajax
+    # plutôt que dans cette méthode !
+    host = DeliverooScraper.new(address: params[:address]).host
+
+    @deliveroo_restaurants = DeliverooScraper.new(url: host, food_type: params[:food_type]).scrap
+    # list = DeliverooScraper.new(url: params[:url], food_type: params[:food_type])
+    # list = DeliverooScraper.new(url: session[:host], food_type: params[:food_type])
+    # @deliveroo_restaurants = list.scrap
   end
 
   def foodora
