@@ -1,11 +1,13 @@
 require 'json'
 
 class FoodoraScraper
-  attr_accessor :address, :food_type, :scraping_index
+  attr_accessor :address, :food_type, :scraping_index, :url
 
-  def initialize (address, food_type)
-    @address = address
-    @food_type = food_type
+  def initialize (args)
+    @address = args[:address]
+    @food_type = args[:food_type]
+    @url = args[:url]
+    @url.blank? ? "" : @scraping_index = get_scrap_from_index(@url, @food_type)
     # @scraping_index = get_scrap_from_index
     # @foodora_list = FoodoraScraper.scrap_index_by_location
   end
