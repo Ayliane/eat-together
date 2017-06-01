@@ -50,8 +50,7 @@ class TripAdvisor
         sleep(1)
         complete_url = RestClient.get ("https://www.tripadvisor.fr" + url)
         @scrapping = Nokogiri::HTML.parse(complete_url)
-        binding.pry
-        binding.pry if @scrapping.search('#HEADING').nil?
+        # binding.pry if @scrapping.search('#HEADING').nil?
         puts "Creating the #{i + 1}th restaurant..."
         resto = Restaurant.create!(
           name: @scrapping.search('#HEADING').text.strip,
