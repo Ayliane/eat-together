@@ -8,6 +8,10 @@ class RestaurantsController < ApplicationController
     # Ce chemin renvoie sur deliveroo_path pour tester
   end
 
+  def show
+    @restaurant = Restaurant.find(params[:id])
+  end
+
   def deliveroo
     # Ici le code n'est pas final : cela fonctionne pour tester
     # mais il faudra séparer ces requêtes dans différentes méthodes
