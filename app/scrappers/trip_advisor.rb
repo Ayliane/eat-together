@@ -19,17 +19,13 @@ class TripAdvisor
 
   private
 
-  def scraping_url
-
-  end
-
   def has_next_page?
     # @current_page.search('[data-page-number]').last.
     # Doit aller chercher le numéro de la last page et le comparer au numéro du current page et renvoyer un boolean.
     end_page_number = @current_page.search('[data-page-number]').last.attr('data-page-number').to_i
     current_page_number = @current_page.search('.pageNum.current').attr('data-page-number').value.to_i
     puts "page number : #{current_page_number}"
-    current_page_number < 10
+    current_page_number < end_page_number
   end
 
   def next_page_url
@@ -42,7 +38,6 @@ class TripAdvisor
 
   def extract_url
     # Add url to show page for restaurant in an aray
-    # @urls << @current_page.search('a')
     @urls = []
     @current_page.search('.property_title').each do |resto|
       @urls << resto.attribute('href')
