@@ -59,7 +59,7 @@ class FoodoraScraper
         delivery_time: resto['minimum_delivery_time'],
         photo_url: resto['image_high_resolution'],
         url_code: resto['code'],
-        url_key: resto['chain']['url_key']
+        url_key: resto['chain']['url_key'],
         price_fork: resto['price'],
         food_characteristics: food_characteristics,
         food_type: resto['characteristics']['primary_cuisine']['name']
