@@ -6,9 +6,7 @@ $(document).ready(function() {
       foodTypeRequest2(foodType2);
       $('#selection_food_type_1').on('change', function() {
         var foodType = $('#selection_food_type_1').val();
-        console.log('executed');
         $("#restaurants-list").empty();
-        console.log('executed too');
         foodTypeRequest1(foodType);
       });
       $('#selection_food_type_2').on('change', function() {
