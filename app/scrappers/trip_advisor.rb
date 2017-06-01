@@ -70,7 +70,7 @@ class TripAdvisor
   end
 
   def does_not_exists?(url)
-
+    .exist?
   end
 end
 
