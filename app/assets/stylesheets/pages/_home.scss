@@ -15,7 +15,7 @@
 
 .banner-content {
   position: fixed;
-  bottom:10px;
+  bottom:300px;
   }
 
 
@@ -53,14 +53,12 @@
   height:48px;
 }
 
-#button-eat{
-  margin-bottom:50px;
-  background-color:$gray-base;
-  color:#7ADB1F;
-}
-
 .eat {
   margin-left: 20px;
+}
+
+.hidden {
+  display:none;
 }
 
 h1{
@@ -84,3 +82,25 @@ h2{
   margin-bottom: 250px;
 }
 
+#button-eat{
+  margin-bottom:50px;
+  background-color:$gray-base;
+  color:#7ADB1F;
+  border: none;
+}
+
+p{text-align: center;
+  font-family: 'Open Sans Condensed',
+  sans-serif;font-size: 5em;
+  color:black;
+}
+
+/* WORDS SWAP */
+[data-words]{
+  vertical-align: top;
+  position: static;
+}
+[data-words] > span{
+  position: absolute;
+  color: $green;
+}
