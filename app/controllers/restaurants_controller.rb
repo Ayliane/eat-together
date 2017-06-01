@@ -10,7 +10,6 @@ class RestaurantsController < ApplicationController
     # redirect_to deliveroo_path
   end
 
-
   def deliveroo
     # Ici le code n'est pas final : cela fonctionne pour tester
     # mais il faudra séparer ces requêtes dans différentes méthodes
