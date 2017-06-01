@@ -30,8 +30,8 @@ class FoodoraScraper
 
   def get_scrap_from_index(url, food_type)
     # Sélectionne la page à scrapper
-    foodora_url = RestClient.get url
-    scrap = Nokogiri::HTML.parse(foodora_url)
+    foodora_index_url = RestClient.get url
+    scrap = Nokogiri::HTML.parse(foodora_index_url)
     scrap.search('.vendor-list li a')
   end
 
@@ -58,20 +58,19 @@ class FoodoraScraper
         address: address,
         delivery_time: resto['minimum_delivery_time'],
         photo_url: resto['image_high_resolution'],
-        url_code: resto['code'],
-        url_key: resto['chain']['url_key'],
+        web_path: resto['web_path'],
         price_fork: resto['price'],
         food_characteristics: food_characteristics,
         food_type: resto['characteristics']['primary_cuisine']['name']
       }
+      binding.pry
     end
     @foodora_restaurants.select do |resto|
       resto[:food_characteristics].include?(RestaurantRemote::CATEGORIES[@food_type.downcase.to_sym]) || resto[:food_type].include?(RestaurantRemote::CATEGORIES[@food_type.downcase.to_sym])
     end
   end
 
-  def self.get_scrap_from_show
-
+  def get_scrap_from_show(url)
     # 19 place Tolozan, Lyon => Guy and Sons Tupin
     # https://www.foodora.fr/restaurant/s2of/guyandsonstupin
 
@@ -84,9 +83,48 @@ class FoodoraScraper
     # 19 place Tolozan, Lyon => Vidici lyon
     # https://www.foodora.fr/restaurant/s3id/vidicilyon
 
+    # Sélectionne la page à scrapper
+    @foodora_restaurant_url = RestClient.get url
+    scrap = Nokogiri::HTML.parse(foodora_restaurant_url)
+    # scrap.search('.vendor-list li a')
   end
 
-  def self.scrap_show
+  def scrap_show(url)
+
+    get_scrap_from_show(url)
+
+    # @foodora_restaurants = []
+    # results_scrap = @scraping_index.map do |obj|
+    #   data_hash = JSON.parse(obj.attribute('data-vendor'))
+    #   price = obj.search('.categories li').first.text.strip
+    #   data_hash['price'] = price
+    #   data_hash
+    # end
+
+    # results_scrap.each do |resto|
+
+    #   address = resto['address'], resto['post_code'], resto['city']['name']
+    #   address = address.join(', ')
+
+    #   food_characteristics = resto['food_characteristics']
+    #   food_characteristics = food_characteristics.map { |type| type['name']}
+
+    #   @foodora_restaurants << {
+    #     name: resto['name'],
+    #     address: address,
+    #     delivery_time: resto['minimum_delivery_time'],
+    #     photo_url: resto['image_high_resolution'],
+    #     url_code: resto['code'],
+    #     url_key: resto['url_key'],
+    #     price_fork: resto['price'],
+    #     food_characteristics: food_characteristics,
+    #     food_type: resto['characteristics']['primary_cuisine']['name']
+    #   }
+    #   binding.pry
+    # end
+    # @foodora_restaurants.select do |resto|
+    #   resto[:food_characteristics].include?(RestaurantRemote::CATEGORIES[@food_type.downcase.to_sym]) || resto[:food_type].include?(RestaurantRemote::CATEGORIES[@food_type.downcase.to_sym])
+    # end
 
   end
 
