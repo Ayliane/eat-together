@@ -58,9 +58,11 @@ class FoodoraScraper
         address: address,
         delivery_time: resto['minimum_delivery_time'],
         photo_url: resto['image_high_resolution'],
+        url_code: resto['code'],
+        url_key: resto['chain']['url_key']
         price_fork: resto['price'],
         food_characteristics: food_characteristics,
-        food_type: resto['characteristics']['primary_cuisine']['name'],
+        food_type: resto['characteristics']['primary_cuisine']['name']
       }
     end
     @foodora_restaurants.select do |resto|
@@ -69,6 +71,18 @@ class FoodoraScraper
   end
 
   def self.get_scrap_from_show
+
+    # 19 place Tolozan, Lyon => Guy and Sons Tupin
+    # https://www.foodora.fr/restaurant/s2of/guyandsonstupin
+
+    # 2 Place Bellecour, Lyon => Guy and Sons Tupin
+    # https://www.foodora.fr/restaurant/s2of/guyandsonstupin
+
+    # 19 place Tolozan, Lyon => Boco Lyon
+    # https://www.foodora.fr/restaurant/s8df/boco-lyon
+
+    # 19 place Tolozan, Lyon => Vidici lyon
+    # https://www.foodora.fr/restaurant/s3id/vidicilyon
 
   end
 
