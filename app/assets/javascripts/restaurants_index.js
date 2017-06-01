@@ -17,5 +17,19 @@ $(document).ready(function() {
         $('#restaurants-list').append(response);
       }
      })
+     $.ajax({
+       type: 'GET',
+       url: '/foodora?food_type=' + foodType2,
+       success: function(response) {
+         $('#restaurants-list-2').append(response);
+       }
+     })
+      $.ajax({
+        type: 'GET',
+        url: '/deliveroo?food_type=' + foodType2,
+        success: function(response) {
+          $('#restaurants-list-2').append(response);
+      }
+     })
    }
  });
