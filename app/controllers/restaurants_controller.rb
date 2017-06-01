@@ -6,10 +6,8 @@ class RestaurantsController < ApplicationController
     set_deliveroo_host
     set_foodora_host
     # Ce chemin renvoie sur deliveroo_path pour tester
-  end
 
-  def show
-    @restaurant = Restaurant.find(params[:id])
+    # redirect_to deliveroo_path
   end
 
   def deliveroo
@@ -35,6 +33,7 @@ class RestaurantsController < ApplicationController
     # end
     render :layout => false if request.xhr?
   end
+
 
   private
 
