@@ -1,7 +1,7 @@
 <form class="form" action="<%= restaurants_path %>" method="get">
   <div class="form-inline">
 
-  <div class="form-group ">
+  <div class="form-group eat">
          <select class="form-control" name="food_type_1">
             <option selected>My food type</option>
             <% food_types.sort.each do |key, value| %>
@@ -9,12 +9,12 @@
             <% end %>
           </select>
   </div>
-  <div class="form-group">
+  <div class="form-group eat">
     <label for="address" ></label>
     <input type="text" class="form-control" id="address" name="address" placeholder="Where ?">
 
   </div>
-  <div class="form-group">
+  <div class="form-group eat">
        <select class="form-control" name="food_type_2">
             <option selected>His/Her food type</option>
             <% food_types.sort.each do |key, value| %>
@@ -23,8 +23,8 @@
         </select>
   </div>
 
+    <button type="submit" class="btn btn-primary btn-lg eat" id="button-eat">EAT NOW</button>
   </div>
-  <button type="submit" class="btn btn-primary btn-lg">EAT NOW</button>
 </form>
 
 
