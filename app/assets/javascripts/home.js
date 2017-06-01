@@ -1,22 +1,6 @@
-// $(document).ready(function() {
-
-// setInterval(function() {
-//   var $current = $('.show');
-//   var $next = $current.next();
-
-//     if ($current === ul.lastChild) {
-//    $current = ul.firstChild
-//    $current.addClass('hidden').removeClass("show");
-//    $next.addClass('show').removeClass("hidden");
-//    } else {
-//    $current.addClass('hidden').removeClass("show");
-//    $next.addClass('show').removeClass("hidden");
-//    }
-
-// },5000);
-//  });
 
 
+if ($('.animation').length > 0) {
 function dataWord () {
 
   $("[data-words]").attr("data-words", function(i, d){
@@ -46,8 +30,7 @@ function dataWord () {
 $(window).on("load", dataWord);
 
 
-
-
+}
 
 
 
