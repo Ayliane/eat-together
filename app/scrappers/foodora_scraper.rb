@@ -8,8 +8,6 @@ class FoodoraScraper
     @food_type = args[:food_type]
     @url = args[:url]
     @url.blank? ? "" : @scraping_index = get_scrap_from_index(@url, @food_type)
-    # @scraping_index = get_scrap_from_index
-    # @foodora_list = FoodoraScraper.scrap_index_by_location
   end
 
   def scrap
