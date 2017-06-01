@@ -4,15 +4,11 @@ class TripAdvisor
     @current_page = RestClient.get 'https://www.tripadvisor.fr/Restaurants-g187265-Lyon_Rhone_Auvergne_Rhone_Alpes.html'
     @current_page = Nokogiri::HTML.parse(@current_page)
     @results = []
-    # binding.pry
     while has_next_page?
       extract_url
-      # binding.pry
       scrap_show
-      # binding.pry
       @current_page = RestClient.get next_page_url
       @current_page = Nokogiri::HTML.parse(@current_page)
-      # binding.pry
     end
     @results
   end
@@ -46,19 +42,51 @@ class TripAdvisor
   end
 
   def scrap_show
-    @urls.each do |url|
-      puts "Scrapping #{url}"
-      sleep(1)
-      complete_url = RestClient.get ("https://www.tripadvisor.fr" + url)
-      scrapping = Nokogiri::HTML.parse(complete_url)
-      binding.pry if scrapping.search('#HEADING').nil?
-      @results << {
-        name: scrapping.search('#HEADING').text.strip,
-        address: scrapping.search('.street-address').first.text,
-        ranking: scrapping.search('.ui_bubble_rating').first.attribute('content').text.gsub(/,/, '.').to_f,
-        cook_rank: scrapping.search('.barChart .ui_bubble_rating').first.attribute('alt').value.split(' ').first.to_f,
-        value_balance: scrapping.search('.barChart .ui_bubble_rating').first.attribute('alt').value.split(' ').first.to_f
-      }
+    @urls.each_with_index do |url, i|
+
+      if does_not_exists?(url)
+        puts"---------------------------------------------------------------"
+        puts "Scrapping #{url}"
+        sleep(1)
+        complete_url = RestClient.get ("https://www.tripadvisor.fr" + url)
+        @scrapping = Nokogiri::HTML.parse(complete_url)
+        # binding.pry if @scrapping.search('#HEADING').nil?
+        puts "Creating the #{i + 1}th restaurant..."
+        resto = Restaurant.create!(
+          name: @scrapping.search('#HEADING').text.strip,
+          address: @scrapping.search('.street-address').first.text,
+          ranking: @scrapping.search('.ui_bubble_rating').first.attribute('content').text.gsub(/,/, '.').to_f,
+          cook_rank: cook_rank,
+          value_balance: value_balance,
+          url: url
+        )
+        puts "Created #{resto.name}"
+        puts"---------------------------------------------------------------"
+      else
+        puts"---------------------------------------------------------------"
+        puts "Restaurant already exists in DB"
+        puts"---------------------------------------------------------------"
+      end
+    end
+  end
+
+  def does_not_exists?(url)
+    !Restaurant.where(url: url).exists?
+  end
+
+  def cook_rank
+    if @scrapping.search('.barChart .ui_bubble_rating').first.nil?
+      0
+    else
+      @scrapping.search('.barChart .ui_bubble_rating').first.attribute('alt').value.split(' ').first.to_f
+    end
+  end
+
+  def value_balance
+    if @scrapping.search('.barChart .ui_bubble_rating').last.nil?
+      0
+    else
+      @scrapping.search('.barChart .ui_bubble_rating').last.attribute('alt').value.split(' ').first.to_f
     end
   end
 end
