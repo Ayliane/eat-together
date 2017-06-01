@@ -46,16 +46,16 @@ class TripAdvisor
   end
 
   def scrap_show
-    @urls.each do |url|
+    @urls.each_with_index do |url, i|
 
       if does_not_exists?(url)
-
-
+        puts"---------------------------------------------------------------"
         puts "Scrapping #{url}"
         sleep(1)
         complete_url = RestClient.get ("https://www.tripadvisor.fr" + url)
         scrapping = Nokogiri::HTML.parse(complete_url)
         binding.pry if scrapping.search('#HEADING').nil?
+        puts "Creating the #{i + 1}th restaurant..."
         resto = Restaurant.create!(
           name: scrapping.search('#HEADING').text.strip,
           address: scrapping.search('.street-address').first.text,
@@ -64,13 +64,18 @@ class TripAdvisor
           value_balance: scrapping.search('.barChart .ui_bubble_rating').first.attribute('alt').value.split(' ').first.to_f,
           url: url
         )
-        puts "Created #{}"
+        puts "Created #{resto.name}"
+        puts"---------------------------------------------------------------"
+      else
+        puts"---------------------------------------------------------------"
+        puts "Restaurant already exists in DB"
+        puts"---------------------------------------------------------------"
       end
     end
   end
 
   def does_not_exists?(url)
-    .exist?
+    !Restaurant.where(url: url).exists?
   end
 end
 
