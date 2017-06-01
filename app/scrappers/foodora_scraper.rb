@@ -77,21 +77,22 @@ class FoodoraScraper
     # 2 Place Bellecour, Lyon => Guy and Sons Tupin
     # https://www.foodora.fr/restaurant/s2of/guyandsonstupin
 
-    # 19 place Tolozan, Lyon => Boco Lyon
-    # https://www.foodora.fr/restaurant/s8df/boco-lyon
-
-    # 19 place Tolozan, Lyon => Vidici lyon
-    # https://www.foodora.fr/restaurant/s3id/vidicilyon
-
     # Sélectionne la page à scrapper
     @foodora_restaurant_url = RestClient.get url
-    scrap = Nokogiri::HTML.parse(foodora_restaurant_url)
-    # scrap.search('.vendor-list li a')
+    scrap = Nokogiri::HTML.parse(@foodora_restaurant_url)
+    scrap.search('.menu__items')
   end
 
   def scrap_show(url)
 
     get_scrap_from_show(url)
+
+    # Category title :
+    # menu = scrap.search('.menu__items .dish-category-header').first.text.strip
+
+    # Menu selection :
+    # menu = scrap.search('.menu__items .dish-list .dish-card').first
+    # data_hash = JSON.parse(menu.attr('data-object'))
 
     # @foodora_restaurants = []
     # results_scrap = @scraping_index.map do |obj|
@@ -125,8 +126,6 @@ class FoodoraScraper
     # @foodora_restaurants.select do |resto|
     #   resto[:food_characteristics].include?(RestaurantRemote::CATEGORIES[@food_type.downcase.to_sym]) || resto[:food_type].include?(RestaurantRemote::CATEGORIES[@food_type.downcase.to_sym])
     # end
-
   end
-
 end
 
