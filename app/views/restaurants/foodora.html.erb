@@ -1,8 +1,3 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 text-center">
-      <h2>Foodora's restaurants list</h2>
-    </div>
     <% @foodora_restaurants.each do |resto| %>
       <div class="col-xs-12">
         <div class="restaurant-card"   style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= resto[:photo_url] %>')">
@@ -16,5 +11,3 @@
         </div>
       </div>
     <% end %>
-  </div>
-</div>
