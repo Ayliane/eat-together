@@ -3,14 +3,13 @@
   <div class="row">
     <div class="col-xs-12 text-center">
       <div class="col-xs-6">
-        <div id="restaurants-list">
+        <div id="restaurant-menu-1">
             <h1><%= params[:food_type_1] %><h1>
               <input type="hidden" id="food_type_1" value="<%= params[:food_type_1] %>">
-              <%= yield %>
         </div>
       </div>
       <div class="col-xs-6">
-        <div id="restaurants-list-2">
+        <div id="restaurant-menu-2">
             <h1><%= params[:food_type_2] %><h1>
               <input type="hidden" id="food_type_2" value="<%= params[:food_type_2] %>">
         </div>
@@ -18,4 +17,3 @@
     </div>
   </div>
 </div>
-
