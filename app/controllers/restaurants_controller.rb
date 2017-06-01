@@ -8,9 +8,7 @@ class RestaurantsController < ApplicationController
     # Ce chemin renvoie sur deliveroo_path pour tester
 
     # redirect_to deliveroo_path
-
   end
-
 
   def deliveroo
     # Ici le code n'est pas final : cela fonctionne pour tester
