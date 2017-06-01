@@ -12,18 +12,12 @@
   align-items: center;
   justify-content: center;
 }
-.banner h1 {
-  font-size: 50px;
-  font-weight: bold;
-  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
-  margin: 50px;
-}
-.banner p {
-  font-size: 20px;
-  font-weight: lighter;
-  color: rgba(255, 255, 255, 0.7);
-  margin-bottom: 20px;
-}
+
+.banner-content {
+  position: fixed;
+  bottom:300px;
+  }
+
 
 .wrapper {
   margin-top: $navbar-height;
@@ -48,45 +42,65 @@
   width: 200px;
   height: 36px;
   background-color: withe;
-  font-color: black;
+  font-color: $green;
 }
 
 .btn-primary {
   margin-top:50px;
 }
 
-footer {
-  background-color:black;
+.form-control {
+  height:48px;
 }
 
-footer p {
-  color:white;
+.eat {
+  margin-left: 20px;
 }
 
-footer h5 {
-  color:$brand-primary;
-  margin-top:20px;
+.hidden {
+  display:none;
 }
 
-#color_icon1 {
-  color:$brand-danger;
+h1{
+  color:$green;
+  font-weight: Bold;
+  font-size: 5em;
 }
 
-#color_icon2 {
-  color:$brand-success;
+h2{
+  color:$green;
+  margin: 35px 0 11px;
+  font-size: 5em;
 }
 
-#color_icon3 {
-  color:$brand-primary;
-}
-ul {
-  margin-top:15px;
+#home {
+  display:flex;
+  justify-content: space-around;
 }
 
-.fa {
-  margin-right:20px,
+#home-2 {
+  margin-bottom: 250px;
 }
 
-.list-inline {
-  display: inline-block;
+#button-eat{
+  margin-bottom:50px;
+  background-color:$gray-base;
+  color:#7ADB1F;
+  border: none;
+}
+
+p{text-align: center;
+  font-family: 'Open Sans Condensed',
+  sans-serif;font-size: 5em;
+  color:black;
+}
+
+/* WORDS SWAP */
+[data-words]{
+  vertical-align: top;
+  position: static;
+}
+[data-words] > span{
+  position: absolute;
+  color: $green;
 }
