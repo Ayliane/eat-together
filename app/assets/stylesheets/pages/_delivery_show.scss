@@ -1,0 +1,91 @@
+.menu-list {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  margin-left: -12px;
+  margin-right: -12px;
+}
+
+.menu-categories {
+  flex: 0 0 25%;
+  position: relative;
+  top: -170px;
+  min-height: 50px;
+  padding-left: 12px;
+  padding-right: 12px;
+  text-align: right;
+}
+
+.menu-categories-vendor-logo {
+  padding: 24px 0 10px;
+  margin: 0;
+}
+
+.menu-categories-vendor-logo-img {
+  max-height: 195px;
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+
+.menu-categories-list-wrapper li {
+  list-style: none;
+  text-align: left;
+  padding-top: 10px;
+}
+
+.menu-categories-list-item {
+  list-style: none;
+
+}
+
+.menu-categories-list-item:hover {
+  text-decoration: none;
+
+}
+
+.anchor-navigation {
+
+}
+
+.menu-items-wrapper {
+
+}
+
+.menu-item {
+  position: relative;
+  top: 5px;
+  flex: 1 0 auto;
+
+}
+
+.dish-category-header {
+
+}
+
+.dish-category-title {
+
+}
+
+.dish-list li {
+  list-style: none;
+
+}
+
+.dish-card {
+
+}
+
+.dish-info {
+
+}
+
+.dish-price {
+  // position: absolute;
+}
+
+#price {
+  // position: relative;
+  // right: 5px;
+}
+
