@@ -26,7 +26,7 @@ class FoodoraScraper
   end
 
 
-  private
+  # private
 
   def get_scrap_from_index(url, food_type)
     # Sélectionne la page à scrapper
@@ -79,53 +79,40 @@ class FoodoraScraper
 
     # Sélectionne la page à scrapper
     @foodora_restaurant_url = RestClient.get url
-    scrap = Nokogiri::HTML.parse(@foodora_restaurant_url)
-    scrap.search('.menu__items')
+    Nokogiri::HTML.parse(@foodora_restaurant_url)
   end
 
   def scrap_show(url)
 
-    get_scrap_from_show(url)
+    scrap = get_scrap_from_show(url)
 
-    # Category title :
-    # menu = scrap.search('.menu__items .dish-category-header').first.text.strip
+    @foodora_restaurant_menu = []
 
-    # Menu selection :
-    # menu = scrap.search('.menu__items .dish-list .dish-card').first
-    # data_hash = JSON.parse(menu.attr('data-object'))
+    # Category title and description into an aray of hashes :
 
-    # @foodora_restaurants = []
-    # results_scrap = @scraping_index.map do |obj|
-    #   data_hash = JSON.parse(obj.attribute('data-vendor'))
-    #   price = obj.search('.categories li').first.text.strip
-    #   data_hash['price'] = price
-    #   data_hash
-    # end
+    scraped_titles = scrap.search('.menu__items .dish-category-header').css('h2').map(&:text)
 
-    # results_scrap.each do |resto|
+    scraped_titles.each_with_index do |title, index|
+      # dishes_list = scrap.search('.menu__items .dish-list').first
+      dish_lists = scrap.search('.menu__items .dish-list li').each_with_index do |div, index|
 
-    #   address = resto['address'], resto['post_code'], resto['city']['name']
-    #   address = address.join(', ')
+      # dish_lists.each_with_index do |div, index|
+        # dish_list = scrap.search('.menu__items .dish-list')[1].search('li').first
+        dish_card = div.search('div.dish-card').first
+        dish_hash = JSON.parse(dish_card.attribute('data-object'))
 
-    #   food_characteristics = resto['food_characteristics']
-    #   food_characteristics = food_characteristics.map { |type| type['name']}
+        @foodora_restaurant_menu << {
+          category_title: title,
+          data: {
+            name: dish_hash['name'],
+            description: dish_hash['description'],
+            price: dish_hash['product_variations'].first['price']
+          }
+        }
 
-    #   @foodora_restaurants << {
-    #     name: resto['name'],
-    #     address: address,
-    #     delivery_time: resto['minimum_delivery_time'],
-    #     photo_url: resto['image_high_resolution'],
-    #     url_code: resto['code'],
-    #     url_key: resto['url_key'],
-    #     price_fork: resto['price'],
-    #     food_characteristics: food_characteristics,
-    #     food_type: resto['characteristics']['primary_cuisine']['name']
-    #   }
-    #   binding.pry
-    # end
-    # @foodora_restaurants.select do |resto|
-    #   resto[:food_characteristics].include?(RestaurantRemote::CATEGORIES[@food_type.downcase.to_sym]) || resto[:food_type].include?(RestaurantRemote::CATEGORIES[@food_type.downcase.to_sym])
-    # end
+      end
+    end
+    @foodora_restaurant_menu
   end
 end
 
