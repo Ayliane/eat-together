@@ -3,7 +3,7 @@ class RestaurantsController < ApplicationController
   before_action :set_foodora_host
 
   def index
-    set_foodora_host
+
   end
 
   def deliveroo
@@ -17,11 +17,13 @@ class RestaurantsController < ApplicationController
   end
 
   def foodora_show
-
+    @restaurant = Foodora.where(url: params[:foodora_url])
+    render layout: false if request.xhr?
   end
 
   def deliveroo_show
-
+    @restaurant = Deliveroo.where(url: params[:deliveroo_url])
+    render layout: false if request.xhr?
   end
 
   private
