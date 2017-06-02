@@ -1,0 +1,40 @@
+/* -------------------------------------
+ * CSS code specific to home page
+ * (margin/padding adjustments)
+ * ------------------------------------- */
+
+.restaurant-card {
+  margin: 1em 0;
+}
+
+.step {
+  padding-bottom: 5em;
+  position: relative;
+}
+
+.step:after {
+  border: 4px solid #ccc;
+  position: absolute;
+  left: calc(50% - 2px);
+  height: 100%;
+  content: "";
+}
+
+.step-label {
+  display: flex;
+  justify-content: center;
+
+  p {
+    margin: 0;
+    padding: 5px;
+    border: 1px solid #aaa;
+    height: 55px;
+    width: 55px;
+    font-size: 14px;
+    background-color: #ccc;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

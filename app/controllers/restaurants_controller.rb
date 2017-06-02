@@ -3,7 +3,7 @@ class RestaurantsController < ApplicationController
   before_action :set_foodora_host
 
   def index
-    set_foodora_host
+
   end
 
   def deliveroo
