@@ -1,7 +1,6 @@
-require 'json'
-
 class RestaurantsController < ApplicationController
   before_action :set_deliveroo_host
+  before_action :set_foodora_host
 
   def index
     set_foodora_host
@@ -13,8 +12,8 @@ class RestaurantsController < ApplicationController
   end
 
   def foodora
-    @foodora_restaurants = FoodoraScraper.new(url: session[:foodora_url], food_type: params[:food_type]).scrap
-    render :layout => false if request.xhr?
+    @restaurants = Foodora.where(url: session[:foodora_url], food_type: params[:food_type])
+    render layout: false if request.xhr?
   end
 
 
@@ -25,9 +24,7 @@ class RestaurantsController < ApplicationController
   end
 
   def set_foodora_host
-    address = params[:address]
-    ds = FoodoraScraper.new(address: address)
-    session[:foodora_url] = ds.host
+    session[:foodora_url] ||= Foodora.host_for(params[:address])
   end
 
   def restaurant_params
