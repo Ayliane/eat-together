@@ -33,7 +33,7 @@ class Deliveroo
           name: resto["name"],
           food_type: resto["food_tags"].join(', '),
           price_fork: resto["price_category_symbols"],
-          delivery_time: resto["time"],
+          delivery_time: resto["time"].strip,
           photo_url: resto["image_url"]
         }.with_indifferent_access
       end
