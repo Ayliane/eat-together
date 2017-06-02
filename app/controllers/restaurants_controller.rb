@@ -16,6 +16,13 @@ class RestaurantsController < ApplicationController
     render layout: false if request.xhr?
   end
 
+  def foodora_show
+
+  end
+
+  def deliveroo_show
+
+  end
 
   private
 

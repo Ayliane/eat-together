@@ -1,0 +1,9 @@
+<div class="col-xs-12">
+  <div class="restaurant-menu">
+    <div class="card-name"><h4><%= resto[:name] %></h4></div>
+    <div class="card-description"><p><%= resto[:food_type] %></p></div>
+
+    <%= image_tag avatar, class: "card-user avatar avatar-delivery" %>
+    <%= link_to '', root_path, class: "card-link" %>
+  </div>
+</div>
