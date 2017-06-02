@@ -56,3 +56,6 @@ class DeliverooScraper
 
   end
 end
+
+
+# https://deliveroo.fr/fr/restaurants/lyon/hotel-de-ville.json?geohash=u05kqh43s3mh
