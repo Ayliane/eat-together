@@ -5,7 +5,7 @@ class Api::V1::RestaurantsController < Api::V1::BaseController
   end
 
   def show
-    @restaurant = restaurant_url(params[:address])
+    @restaurant = Restaurant.find_by(address: params[:address])
   end
 
 end
