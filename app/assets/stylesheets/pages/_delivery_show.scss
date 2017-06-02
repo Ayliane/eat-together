@@ -44,7 +44,11 @@
 }
 
 .anchor-navigation {
-
+  color: #333333;
+  &:hover{
+    color: #76BD73;
+    opacity: 0.7;
+  }
 }
 
 .menu-items-wrapper {
