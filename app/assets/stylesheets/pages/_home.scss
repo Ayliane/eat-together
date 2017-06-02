@@ -13,12 +13,6 @@
   justify-content: center;
 }
 
-.banner-content {
-  position: fixed;
-  bottom:300px;
-  }
-
-
 .wrapper {
   margin-top: $navbar-height;
   min-height: calc(100vh - #{$footer-height} - #{$navbar-height});
@@ -62,9 +56,9 @@
   justify-content: space-around;
 }
 
-#home-2 {
-  margin-bottom: 250px;
-}
+// #home-2 {
+//   margin-bottom: 250px;
+// }
 
 #button-eat{
   margin-bottom:50px;
