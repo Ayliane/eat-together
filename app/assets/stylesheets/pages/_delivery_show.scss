@@ -153,15 +153,15 @@
 }
 
 .dish-price {
-  position: absolute;
+  position: relative;
   right: 0px;
-  bottom: 15px;
+  bottom: 20px;
 }
 
 .price {
-  position: relative;
-  right: 2px;
-  bottom: 0px;
+  position: absolute;
+  right: 5px;
+  bottom: 3px;
   margin: 0 16px 0 0;
   font-weight: 300;
   font-size: 15px;
