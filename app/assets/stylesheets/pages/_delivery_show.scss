@@ -1,7 +1,7 @@
 .menu-list {
+  background-color: white;
   position: absolute;
   display: flex;
-  align-items: center;
   margin-left: -12px;
   margin-right: -12px;
 }
@@ -9,7 +9,6 @@
 .menu-categories {
   flex: 0 0 25%;
   position: relative;
-  top: -170px;
   min-height: 50px;
   padding-left: 12px;
   padding-right: 12px;
@@ -64,28 +63,88 @@
 }
 
 .dish-category-title {
+  margin-bottom: 25px;
+}
 
+.dish-category-title:before {
+  content: '';
+  display: block;
+  width: 33px;
+  height: 3px;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  background-image: linear-gradient(to right, transparent 0%, transparent 36.36%, #d70f64 36.36%, #d70f64 63.63%, transparent 63.63%, transparent 100%);
+  background-size: 11px 3px;
+  background-repeat: repeat-x;
+  position: relative;
+  top: 24px;
+  left: 325px;
+}
+
+.dish-category-title:after {
+  left: auto;
+  right: 0;
+  content: '';
+  display: block;
+  width: 33px;
+  height: 3px;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  background-image: linear-gradient(to right, transparent 0%, transparent 36.36%, #d70f64 36.36%, #d70f64 63.63%, transparent 63.63%, transparent 100%);
+  background-size: 11px 3px;
+  background-repeat: repeat-x;
+  position: relative;
+  top: -16px;
+  left: 505px;
 }
 
 .dish-list li {
   list-style: none;
+  padding-right: 50px;
 
 }
 
 .dish-card {
-
+  border-top: 1px solid #EBEBEB;
+  margin-bottom: 60px;
 }
 
 .dish-info {
 
 }
 
-.dish-price {
-  // position: absolute;
+.dish-name{
+  margin: 20px;
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 1.3em;
+  color: #333;
 }
 
-#price {
-  // position: relative;
-  // right: 5px;
+.dish-description{
+  margin: 2px 0 15px;
+  font-size: 13px;
+  line-height: 1.3em;
+  font-weight: 300;
+  color: #888;
+}
+
+.dish-price {
+  position: absolute;
+  right: 32px;
+}
+
+.price {
+  position: relative;
+  right: 40px;
+  bottom: 0px;
+  margin: 0 16px 0 0;
+  font-weight: 300;
+  font-size: 15px;
+  color: #888;
 }
 
