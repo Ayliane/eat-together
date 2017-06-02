@@ -113,14 +113,14 @@
 }
 
 .dish-card {
-  padding-left: 32px;
-  padding-right: 32px;
+  padding-left: 15px;
+  padding-right: 15px;
   border-top: 1px solid #EBEBEB;
   margin-bottom: 0px;
 }
 
 .dish-info {
-  height: 165px;
+  height: 190px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -160,7 +160,7 @@
 
 .price {
   position: relative;
-  right: 40px;
+  right: 2px;
   bottom: 0px;
   margin: 0 16px 0 0;
   font-weight: 300;
