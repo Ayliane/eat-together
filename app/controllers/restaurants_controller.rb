@@ -1,9 +1,9 @@
 require 'json'
 
 class RestaurantsController < ApplicationController
+  before_action :set_deliveroo_host
 
   def index
-    set_deliveroo_host
     set_foodora_host
     # Ce chemin renvoie sur deliveroo_path pour tester
 
@@ -11,17 +11,10 @@ class RestaurantsController < ApplicationController
   end
 
   def deliveroo
-    # Ici le code n'est pas final : cela fonctionne pour tester
-    # mais il faudra séparer ces requêtes dans différentes méthodes
-    # car une partie d'entre elles seront déclenchées par la requête ajax
-    # plutôt que dans cette méthode !
-    # host = DeliverooScraper.new(address: params[:address]).host
+    @restaurants = Deliveroo.where(url: session[:deliveroo_url], food_type: params[:food_type])
 
-    @deliveroo_restaurants = DeliverooScraper.new(url: session[:deliveroo_url], food_type: params[:food_type]).scrap
-    # list = DeliverooScraper.new(url: params[:url], food_type: params[:food_type])
-    # list = DeliverooScraper.new(url: session[:host], food_type: params[:food_type])
-    # @deliveroo_restaurants = list.scrap
-    render :layout => false if request.xhr?
+    # to not render layout if request is coming from ajax
+    render layout: false if request.xhr?
   end
 
   def foodora
@@ -37,12 +30,9 @@ class RestaurantsController < ApplicationController
 
   private
 
-
   # Cette méthode permet de set l'adresse à utiliser pour le scraping de l'index :)
   def set_deliveroo_host
-    address = params[:address]
-    ds = DeliverooScraper.new(address: address)
-    session[:deliveroo_url] = ds.host
+    session[:deliveroo_url] ||= Deliveroo.host_for(params[:address])
   end
 
   # Cette méthode permet de set l'adresse à utiliser pour le scraping de l'index :)
