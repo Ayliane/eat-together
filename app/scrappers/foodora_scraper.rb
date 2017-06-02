@@ -1,5 +1,3 @@
-require 'json'
-
 class FoodoraScraper
   attr_accessor :address, :food_type, :scraping_index, :url
 
