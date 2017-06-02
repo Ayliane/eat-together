@@ -16,6 +16,10 @@ class RestaurantsController < ApplicationController
     render layout: false if request.xhr?
   end
 
+  def show
+
+  end
+
   def foodora_show
     @restaurant = Foodora.where(url: params[:foodora_url])
     render layout: false if request.xhr?
