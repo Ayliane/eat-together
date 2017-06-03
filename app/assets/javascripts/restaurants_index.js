@@ -8,11 +8,13 @@ $(document).ready(function() {
         var foodType = $('#selection_food_type_1').val();
         $(".left").empty();
         foodTypeRequest1(foodType);
+        countRestoLeft();
       });
       $('#selection_food_type_2').on('change', function() {
         var foodType = $('#selection_food_type_2').val();
         $(".right").empty();
         foodTypeRequest2(foodType);
+        countRestoRight();
       });
    }
  });
@@ -71,7 +73,7 @@ function countRestoLeft() {
   $(".header-left").empty()
   var counting = $(".left .restaurant-card").size();
   if (counting == 0) {
-    $(".header-left").append("<h3>Aww, there's no match :(<h3>");
+    $(".header-left").append("<h3>" + counting + " restaurants found !<h3>");
   } else {
     $(".header-left").append("<h3>" + counting + " restaurants found !<h3>");
   }
