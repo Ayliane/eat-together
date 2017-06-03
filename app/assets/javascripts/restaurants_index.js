@@ -19,21 +19,20 @@ $(document).ready(function() {
 
 function foodTypeRequest1(typeOfFood) {
     $.ajax({
-       type: 'GET',
-       url: '/foodora?food_type=' + typeOfFood,
-       success: function(response) {
-          // $(response).find(".restaurant-card").each(function(index, resto) {
-          // var step = $(resto).data('step');
-          // $("." + step + ' .left').append($(resto));
-        // })
-         // $('#restaurants-list').append(response);
-       }
-     })
+      type: 'GET',
+      url: '/foodora?food_type=' + typeOfFood,
+      success: function(response) {
+        $(response).filter(".restaurant-card").each(function(index, resto) {
+          var step = $(resto).data('step');
+          $("." + step + ' .left').append($(resto));
+         });
+      }
+    })
      $.ajax({
       type: 'GET',
       url: '/deliveroo?food_type=' + typeOfFood,
       success: function(response) {
-        $(response).find(".restaurant-card").each(function(index, resto) {
+        $(response).filter(".restaurant-card").each(function(index, resto) {
           var step = $(resto).data('step');
           $("." + step + " .left").append($(resto));
         });
@@ -42,24 +41,23 @@ function foodTypeRequest1(typeOfFood) {
 }
 
 function foodTypeRequest2(typeOfFood) {
-     $.ajax({
-       type: 'GET',
-       url: '/foodora?food_type=' + typeOfFood,
-       success: function(response) {
-         // $(response).find(".restaurant-card").each(function(index, resto) {
-         //  var step = $(resto).data('step');
-         //  $("." + step + ' .right').append($(resto));
-        // });
+    $.ajax({
+      type: 'GET',
+      url: '/foodora?food_type=' + typeOfFood,
+      success: function(response) {
+        $(response).filter(".restaurant-card").each(function(index, resto) {
+          var step = $(resto).data('step');
+          $("." + step + ' .right').append($(resto));
+        });
        }
      })
       $.ajax({
         type: 'GET',
         url: '/deliveroo?food_type=' + typeOfFood,
         success: function(response) {
-          // $(response).find(".restaurant-card").each(function(index, resto) {
-          //   var step = $(resto).data('step');
-          //   $("." + step + ' .right').append($(resto));
-          // });
+          $(response).filter(".restaurant-card").each(function(index, resto) {
+            var step = $(resto).data('step');
+            $("." + step + ' .right').append($(resto));
         }
      })
 }
