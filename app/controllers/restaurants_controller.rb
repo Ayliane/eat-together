@@ -3,11 +3,12 @@ class RestaurantsController < ApplicationController
   before_action :set_foodora_host
 
   def index
-    set_foodora_host
+
   end
 
   def deliveroo
-    @restaurants = Deliveroo.where(url: session[:deliveroo_url], food_type: params[:food_type])
+    restaurants = Deliveroo.where(url: session[:deliveroo_url], food_type: params[:food_type])
+    @restaurants = open_hour(restaurants)
     render layout: false if request.xhr?
   end
 
@@ -29,6 +30,12 @@ class RestaurantsController < ApplicationController
 
   def restaurant_params
     params.require(:restaurants).permit(:address, :url)
+  end
+
+  def open_hour(restaurants)
+    restaurants.select do |resto|
+      !resto[:delivery_time].include?(":")
+    end
   end
 
 end
