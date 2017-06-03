@@ -61,10 +61,3 @@ function foodTypeRequest2(typeOfFood) {
         }
      })
 }
-
-
-
-
-
-
-
