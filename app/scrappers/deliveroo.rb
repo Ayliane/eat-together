@@ -38,5 +38,13 @@ class Deliveroo
         }.with_indifferent_access
       end
     end
-  end
+
+    def get_scrap_from_show(url)
+
+    end
+
+    def scrap_show(url)
+
+
+    end
 end
