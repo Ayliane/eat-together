@@ -6,12 +6,12 @@ $(document).ready(function() {
       foodTypeRequest2(foodType2);
       $('#selection_food_type_1').on('change', function() {
         var foodType = $('#selection_food_type_1').val();
-        $("#restaurants-list").empty();
+        $(".left").empty();
         foodTypeRequest1(foodType);
       });
       $('#selection_food_type_2').on('change', function() {
         var foodType = $('#selection_food_type_2').val();
-        $("#restaurants-list-2").empty();
+        $(".right").empty();
         foodTypeRequest2(foodType);
       });
    }
@@ -25,6 +25,7 @@ function foodTypeRequest1(typeOfFood) {
         $(response).filter(".restaurant-card").each(function(index, resto) {
           var step = $(resto).data('step');
           $("." + step + ' .left').append($(resto));
+          countRestoLeft()
          });
       }
     })
@@ -35,6 +36,7 @@ function foodTypeRequest1(typeOfFood) {
         $(response).filter(".restaurant-card").each(function(index, resto) {
           var step = $(resto).data('step');
           $("." + step + " .left").append($(resto));
+          countRestoLeft()
         });
       }
      })
@@ -48,6 +50,7 @@ function foodTypeRequest2(typeOfFood) {
         $(response).filter(".restaurant-card").each(function(index, resto) {
           var step = $(resto).data('step');
           $("." + step + ' .right').append($(resto));
+          countRestoRight();
         });
        }
      })
@@ -58,7 +61,28 @@ function foodTypeRequest2(typeOfFood) {
           $(response).filter(".restaurant-card").each(function(index, resto) {
             var step = $(resto).data('step');
             $("." + step + ' .right').append($(resto));
+            countRestoRight();
           });
         }
      })
+}
+
+function countRestoLeft() {
+  $(".header-left").empty()
+  var counting = $(".left .restaurant-card").size();
+  if (counting == 0) {
+    $(".header-left").append("<h3>Aww, there's no match :(<h3>");
+  } else {
+    $(".header-left").append("<h3>" + counting + " restaurants found !<h3>");
+  }
+}
+
+function countRestoRight() {
+  $(".header-right").empty()
+  var counting = $(".right .restaurant-card").size();
+  if (counting == 0) {
+    $(".header-right").append("<h3>" + counting + " restaurants found !<h3>");
+  } else {
+    $(".header-right").append("<h3>" + counting + " restaurants found ! <h3>");
+  }
 }
