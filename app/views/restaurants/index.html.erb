@@ -1,6 +1,6 @@
 <div class="container" id="restaurants-list">
 <div class="row">
-    <div class="col-xs-12 text-center">
+    <div class="col-xs-12 text-center" id="index-title">
       <h2>Make your choice !</h2>
 
 
@@ -10,6 +10,7 @@
           <%= f.input :food_type_1, collection: food_types, selected: params[:food_type_1], label: false %>
         <% end %>
         <input type="hidden" id="food_type_1" value="<%= params[:food_type_1] %>">
+        <div class="header-left"></div>
       </div>
 
 
@@ -19,7 +20,7 @@
           <%= f.input :food_type_2, collection: food_types, selected: params[:food_type_2], label: false %>
         <% end %>
           <input type="hidden" id="food_type_2" value="<%= params[:food_type_2] %>">
-
+        <div class="header-right"></div>
       </div>
     </div>
   </div>
@@ -33,7 +34,9 @@
 
 
       </div>
+
       <div class="col-xs-6 right">
+
 
       </div>
     </div>
