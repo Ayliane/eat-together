@@ -58,6 +58,7 @@ function foodTypeRequest2(typeOfFood) {
           $(response).filter(".restaurant-card").each(function(index, resto) {
             var step = $(resto).data('step');
             $("." + step + ' .right').append($(resto));
+          });
         }
      })
 }
