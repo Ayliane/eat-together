@@ -60,30 +60,34 @@ class Deliveroo
       @deliveroo_restaurant_menu = []
 
       # Category title and description into an aray of hashes :
+
+      # Récupère un aray de titres de catégoruies :
       scraped_titles = scrap.search('.results-group .results-group-title').map(&:text).map(&:strip)
-      # stock un aray de titres sur lequel on itère ensuite... :
 
+      # Aray de titres sur lequel on itère ensuite en fonction de l'index... :
       scraped_titles.each_with_index do |title, index|
-        # dish_lists = scrap.search('.results-list').first
-        # dish_lists = scrap.search('.results-list')[0].search('li').text
 
-        dish_lists = scrap.search('.results-list').each_with_index do |div, index|
+        # Récupère la liste de tous les plats en fonction de l'index de la catégorie dans l'aray :
+        dishes_list = scrap.search('.results-list')[index]
 
-        # dish_lists.each_with_index do |div, index|
-          # dish_list = scrap.search('.menu__items .dish-list')[1].search('li').first
-          dish_card = div.search('div.dish-card').first
-          dish_hash = JSON.parse(dish_card.attribute('data-object'))
+        # Récupère le titre du plat :
+        name = dishes_list.search('.list-item-title').first.text.strip => Marguerita
 
-          @foodora_restaurant_menu << {
-            category_title: title,
-            data: {
-              name: dish_hash['name'],
-              description: dish_hash['description'],
-              price: dish_hash['product_variations'].first['price']
-            }
+        # Récupère la description du plat :
+        description = dishes_list.search('.list-item-description').first.text.strip
+
+        # Récupère le prix du plat :
+        price = dishes_list.search('.item-price').first.search('span').first.search('span').text
+
+
+        @deliveroo_restaurant_menu << {
+          category_title: title,
+          data: {
+            name: name,
+            description: description,
+            price: price
           }
-
-        end
+        }
       end
       @deliveroo_restaurant_menu
     end
