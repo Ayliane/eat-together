@@ -45,9 +45,6 @@ class Deliveroo
       # a => href index soit l'url :
       # response_json[:url] = /menu/lyon/hotel-de-ville/wazza-pizza?day=today&rpos=0&time=ASAP
 
-      # 2 Place Bellecour, Lyon => Guy and Sons Tupin
-      # https://www.foodora.fr/restaurant/s2of/guyandsonstupin
-
       # Sélectionne la page à scrapper
       @deliveroo_restaurant_url = RestClient.get ('https://deliveroo.fr/fr/') + url
       Nokogiri::HTML.parse(@deliveroo_restaurant_url)
