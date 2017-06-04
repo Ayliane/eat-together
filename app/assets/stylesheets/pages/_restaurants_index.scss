@@ -3,6 +3,10 @@
  * (margin/padding adjustments)
  * ------------------------------------- */
 
+ h3, p {
+  font-family: 'Open Sans Condensed', sans-serif;
+ }
+
 .restaurant-card {
   margin: 1em 0;
 }
@@ -36,11 +40,12 @@
   z-index: 10;
 
   p {
+    padding-top: 10px;
     margin: 0;
     padding: 5px;
     border: 3px solid $green;
-    height: 55px;
-    width: 55px;
+    height: 60px;
+    width: 60px;
     font-size: 14px;
     color: $gray;
     font-weight: bold;
