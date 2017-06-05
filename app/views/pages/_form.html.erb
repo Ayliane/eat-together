@@ -4,8 +4,8 @@
   <div class="form-group eat">
          <select class="form-control" name="food_type_1">
             <option selected>My food type</option>
-            <% RestaurantRemote::CATEGORIES.sort.each do |key, value| %>
-              <option><%= key.capitalize %></option>
+            <% food_types.sort.each do |key, value| %>
+              <option><%= key %></option>
             <% end %>
           </select>
   </div>
@@ -17,8 +17,8 @@
   <div class="form-group eat">
        <select class="form-control" name="food_type_2">
             <option selected>His/Her food type</option>
-            <% RestaurantRemote::CATEGORIES.sort.each do |key, value| %>
-              <option><%= key.capitalize %></option>
+            <% food_types.sort.each do |key, value| %>
+              <option><%= key %></option>
             <% end %>
         </select>
   </div>

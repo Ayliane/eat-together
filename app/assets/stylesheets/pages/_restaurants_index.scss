@@ -1,8 +1,80 @@
-#restaurants-list {
-  display: inline-block;
-  float:left;
+/* -------------------------------------
+ * CSS code specific to home page
+ * (margin/padding adjustments)
+ * ------------------------------------- */
+
+ h3, p {
+  font-family: 'Open Sans Condensed', sans-serif;
+ }
+
+.restaurant-card {
+  margin: 1em 0;
 }
 
-#restaurants-list-2 {
-  display: inline-block;
+.step {
+  padding-bottom: 5em;
+  position: relative;
+}
+
+.right {
+  padding-left: 30px;
+}
+
+.left {
+  padding-right: 30px;
+}
+
+.step:after {
+  border: 2px solid $green;
+  position: absolute;
+  left: calc(50% - 2px);
+  height: 100%;
+  content: "";
+  top: 0;
+}
+
+.step-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+
+  p {
+    padding-top: 10px;
+    margin: 0;
+    padding: 5px;
+    border: 3px solid $green;
+    height: 60px;
+    width: 60px;
+    font-size: 14px;
+    color: $gray;
+    font-weight: bold;
+    background-color: $white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+  }
+}
+
+#index-title {
+  margin-bottom: 5px;
+  h2 {
+    padding-bottom: 15px;
+  }
+}
+
+#selection_food_type_1 {
+  margin-bottom: 15px;
+  margin-top: 20px;
+}
+
+#selection_food_type_2 {
+  margin-bottom: 15px;
+  margin-top: 20px;
+}
+
+body {
+  background-color: #fafafa;
 }

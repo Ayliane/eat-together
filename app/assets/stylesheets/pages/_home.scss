@@ -13,12 +13,6 @@
   justify-content: center;
 }
 
-.banner-content {
-  position: fixed;
-  bottom:300px;
-  }
-
-
 .wrapper {
   margin-top: $navbar-height;
   min-height: calc(100vh - #{$footer-height} - #{$navbar-height});
@@ -57,35 +51,19 @@
   margin-left: 20px;
 }
 
-.hidden {
-  display:none;
-}
-
-.animation h1{
-  color:$green;
-  font-weight: Bold;
-  font-size: 5em;
-}
-
-h2{
-  color:$green;
-  margin: 35px 0 11px;
-  font-size: 5em;
-}
-
 #home {
   display:flex;
   justify-content: space-around;
 }
 
-#home-2 {
-  margin-bottom: 250px;
-}
+// #home-2 {
+//   margin-bottom: 250px;
+// }
 
 #button-eat{
   margin-bottom:50px;
   background-color:$gray-base;
-  color:#7ADB1F;
+  color: $green;
   border: none;
 }
 
