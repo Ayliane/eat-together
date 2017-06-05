@@ -1,6 +1,6 @@
 .menu-list {
   background-color: white;
-  position: absolute;
+  // position: absolute;
   display: flex;
   margin-left: -12px;
   margin-right: -12px;
@@ -63,10 +63,13 @@
 }
 
 .dish-category-header {
+  text-align: center;
 
 }
 
 .dish-category-title {
+  position: relative;
+  display: inline-block;
   margin-bottom: 25px;
 }
 
@@ -82,9 +85,8 @@
   background-image: linear-gradient(to right, transparent 0%, transparent 36.36%, #d70f64 36.36%, #d70f64 63.63%, transparent 63.63%, transparent 100%);
   background-size: 11px 3px;
   background-repeat: repeat-x;
-  position: relative;
-  top: 24px;
-  left: 325px;
+  position: absolute;
+  left: -40px;
 }
 
 .dish-category-title:after {
@@ -101,9 +103,8 @@
   background-image: linear-gradient(to right, transparent 0%, transparent 36.36%, #d70f64 36.36%, #d70f64 63.63%, transparent 63.63%, transparent 100%);
   background-size: 11px 3px;
   background-repeat: repeat-x;
-  position: relative;
-  top: -16px;
-  left: 505px;
+  position: absolute;
+  right: -40px;
 }
 
 .dish-list li {

@@ -17,7 +17,6 @@ class RestaurantsController < ApplicationController
   end
 
   def show
-
   end
 
   def foodora_show
