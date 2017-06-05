@@ -4,20 +4,29 @@
   margin-top: 5em;
 }
 
-.close {
- margin-top: -25px;
+.modal-header {
+  border-bottom: none;
 }
 
 .modal-thank {
+  color: $green;
   margin-top: 5px;
 }
 
-// .modal-title{
-//   text-align: cente;
-// }
+.modal-restaurant-summary {
+  padding: 15px;
+  // background: #FAFAFA;
+  // border: 1px solid $gray;
+}
 
-.restaurant-summary {
+.modal-explaination {
+  font-weight: lighter;
+  padding: 15px 40px 25px 40px;
+}
 
+.modal-list {
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 
 .modal-li {
@@ -26,4 +35,13 @@
   margin: 10px 0px 10px 0px;
   list-style: none;
   text-align: left;
+}
+
+.modal-call-action {
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+
+.navbar-food-type {
+  color: $green;
 }

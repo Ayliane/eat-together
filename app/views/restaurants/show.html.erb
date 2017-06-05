@@ -28,7 +28,6 @@
       <div class="modal-content">
 
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Your orders informations</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -39,7 +38,7 @@
             <div class="row">
               <div class="col-xs-12">
                 <h2 class="modal-thank text-center">Thank's for using EaTogether ...</h2>
-                <p class="text-center">At this early stage of our project, we are <strong>not yet affiliated with delivery services in your city</strong> so we are not quite able to order for you. Please have a recap of restaurants you picked so you can make your own order on the delivery's website. We will keep this tab open in case you need another look.</p>
+                <p class="modal-explaination text-center">At this early stage of our project, we are <strong>not yet affiliated with delivery services in your city</strong> so we are not quite able to order for you. Please have a recap of restaurants you picked so you can make your own order on the delivery's website. We will keep this tab open in case you need another look.</p>
               </div>
               <div class="row">
                 <div class="col-xs-12">
@@ -48,26 +47,32 @@
                 <div class="col-xs-6">
                   <div class="modal-restaurant-summary text-center">
                     <h5 class="text-center">Restaurant's name 1</h5>
-                    <ul>
+                    <ul class="modal-list">
                       <li class="modal-li">Foodtype searched</li>
                       <li class="modal-li">Trip Advisor ranking</li>
                       <li class="modal-li">Approximative Delivery time</li>
                     </ul>
-                    <button type="button" class="btn navbar-wagon-button">Order</button>
+                    <div class="modal-call-action">
+                      <%= link_to "Go to name's page", "https://deliveroo.fr/fr/menu/lyon/hotel-de-ville/wazza-pizza?day=today&rpos=0&time=ASAP", target: "_blank", class: "navbar-wagon-item navbar-wagon-button btn" %>
+                    </div>
                   </div>
                 </div>
                 <div class="col-xs-6">
-                  <div class="restaurant-summary text-center">
+                  <div class="modal-restaurant-summary text-center">
                     <h5 class="text-center">Restaurant's name 2</h5>
-                    <ul>
+                    <ul class="modal-list">
                       <li class="modal-li">Foodtype searched</li>
                       <li class="modal-li">Trip Advisor ranking</li>
                       <li class="modal-li">Approximative Delivery time</li>
                     </ul>
 
-                    <%= link_to "Restaurant name's page", "https://deliveroo.fr/fr/menu/lyon/hotel-de-ville/wazza-pizza?day=today&rpos=0&time=ASAP", target: "_blank", class: "navbar-wagon-item navbar-wagon-button btn" %>
-
-                    <button type="button" class="btn navbar-wagon-button">Send this link on Facebook</button>
+                    <div class="modal-call-action">
+                      <%= link_to "Go to name's page", "https://deliveroo.fr/fr/menu/lyon/hotel-de-ville/wazza-pizza?day=today&rpos=0&time=ASAP", target: "_blank", class: "navbar-wagon-item navbar-wagon-button btn" %>
+                    </div>
+<!--                     <div class="modal-call-action">
+                      <a>Copy this link to ClipBoard</a>
+                    </div>
+ -->
                   </div>
                 </div>
               </div>
