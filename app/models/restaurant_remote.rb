@@ -20,18 +20,35 @@ class RestaurantRemote
   end
 
   def global_ranking
-    if Restaurant.find_by(address: @address) == nil
-      return "N/A"
+    if find_restaurant == nil
+      "N/A"
     else
-      @restaurant = Restaurant.find_by(address: @adress)
+      @restaurant = find_restaurant
       @restaurant.ranking
     end
   end
 
   def cook_ranking
+    if find_restaurant == nil
+      "N/A"
+    else
+      @restaurant = find_restaurant
+      @restaurant.cook_rank
+    end
   end
 
   def quality_ranking
+    if find_restaurant == nil
+      "N/A"
+    else
+      @restaurant = find_restaurant
+      @restaurant.value_balance
+    end
+  end
 
+  private
+
+  def find_restaurant
+    Restaurant.find_by('name iLIKE ? OR address iLike ?', "%#{@name}%", "%#{address}%")
   end
 end

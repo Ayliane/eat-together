@@ -19,7 +19,7 @@ class Foodora
     end
 
     def scrap_restaurants_from(n_html, params)
-      @food_type = params[:food_type]
+      @food_choice = params[:food_type]
       @foodora_restaurants = []
       results_scrap = n_html.map do |obj|
         data_hash = JSON.parse(obj.attribute('data-vendor'))
@@ -29,26 +29,22 @@ class Foodora
       end
 
       results_scrap.each do |resto|
-
-        address = resto['address'], resto['post_code'], resto['city']['name']
-        address = address.join(', ')
         food_characteristics = resto['characteristics']['cuisines']
         food_characteristics = food_characteristics.map { |type|  type['name'] }
 
-        @foodora_restaurants << {
+        @foodora_restaurants << RestaurantRemote.new({
           url: resto['web_path'],
           name: resto['name'],
-          address: address,
+          address: resto['address'],
           delivery_time: resto['minimum_delivery_time'],
           photo_url: resto['image_high_resolution'],
           price_fork: resto['price'],
           food_characteristics: food_characteristics.join(', '),
           food_type: resto['characteristics']['primary_cuisine']['name'],
-        }
+        })
       end
       @foodora_restaurants.select do |resto|
-        # resto[:food_characteristics].include?(RestaurantRemote::CATEGORIES[@food_type.downcase.to_sym]) || resto[:food_type].include?(RestaurantRemote::CATEGORIES[@food_type.downcase.to_sym])
-        resto[:food_type].include?(RestaurantRemote::CATEGORIES[@food_type.downcase.to_sym])
+        resto.food_type.include?(RestaurantRemote::CATEGORIES[@food_choice.downcase.to_sym])
       end
     end
 
