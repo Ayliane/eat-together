@@ -15,7 +15,7 @@ class Foodora
 
     def request_index_page_with(params)
       response = RestClient.get("#{params[:url]}")
-      Nokogiri::HTML.parse(response).search('.vendor-list li a')
+      Nokogiri::HTML.parse(response).search('.vendor-list.opened li a')
     end
 
     def scrap_restaurants_from(n_html, params)
