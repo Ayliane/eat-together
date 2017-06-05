@@ -59,7 +59,7 @@ class Deliveroo
         dishes_list = n_html.search('.results-list')[index]
 
         # Récupère le titre du plat :
-        name = dishes_list.search('.list-item-title').first.text.strip => Marguerita
+        name = dishes_list.search('.list-item-title').first.text.strip
 
         # Récupère la description du plat :
         description = dishes_list.search('.list-item-description').first.text.strip
