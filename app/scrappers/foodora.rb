@@ -50,6 +50,39 @@ class Foodora
         resto[:food_type].include?(RestaurantRemote::CATEGORIES[@food_type.downcase.to_sym])
       end
     end
+
+    def find(url)
+      response = RestClient.get url
+      n_html = Nokogiri::HTML.parse(response)
+
+      foodora_restaurant_menu = []
+
+      # Category title and description into an aray of hashes :
+
+      scraped_titles = n_html.search('.menu__items .dish-category-header').css('h2').map(&:text)
+
+      scraped_titles.each_with_index do |title, index|
+        # dishes_list = n_html.search('.menu__items .dish-list').first
+        dish_lists = n_html.search('.menu__items .dish-list li').each_with_index do |div, index|
+
+        # dish_lists.each_with_index do |div, index|
+          # dish_list = n_html.search('.menu__items .dish-list')[1].search('li').first
+          dish_card = div.search('div.dish-card').first
+          dish_hash = JSON.parse(dish_card.attribute('data-object'))
+
+          foodora_restaurant_menu << {
+            category_title: title,
+            data: {
+              name: dish_hash['name'],
+              description: dish_hash['description'],
+              price: dish_hash['product_variations'].first['price']
+            }
+          }
+
+        end
+      end
+
+      foodora_restaurant_menu
+    end
   end
 end
-

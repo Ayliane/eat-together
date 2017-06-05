@@ -6,6 +6,9 @@ class RestaurantsController < ApplicationController
 
   end
 
+  def show
+  end
+
   def deliveroo
     restaurants = Deliveroo.where(url: session[:deliveroo_url], food_type: params[:food_type])
     @restaurants = open_hour(restaurants)
