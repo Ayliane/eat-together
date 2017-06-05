@@ -1,15 +1,15 @@
-#show-general{
+#show-general {
   margin-top: 100px;
 }
 
-.restaurant-menu-1, .restaurant-menu-2 {
+.restaurant-menu-left, .restaurant-menu-right {
   display: flex
 }
 
-.restaurant-menu-1 {
+.restaurant-menu-left {
   margin-right: 15px;
 }
 
-.restaurant-menu-2 {
+.restaurant-menu-right {
   margin-left: 15px;
 }

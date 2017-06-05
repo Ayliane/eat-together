@@ -7,6 +7,7 @@ class RestaurantsController < ApplicationController
   end
 
   def show
+
   end
 
   def deliveroo
@@ -21,12 +22,12 @@ class RestaurantsController < ApplicationController
   end
 
   def foodora_show
-    # @restaurant = Foodora.where(url: params[:foodora_url])
+    @menu = Foodora.find(params[:url])
     render layout: false
   end
 
   def deliveroo_show
-    # @restaurant = Deliveroo.where(url: params[:deliveroo_url])
+    @menu = Deliveroo.find(params[:url])
     render layout: false
   end
 
