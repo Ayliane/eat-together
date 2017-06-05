@@ -4,7 +4,7 @@ $(document).ready(function() {
       var rightUrl = $('#menu_right').data('url');
 
       menuRequest1(leftUrl);
-      // menuRequest2(rightUrl);
+      menuRequest2(rightUrl);
     }
   });
 
