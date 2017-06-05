@@ -3,6 +3,10 @@
  * (margin/padding adjustments)
  * ------------------------------------- */
 
+ h3, p {
+  font-family: 'Open Sans Condensed', sans-serif;
+ }
+
 .restaurant-card {
   margin: 1em 0;
 }
@@ -12,10 +16,18 @@
   position: relative;
 }
 
+.right {
+  padding-left: 30px;
+}
+
+.left {
+  padding-right: 30px;
+}
+
 .step:after {
-  border: 4px solid #ccc;
+  border: 2px solid $green;
   position: absolute;
-  left: calc(50% - 4px);
+  left: calc(50% - 2px);
   height: 100%;
   content: "";
   top: 0;
@@ -28,13 +40,16 @@
   z-index: 10;
 
   p {
+    padding-top: 10px;
     margin: 0;
     padding: 5px;
-    border: 1px solid #aaa;
-    height: 55px;
-    width: 55px;
+    border: 3px solid $green;
+    height: 60px;
+    width: 60px;
     font-size: 14px;
-    background-color: #ccc;
+    color: $gray;
+    font-weight: bold;
+    background-color: $white;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -44,8 +59,22 @@
 }
 
 #index-title {
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   h2 {
     padding-bottom: 15px;
   }
+}
+
+#selection_food_type_1 {
+  margin-bottom: 15px;
+  margin-top: 20px;
+}
+
+#selection_food_type_2 {
+  margin-bottom: 15px;
+  margin-top: 20px;
+}
+
+body {
+  background-color: #fafafa;
 }

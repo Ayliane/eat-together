@@ -73,9 +73,9 @@ function countRestoLeft() {
   $(".header-left").empty()
   var counting = $(".left .restaurant-card").size();
   if (counting == 0) {
-    $(".header-left").append("<h3>" + counting + " restaurants found !<h3>");
+    $(".header-left").append("<h3>" + counting + " restaurants found<h3>");
   } else {
-    $(".header-left").append("<h3>" + counting + " restaurants found !<h3>");
+    $(".header-left").append("<h3>" + counting + " restaurants found<h3>");
   }
 }
 
@@ -83,8 +83,18 @@ function countRestoRight() {
   $(".header-right").empty()
   var counting = $(".right .restaurant-card").size();
   if (counting == 0) {
-    $(".header-right").append("<h3>" + counting + " restaurants found !<h3>");
+    $(".header-right").append("<h3>" + counting + " restaurants found<h3>");
   } else {
-    $(".header-right").append("<h3>" + counting + " restaurants found ! <h3>");
+    $(".header-right").append("<h3>" + counting + " restaurants found<h3>");
+  }
+}
+
+function leftEmpty() {
+  if ($('.step-1 .left').is(':empty')){
+    $('.step-1 .left').append("<p>Aww, there's no match for this delivery time, check below if next one matches !</p>");
+  } else if ($('.step-2 .left').is(':empty')) {
+    $('.step-2 .left').append("<p>Aww, there's no match for this delivery time, check below if next one matches !</p>");
+  } else if ($('.step-3 .left').is(':empty')) {
+    $('.step-3 .left').append("<p>Aww, there's no match for this delivery time, check below if next one matches !</p>");
   }
 }
