@@ -28,14 +28,14 @@ class Deliveroo
     def scrap_restaurants_from(json)
       response_json = JSON.parse(json)
       response_json['restaurants'].map do |resto|
-        {
+        RestaurantRemote.new({
           url: resto["url"],
           name: resto["name"],
           food_type: resto["food_tags"].join(', '),
           price_fork: resto["price_category_symbols"],
           delivery_time: resto["time"].strip,
           photo_url: resto["image_url"]
-        }.with_indifferent_access
+        })
       end
     end
 
@@ -59,7 +59,7 @@ class Deliveroo
         dishes_list = n_html.search('.results-list')[index]
 
         # Récupère le titre du plat :
-        name = dishes_list.search('.list-item-title').first.text.strip => Marguerita
+        name = dishes_list.search('.list-item-title').first.text.strip
 
         # Récupère la description du plat :
         description = dishes_list.search('.list-item-description').first.text.strip

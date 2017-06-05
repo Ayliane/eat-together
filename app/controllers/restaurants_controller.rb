@@ -37,7 +37,7 @@ class RestaurantsController < ApplicationController
 
   def open_hour(restaurants)
     restaurants.select do |resto|
-      !resto[:delivery_time].include?(":")
+      !resto.delivery_time.include?(":")
     end
   end
 
