@@ -65,7 +65,6 @@
 .dish-category-header {
   padding-right: 65px;
   text-align: center;
-
 }
 
 .dish-category-title {
@@ -112,7 +111,6 @@
 .dish-list li {
   list-style: none;
   padding-right: 50px;
-
 }
 
 .dish-card {
@@ -228,4 +226,17 @@
 }
 .hvr-shadow-radial:hover:before, .hvr-shadow-radial:focus:before, .hvr-shadow-radial:active:before, .hvr-shadow-radial:hover:after, .hvr-shadow-radial:focus:after, .hvr-shadow-radial:active:after {
   opacity: 1;
+}
+
+.dish-info {
+
+}
+
+.dish-price {
+  // position: absolute;
+}
+
+#price {
+  // position: relative;
+  // right: 5px;
 }
