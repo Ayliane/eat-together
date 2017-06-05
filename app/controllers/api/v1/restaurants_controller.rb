@@ -1,11 +1,15 @@
 class Api::V1::RestaurantsController < Api::V1::BaseController
 
   def index
-    @restaurants = Restaurant.all
+    @restaurants = Restaurant.limit(50)
   end
 
   def show
-    @restaurant = Restaurant.find_by(name: params[:name])
+    if @restaurant = Restaurant.find_by(name: params[:name])
+       @restaurant = Restaurant.find_by(name: params[:name])
+    else
+        render json: {message: params[:name] + " ne se trouve pas dans la db"}
+    end
   end
 
 end
