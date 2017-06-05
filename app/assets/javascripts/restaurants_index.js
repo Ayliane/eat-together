@@ -16,8 +16,16 @@ $(document).ready(function() {
         foodTypeRequest2(foodType);
         countRestoRight();
       });
-   }
+      $('.fantom_radio').click(function () {
+        $('.fantom_radio:not(:checked)').parent().removeClass("selected");
+        $('.fantom_radio:checked').parent().addClass("selected");
+      });
 
+
+      // $('.fantom_radio').on('change', function() {
+      //   $('.posting-menu').addClass("selected");
+      // });
+   }
    var counter = 0;
    $(document).on('ajaxComplete', function() {
       counter += 1;
@@ -36,6 +44,7 @@ function foodTypeRequest1(typeOfFood) {
         $(response).filter(".restaurant-card").each(function(index, resto) {
           var step = $(resto).data('step');
           $("." + step + ' .left').append($(resto));
+          $('.left .posting-menu').attr('name', 'left_url');
           countRestoLeft()
          });
       }
@@ -47,6 +56,7 @@ function foodTypeRequest1(typeOfFood) {
         $(response).filter(".restaurant-card").each(function(index, resto) {
           var step = $(resto).data('step');
           $("." + step + " .left").append($(resto));
+          $('.left .posting-menu').attr('name', 'left_url');
           countRestoLeft()
         });
       }
@@ -61,6 +71,7 @@ function foodTypeRequest2(typeOfFood) {
         $(response).filter(".restaurant-card").each(function(index, resto) {
           var step = $(resto).data('step');
           $("." + step + ' .right').append($(resto));
+          $('.right .posting-menu').attr('name', 'right_url');
           countRestoRight();
         });
        }
@@ -72,6 +83,7 @@ function foodTypeRequest2(typeOfFood) {
           $(response).filter(".restaurant-card").each(function(index, resto) {
             var step = $(resto).data('step');
             $("." + step + ' .right').append($(resto));
+            $('.right .posting-menu').attr('name', 'right_url');
             countRestoRight();
           });
         }
@@ -122,3 +134,9 @@ function rightEmpty() {
     $('.step-3 .right').append("<p>Aww, there's no match for this delivery time, check below if next one matches !</p>");
   }
 }
+
+// function revealMenusButton() {
+//      $('.posting-menu').on('change', function() {
+//         $('.posting-menu').addClass(".selected");
+//       }
+// )};
