@@ -29,6 +29,7 @@ function foodTypeRequest1(typeOfFood) {
           $("." + step + ' .left').append($(resto));
           countRestoLeft()
          });
+        // leftEmpty();
       }
     })
      $.ajax({
@@ -40,6 +41,7 @@ function foodTypeRequest1(typeOfFood) {
           $("." + step + " .left").append($(resto));
           countRestoLeft()
         });
+        // leftEmpty();
       }
      })
 }
@@ -54,6 +56,7 @@ function foodTypeRequest2(typeOfFood) {
           $("." + step + ' .right').append($(resto));
           countRestoRight();
         });
+        // rightEmpty();
        }
      })
       $.ajax({
@@ -65,6 +68,7 @@ function foodTypeRequest2(typeOfFood) {
             $("." + step + ' .right').append($(resto));
             countRestoRight();
           });
+          // rightEmpty();
         }
      })
 }
@@ -89,12 +93,27 @@ function countRestoRight() {
   }
 }
 
-function leftEmpty() {
-  if ($('.step-1 .left').is(':empty')){
-    $('.step-1 .left').append("<p>Aww, there's no match for this delivery time, check below if next one matches !</p>");
-  } else if ($('.step-2 .left').is(':empty')) {
-    $('.step-2 .left').append("<p>Aww, there's no match for this delivery time, check below if next one matches !</p>");
-  } else if ($('.step-3 .left').is(':empty')) {
-    $('.step-3 .left').append("<p>Aww, there's no match for this delivery time, check below if next one matches !</p>");
-  }
-}
+// function leftEmpty() {
+//   if ($('.step-1 .left').children().length == 0){
+//     $('.step-1 .left').append("<p>Aww, there's no match for this delivery time, check below if next one matches !</p>");
+//   }
+//   if ($('.step-2 .left').children().length == 0) {
+//     $('.step-2 .left').append("<p>Aww, there's no match for this delivery time, check below if next one matches !</p>");
+//   }
+//   if ($('.step-3 .left').children().length == 0) {
+//     $('.step-3 .left').append("<p>Aww, there's no match for this delivery time, check below if next one matches !</p>");
+//   }
+// }
+
+
+// function rightEmpty() {
+//   if ($('.step-1 .right').children().length == 0){
+//     $('.step-1 .right').append("<p>Aww, there's no match for this delivery time, check below if next one matches !</p>");
+//   }
+//   if ($('.step-2 .right').children().length == 0) {
+//     $('.step-2 .right').append("<p>Aww, there's no match for this delivery time, check below if next one matches !</p>");
+//   }
+//   if ($('.step-3 .right').children().length == 0) {
+//     $('.step-3 .right').append("<p>Aww, there's no match for this delivery time, check below if next one matches !</p>");
+//   }
+// }
