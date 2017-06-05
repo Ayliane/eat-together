@@ -68,6 +68,7 @@
 }
 
 .dish-category-title {
+  font-weight: 500;
   font-size: 20px;
   position: relative;
   display: inline-block;
@@ -121,6 +122,7 @@
 }
 
 .dish-info {
+  min-width: 400px;
   height: 190px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -146,8 +148,9 @@
 }
 
 .dish-description{
+  font-style: italic;
   margin: 2px 0 15px;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.3em;
   font-weight: 300;
   color: #888;
@@ -228,15 +231,3 @@
   opacity: 1;
 }
 
-.dish-info {
-
-}
-
-.dish-price {
-  // position: absolute;
-}
-
-#price {
-  // position: relative;
-  // right: 5px;
-}

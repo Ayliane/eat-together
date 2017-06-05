@@ -2,8 +2,14 @@
   margin-top: 100px;
 }
 
-
 .restaurant-menu-1, .restaurant-menu-2 {
   display: flex
+}
 
+.restaurant-menu-1 {
+  margin-right: 15px;
+}
+
+.restaurant-menu-2 {
+  margin-left: 15px;
 }
