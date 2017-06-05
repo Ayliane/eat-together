@@ -39,33 +39,24 @@ class Deliveroo
       end
     end
 
-    def get_scrap_from_show(url)
-      # 19 place Tolozan, Lyon => Guy and Sons Tupin
-      # https://deliveroo.fr/fr/menu/lyon/hotel-de-ville/wazza-pizza?day=today&rpos=0&time=ASAP
-      # a => href index soit l'url :
-      # response_json[:url] = /menu/lyon/hotel-de-ville/wazza-pizza?day=today&rpos=0&time=ASAP
+    def find(url)
 
-      # Sélectionne la page à scrapper
-      @deliveroo_restaurant_url = RestClient.get ('https://deliveroo.fr/fr/') + url
-      Nokogiri::HTML.parse(@deliveroo_restaurant_url)
-    end
 
-    def scrap_show(url)
+      response = RestClient.get ('https://deliveroo.fr/fr/') + url
+      n_html = Nokogiri::HTML.parse(response)
 
-      scrap = get_scrap_from_show(url)
-
-      @deliveroo_restaurant_menu = []
+      deliveroo_restaurant_menu = []
 
       # Category title and description into an aray of hashes :
 
       # Récupère un aray de titres de catégoruies :
-      scraped_titles = scrap.search('.results-group .results-group-title').map(&:text).map(&:strip)
+      scraped_titles = n_html.search('.results-group .results-group-title').map(&:text).map(&:strip)
 
       # Aray de titres sur lequel on itère ensuite en fonction de l'index... :
       scraped_titles.each_with_index do |title, index|
 
         # Récupère la liste de tous les plats en fonction de l'index de la catégorie dans l'aray :
-        dishes_list = scrap.search('.results-list')[index]
+        dishes_list = n_html.search('.results-list')[index]
 
         # Récupère le titre du plat :
         name = dishes_list.search('.list-item-title').first.text.strip => Marguerita
@@ -86,7 +77,8 @@ class Deliveroo
           }
         }
       end
-      @deliveroo_restaurant_menu
+
+      deliveroo_restaurant_menu
     end
   end
 end
