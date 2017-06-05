@@ -6,6 +6,9 @@ class RestaurantsController < ApplicationController
 
   end
 
+  def show
+  end
+
   def deliveroo
     restaurants = Deliveroo.where(url: session[:deliveroo_url], food_type: params[:food_type])
     @restaurants = open_hour(restaurants)
@@ -34,7 +37,7 @@ class RestaurantsController < ApplicationController
 
   def open_hour(restaurants)
     restaurants.select do |resto|
-      !resto[:delivery_time].include?(":")
+      !resto.delivery_time.include?(":")
     end
   end
 

@@ -16,11 +16,12 @@ namespace :restaurants do
 
     restaurants.each do |restaurant|
       Restaurant.create!(
-        name: restaurant[:name],
-        address: restaurant[:address],
-        ranking: restaurant[:ranking],
-        cook_rank: restaurant[:cook_rank],
-        value_balance: restaurant[:value_balance]
+        name: restaurant["name"],
+        address: restaurant["address"],
+        ranking: restaurant["ranking"],
+        cook_rank: restaurant["cook_rank"],
+        value_balance: restaurant["value_balance"],
+        url: restaurant["url"]
       )
     end
   end
