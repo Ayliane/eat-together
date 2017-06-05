@@ -36,6 +36,7 @@ class Foodora
         food_characteristics = food_characteristics.map { |type|  type['name'] }
 
         @foodora_restaurants << {
+          url: resto['web_path']
           name: resto['name'],
           address: address,
           delivery_time: resto['minimum_delivery_time'],
