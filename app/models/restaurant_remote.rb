@@ -64,6 +64,6 @@ class RestaurantRemote
   end
 
   def find_restaurant
-    Restaurant.find_by('address iLIKE ? OR name iLike ?', "%#{address}%", "%#{@name}%")
+    Restaurant.find_by('name iLike ? OR address iLIKE ?', "%#{@name}%", "%#{address}%",)
   end
 end
