@@ -1,4 +1,16 @@
 /* Main class */
+.navbar-wagon-home {
+  background-image: linear-gradient(-225deg, rgba(245,251,239,1) 0%, rgba(245,251,239,1) 50%);
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+  background: white;
+  transition: all 0.3s ease;
+  display: flex;
+  height: 100px;
+  padding: 0px 30px;
+  align-items: center;
+  justify-content: center;
+}
+
 .navbar-wagon {
   background-image: linear-gradient(-225deg, rgba(245,251,239,1) 0%, rgba(245,251,239,1) 50%);
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
@@ -21,6 +33,10 @@
 }
 
 /* Navbar logo */
+.navbar-wagon-brand-home img {
+  width: 190px;
+}
+
 .navbar-wagon-brand img {
   width: 150px;
 }
