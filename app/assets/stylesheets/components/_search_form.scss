@@ -11,6 +11,7 @@
 }
 
 .eat {
+  margin-right: 10px;
   // margin-left: 20px;
   // padding: 10px;
 }
@@ -30,6 +31,11 @@
   background-color:$gray-base;
   color: $green;
   border: none;
+}
+
+#user_input_autocomplete_address {
+  min-width: 350px;
+  height: 36px;
 }
 
 /* Selectize.js */
