@@ -1,19 +1,78 @@
+<%= render 'shared/navbar_show'%>
 
-<div class="container">
+<div class="container" id="show-general">
   <div class="row">
-    <div class="col-xs-12 text-center">
-      <div class="col-xs-6">
-        <div id="restaurant-menu-1">
-            <h1><%= params[:food_type_1] %><h1>
-              <input type="hidden" id="food_type_1" value="<%= params[:food_type_1] %>">
+    <div class="col-xs-6">
+      <div class="row">
+        <div class="restaurant-menu-left" id="menu_left" data-url="<%=params[:left_url]%>">
+          <div class="col-xs-12">
+
+          </div>
         </div>
       </div>
-      <div class="col-xs-6">
-        <div id="restaurant-menu-2">
-            <h1><%= params[:food_type_2] %><h1>
-              <input type="hidden" id="food_type_2" value="<%= params[:food_type_2] %>">
+    </div>
+    <div class="col-xs-6">
+      <div class="row">
+        <div class="restaurant-menu-right" id="menu_right" data-url="<%=params[:right_url]%>">
+          <div class="col-xs-12">
+
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-xs-12">
+                <h2 class="modal-thank text-center">Thank you for using EaTogether !</h2>
+                <p class="modal-explaination text-center">At this early stage of our project, we are <strong>not yet affiliated with delivery services in your city</strong> so we are not quite able to order for you. Please have a recap of restaurants you picked so you can make your own order on the delivery's website. We will keep this tab open in case you need another look...</p>
+              </div>
+              <div class="row">
+                <div class="col-xs-12">
+                  <h4 class="text-center"> Your are at the moment to order in these two restaurants ... </h2>
+                </div>
+                <div class="col-xs-6">
+                  <div class="modal-restaurant-summary text-center">
+                    <h5 class="text-center" id="restaurant_name_left"></h5>
+                    <ul class="modal-list">
+                      <li class="modal-li" id="food_left"><%= params[:food_type_1]%></li>
+                      <li class="modal-li" id="ranking_left">Trip Advisor ranking</li>
+                    </ul>
+                    <div class="modal-call-action">
+                      <%= link_to "Go to restaurant page", @url_left, target: "_blank", class: "navbar-wagon-item navbar-wagon-button btn" %>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-6">
+                  <div class="modal-restaurant-summary text-center">
+                    <h5 class="text-center" id="restaurant_name_right"></h5>
+                    <ul class="modal-list">
+                      <li class="modal-li" id="food_right"><%= params[:food_type_2]%></li>
+                      <li class="modal-li" id="ranking_right">Trip Advisor ranking</li>
+                    </ul>
+
+                    <div class="modal-call-action">
+                      <%= link_to "Go to restaurant page", @url_right, target: "_blank", class: "navbar-wagon-item navbar-wagon-button btn" %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
