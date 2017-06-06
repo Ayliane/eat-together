@@ -6,7 +6,9 @@ class RestaurantsController < ApplicationController
   end
 
   def show
-
+    @url_left = complete_url(params[:left_url])
+    @url_right = complete_url(params[:right_url])
+    binding.pry
   end
 
   def deliveroo
@@ -24,13 +26,15 @@ class RestaurantsController < ApplicationController
     scraper = Foodora.new
     scraper.find(params[:url])
     @menu = scraper.foodora_restaurant_menu
-    # @restaurant_logo = scraper.logo_url
     @modal_content = scraper.restaurant_remote
     render layout: false
   end
 
   def deliveroo_show
-    @menu = Deliveroo.find(params[:url])
+    scraper = Deliveroo.new
+    scraper.find(params[:url])
+    @menu = scraper.deliveroo_restaurant_menu
+    @modal_content = scraper.restaurant_remote
     render layout: false
   end
 
@@ -44,6 +48,10 @@ class RestaurantsController < ApplicationController
     session[:foodora_url] ||= Foodora.host_for(params[:address])
   end
 
+  # def set_food_style1
+  #   session[:food_style1]
+  # end
+
   def restaurant_params
     params.require(:restaurants).permit(:address, :url)
   end
@@ -54,5 +62,12 @@ class RestaurantsController < ApplicationController
     end
   end
 
+  def complete_url (url)
+    if url =~ /foodora/
+      url
+    else
+      "http://deliveroo.fr/fr#{url}"
+    end
+  end
 end
 

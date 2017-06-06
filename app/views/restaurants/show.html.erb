@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-xs-6">
       <div class="row">
-        <div class="restaurant-menu-left" id="menu_left" data-url="https://www.foodora.fr/restaurant/s5lg/lenapolitain">
+        <div class="restaurant-menu-left" id="menu_left" data-url="<%=params[:left_url]%>">
           <div class="col-xs-12">
 
           </div>
@@ -13,7 +13,7 @@
     </div>
     <div class="col-xs-6">
       <div class="row">
-        <div class="restaurant-menu-right" id="menu_right" data-url="https://www.foodora.fr/restaurant/s5lg/lenapolitain">
+        <div class="restaurant-menu-right" id="menu_right" data-url="<%=params[:right_url]%>">
           <div class="col-xs-12">
 
           </div>
@@ -46,33 +46,27 @@
                 </div>
                 <div class="col-xs-6">
                   <div class="modal-restaurant-summary text-center">
-                    <h5 class="text-center">Restaurant's name 1</h5>
+                    <h5 class="text-center" id="restaurant_name_left"></h5>
                     <ul class="modal-list">
-                      <li class="modal-li">Foodtype searched</li>
-                      <li class="modal-li">Trip Advisor ranking</li>
-                      <li class="modal-li">Approximative Delivery time</li>
+                      <li class="modal-li" id="food_left"><%= params[:food_type_1]%></li>
+                      <li class="modal-li" id="ranking_left">Trip Advisor ranking</li>
                     </ul>
                     <div class="modal-call-action">
-                      <%= link_to "Go to name's page", "https://deliveroo.fr/fr/menu/lyon/hotel-de-ville/wazza-pizza?day=today&rpos=0&time=ASAP", target: "_blank", class: "navbar-wagon-item navbar-wagon-button btn" %>
+                      <%= link_to "Go to name's page", @url_left, target: "_blank", class: "navbar-wagon-item navbar-wagon-button btn" %>
                     </div>
                   </div>
                 </div>
                 <div class="col-xs-6">
                   <div class="modal-restaurant-summary text-center">
-                    <h5 class="text-center">Restaurant's name 2</h5>
+                    <h5 class="text-center" id="restaurant_name_right"></h5>
                     <ul class="modal-list">
-                      <li class="modal-li">Foodtype searched</li>
-                      <li class="modal-li">Trip Advisor ranking</li>
-                      <li class="modal-li">Approximative Delivery time</li>
+                      <li class="modal-li" id="food_right"><%= params[:food_type_2]%></li>
+                      <li class="modal-li" id="ranking_right">Trip Advisor ranking</li>
                     </ul>
 
                     <div class="modal-call-action">
-                      <%= link_to "Go to name's page", "https://deliveroo.fr/fr/menu/lyon/hotel-de-ville/wazza-pizza?day=today&rpos=0&time=ASAP", target: "_blank", class: "navbar-wagon-item navbar-wagon-button btn" %>
+                      <%= link_to "Go to restaurant page", @url_right, target: "_blank", class: "navbar-wagon-item navbar-wagon-button btn" %>
                     </div>
-<!--                     <div class="modal-call-action">
-                      <a>Copy this link to ClipBoard</a>
-                    </div>
- -->
                   </div>
                 </div>
               </div>

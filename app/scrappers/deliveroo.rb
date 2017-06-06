@@ -1,6 +1,8 @@
 require 'json'
 
 class Deliveroo
+  attr_reader :restaurant_remote, :deliveroo_restaurant_menu
+
   def self.host_for(address)
     coordinates = Geocoder.search(address).first.coordinates.reverse
     data = { location: { coordinates: coordinates }}
@@ -39,44 +41,29 @@ class Deliveroo
   end
 
   def find(url)
-
-
-    response = RestClient.get ('https://deliveroo.fr/fr/') + url
+    response = RestClient.get('https://deliveroo.fr/fr/' + url)
     n_html = Nokogiri::HTML.parse(response)
 
-    deliveroo_restaurant_menu = []
+    @restaurant_remote = RestaurantRemote.new({
+      name: n_html.search('.restaurant-details h1').text.strip,
+      description: n_html.search('.restaurant-details .restaurant-description').text.strip,
+      address: n_html.search('.restaurant-details .restaurant-info .metadata:nth-child(2)').text.strip.split(',')[0]
+    })
 
-    # Category title and description into an aray of hashes :
+    @deliveroo_restaurant_menu = {}
 
-    # Récupère un aray de titres de catégoruies :
-    scraped_titles = n_html.search('.results-group .results-group-title').map(&:text).map(&:strip)
+    n_html.search('.results-group').each do |group_html|
+      category = group_html.search('.results-group-title').text.strip
 
-    # Aray de titres sur lequel on itère ensuite en fonction de l'index... :
-    scraped_titles.each_with_index do |title, index|
+      @deliveroo_restaurant_menu[category] = []
 
-      # Récupère la liste de tous les plats en fonction de l'index de la catégorie dans l'aray :
-      dishes_list = n_html.search('.results-list')[index]
-
-      # Récupère le titre du plat :
-      name = dishes_list.search('.list-item-title').first.text.strip
-
-      # Récupère la description du plat :
-      description = dishes_list.search('.list-item-description').first.text.strip
-
-      # Récupère le prix du plat :
-      price = dishes_list.search('.item-price').first.search('span').first.search('span').text
-
-
-      @deliveroo_restaurant_menu << {
-        category_title: title,
-        data: {
-          name: name,
-          description: description,
-          price: price
+      group_html.search('.results-list li').each do |menu_item_html|
+        @deliveroo_restaurant_menu[category] << {
+          name: menu_item_html.search('.list-item-title').text.strip,
+          description: menu_item_html.search('.list-item-description').text.strip,
+          price: menu_item_html.search('.item-price').text.strip
         }
-      }
+      end
     end
-
-    deliveroo_restaurant_menu
   end
 end

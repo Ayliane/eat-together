@@ -1,5 +1,13 @@
-
-<div class="menu-list">
+<!-- <div class="row">
+  <div class="col-xs-6">
+    <div class="restaurant-details" data-name="<%= @modal_content.name %>" data-rank="<%= @modal_content.global_rank %>" data-name="<%= @modal_content.address %>">
+      <h2 class="restaurant-header">Restaurant name</h2>
+      <p class="restaurant-description">Restaurant description</p>
+    </div>
+  </div>
+</div>
+ -->
+<div class="menu-list" data-name="<%= @modal_content.name %>" data-rank="<%= @modal_content.global_rank %>">
   <div class="menu-categories">
     <div class="menu-categories-vendor-logo">
       <img class="menu-categories-vendor-logo-img" src="<%= @modal_content.logo_url %>">
