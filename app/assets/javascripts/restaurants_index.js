@@ -8,13 +8,11 @@ $(document).ready(function() {
         var foodType = $('#selection_food_type_1').val();
         $(".left").empty();
         foodTypeRequest1(foodType);
-        countRestoLeft();
       });
       $('#selection_food_type_2').on('change', function() {
         var foodType = $('#selection_food_type_2').val();
         $(".right").empty();
         foodTypeRequest2(foodType);
-        countRestoRight();
       });
       $('#restaurants-form').on('change', function() {
         $('input:not(:checked)').parent().parent().removeClass("selected-card");
@@ -22,7 +20,6 @@ $(document).ready(function() {
         revealMenusButton()
       });
    }
-
    var counter = 0;
    $(document).on('ajaxComplete', function() {
       counter += 1;
@@ -34,57 +31,63 @@ $(document).ready(function() {
  });
 
 function foodTypeRequest1(typeOfFood) {
-    $.ajax({
-      type: 'GET',
-      url: '/foodora?food_type=' + typeOfFood,
-      success: function(response) {
-        $(response).filter(".restaurant-card").each(function(index, resto) {
-          var step = $(resto).data('step');
-          $("." + step + ' .left').append($(resto));
-          $('.left .posting-menu').attr('name', 'left_url');
-          countRestoLeft()
-         });
-      }
-    })
-     $.ajax({
-      type: 'GET',
-      url: '/deliveroo?food_type=' + typeOfFood,
-      success: function(response) {
-        $(response).filter(".restaurant-card").each(function(index, resto) {
-          var step = $(resto).data('step');
-          $("." + step + " .left").append($(resto));
-          $('.left .posting-menu').attr('name', 'left_url');
-          countRestoLeft()
-        });
-      }
-     })
+  showLoader();
+  $.ajax({
+    type: 'GET',
+    url: '/foodora?food_type=' + typeOfFood,
+    success: function(response) {
+      $(response).filter(".restaurant-card").each(function(index, resto) {
+        var step = $(resto).data('step');
+        $("." + step + ' .left').append($(resto));
+        $('.left .posting-menu').attr('name', 'left_url');
+       });
+      countRestoLeft();
+      checkLoader();
+    }
+  })
+  $.ajax({
+    type: 'GET',
+    url: '/deliveroo?food_type=' + typeOfFood,
+    success: function(response) {
+      $(response).filter(".restaurant-card").each(function(index, resto) {
+        var step = $(resto).data('step');
+        $("." + step + " .left").append($(resto));
+        $('.left .posting-menu').attr('name', 'left_url');
+      });
+      countRestoLeft();
+      checkLoader();
+    }
+  })
 }
 
 function foodTypeRequest2(typeOfFood) {
-    $.ajax({
-      type: 'GET',
-      url: '/foodora?food_type=' + typeOfFood,
-      success: function(response) {
-        $(response).filter(".restaurant-card").each(function(index, resto) {
-          var step = $(resto).data('step');
-          $("." + step + ' .right').append($(resto));
-          $('.right .posting-menu').attr('name', 'right_url');
-          countRestoRight();
-        });
-       }
-     })
-      $.ajax({
-        type: 'GET',
-        url: '/deliveroo?food_type=' + typeOfFood,
-        success: function(response) {
-          $(response).filter(".restaurant-card").each(function(index, resto) {
-            var step = $(resto).data('step');
-            $("." + step + ' .right').append($(resto));
-            $('.right .posting-menu').attr('name', 'right_url');
-            countRestoRight();
-          });
-        }
-     })
+  showLoader();
+  $.ajax({
+    type: 'GET',
+    url: '/foodora?food_type=' + typeOfFood,
+    success: function(response) {
+      $(response).filter(".restaurant-card").each(function(index, resto) {
+        var step = $(resto).data('step');
+        $("." + step + ' .right').append($(resto));
+        $('.right .posting-menu').attr('name', 'right_url');
+      });
+      countRestoRight();
+      checkLoader();
+    }
+  })
+  $.ajax({
+    type: 'GET',
+    url: '/deliveroo?food_type=' + typeOfFood,
+    success: function(response) {
+      $(response).filter(".restaurant-card").each(function(index, resto) {
+        var step = $(resto).data('step');
+        $("." + step + ' .right').append($(resto));
+        $('.right .posting-menu').attr('name', 'right_url');
+      });
+      countRestoRight();
+      checkLoader();
+    }
+  })
 }
 
 function countRestoLeft() {
@@ -141,5 +144,21 @@ function revealMenusButton() {
   }
   if ($("input:checked").size() == 2) {
     $("#button-eat").prop("disabled", false);
+    $("#two-menus").addClass("fadeOut");
   }
 }
+
+function checkLoader() {
+  console.log($.active);
+  if ($.active == 1) {
+    $('#restaurants-list').show();
+    $(".menu-animation-wrapper").hide();
+  };
+}
+
+function showLoader() {
+  $('#restaurants-list').hide();
+  $(".menu-animation-wrapper").show();
+}
+
+
