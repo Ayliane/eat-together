@@ -1,10 +1,17 @@
 
-  <div class="restaurant-card" data-step="<%= step_for(resto, provider) %>" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= resto[:photo_url] %>')">
-
-    <div class="card-name"><h4><%= resto[:name] %></h4></div>
-    <div class="card-description"><p><%= resto[:food_type] %></p>
-    </div>
+  <div class="restaurant-card" data-step="<%= step_for(resto, provider) %>" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= resto.photo_url %>')">
+    <div class="card-name"><h4><%= resto.name %></h4></div>
     <%= image_tag avatar, class: "card-user avatar avatar-delivery" %>
+    <label class='fantom_radio'>
+      <input type='radio' class="posting-menu" name="toto" value='<%= resto.url %>' required>
+    </label>
+
+  <div class="trip-ranking">
+    <div class="overall"><p><strong>Overall:</strong> <%= resto.global_rank %></p></div>
+    <div class="food-ranking"><p><strong>Food ranking:</strong> <%= resto.cook_rank %></p></div>
+    <div class="quality-price"><p><strong>Value for money:</strong> <%= resto.quality_rank %></p></div>
+  </div>
+  </div>
   </div>
 
 

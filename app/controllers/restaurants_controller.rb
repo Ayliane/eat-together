@@ -3,7 +3,6 @@ class RestaurantsController < ApplicationController
   before_action :set_foodora_host
 
   def index
-
   end
 
   def show
@@ -11,13 +10,13 @@ class RestaurantsController < ApplicationController
   end
 
   def deliveroo
-    restaurants = Deliveroo.where(url: session[:deliveroo_url], food_type: params[:food_type])
+    restaurants = Deliveroo.new.where(url: session[:deliveroo_url], food_type: params[:food_type])
     @restaurants = open_hour(restaurants)
     render layout: false if request.xhr?
   end
 
   def foodora
-    @restaurants = Foodora.where(url: session[:foodora_url], food_type: params[:food_type])
+    @restaurants = Foodora.new.where(url: session[:foodora_url], food_type: params[:food_type])
     render layout: false if request.xhr?
   end
 
@@ -47,7 +46,7 @@ class RestaurantsController < ApplicationController
 
   def open_hour(restaurants)
     restaurants.select do |resto|
-      !resto[:delivery_time].include?(":")
+      !resto.delivery_time.include?(":")
     end
   end
 
