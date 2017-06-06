@@ -1,24 +1,3 @@
-<div class="col-xs-12">
-  <div class="menu-list">
-    <div class="menu-categories">
-      <div class="menu-categories-vendor-logo"></div>
-      <div class="menu-categories-list-wrapper"></div>
-    </div>
-    <section class="menu-items-wrapper">
-      <div class="menu-items">
-        <%= @foodora_restaurant_menu.each do |menu|%>
-          <div class="dish-category-header">
-            <h2 class="dish-category-title">Title</h2>
-          </div>
-          <div class="dish-list">
-
-          </div>
-        <% end %>
-      </div>
-    </section>
-  </div>
-</div>
-
 
 <div class="menu-list">
   <div class="menu-categories">
@@ -27,71 +6,33 @@
     </div>
     <div class="menu-categories-list-wrapper">
       <ul>
-        <li><a href="#burgers" class="menu-categories-list-item anchor-navigation">Burgers</a></li>
-        <li><a href="#salades" class="menu-categories-list-item anchor-navigation">Salades</a></li>
-        <li><a href="#desserts" class="menu-categories-list-item anchor-navigation">Desserts</a></li>
+        <%= @menu.each do |menu|%>
+          <li><a href="#burgers" class="menu-categories-list-item anchor-navigation"><%= menu[:category]%></a></li>
+        <% end %>
       </ul>
     </div>
   </div>
   <section class="menu-items-wrapper">
     <div class="menu-items">
-      <div class="dish-category-header">
-        <h2 class="dish-category-title text-center" id="burgers">Burgers</h2>
-      </div>
-      <div class="dish-list">
-        <li>
-          <div class="dish-card">
-            <div class="dish-info">
-              <h3 class="dish-name">Classic</h3>
-              <p class="dish-description">Pain aux céréales, steak façon bouchère VBF, cheddar anglais maturé 9 mois, salade de saison, rondelles de tomates fraîches et oignons rouges émincés, ketchup et moutarde à l'ancienne</p>
-            </div>
-            <footer class="dish-price">
-              <span class="price p-price">10,00 €</span>
-            </footer>
-          </div>
-        </li>
-        <li>
-          <div class="dish-card">
-            <div class="dish-info">
-              <h3 class="dish-name">Bacon</h3>
-              <p class="dish-description">Pain aux céréales, steak façon bouchère VBF, cheddar anglais maturé 9 mois, salade de saison, rondelles de tomates fraîches et oignons rouges émincés, ketchup et moutarde à l'ancienne</p>
-            </div>
-            <footer class="dish-price">
-              <span class="price p-price">12,00 €</span>
-            </footer>
-          </div>
-        </li>
-        <li>
-          <div class="dish-card hvr-shadow-radial">
-            <div class="dish-info">
-              <h3 class="dish-name">Cheddar</h3>
-              <p class="dish-description">Pain aux céréales, steak façon bouchère VBF, cheddar anglais maturé 9 mois, salade de saison, rondelles de tomates fraîches et oignons rouges émincés, ketchup et moutarde à l'ancienne</p>
-            </div>
-            <footer class="dish-price">
-              <span class="price p-price">13,50 €</span>
-            </footer>
-          </div>
-        </li>
-        <li>
-          <div class="dish-card">
-            <div class="dish-info">
-              <h3 class="dish-name">Blue and Figs</h3>
-              <p class="dish-description">Pain aux céréales, steak façon bouchère VBF, cheddar anglais maturé 9 mois, salade de saison, rondelles de tomates fraîches et oignons rouges émincés, ketchup et moutarde à l'ancienne</p>
-            </div>
-            <footer class="dish-price">
-              <span class="price p-price">14,20 €</span>
-            </footer>
-          </div>
-        </li>
-        <li>
-          <div class="dish-card">
-            <div class="dish-info">
-              <h3 class="dish-name">Toma</h3>
-              <p class="dish-description">Pain aux céréales, steak façon bouchère VBF, cheddar anglais maturé 9 mois, salade de saison, rondelles de tomates fraîches et oignons rouges émincés, ketchup et moutarde à l'ancienne</p>
-            </div>
-            <footer class="dish-price">
-              <span class="price p-price">15,00 €</span>
-            </footer>
-          </div>
-        </li>
-      </div>
+      <%= @menu.each do |menu|%>
+        <div class="dish-category-header">
+          <h2 class="dish-category-title text-center" id="burgers"><%=@menu[:caterory]%></h2>
+        </div>
+        <div class="dish-list">
+          <%= @menu.each do |menu|%>
+            <li>
+              <div class="dish-card hvr-shadow-radial">
+                <div class="dish-info">
+                  <h3 class="dish-name"><%= @menu[:data][:name] %></h3>
+                  <p class="dish-description"><%= @menu[:data][:description] %></p>
+                </div>
+                <footer class="dish-price">
+                  <span class="price p-price"><%= @menu[:data][:price] %></span>
+                </footer>
+              </div>
+            </li>
+          <% end %>
+        </div>
+      <% end %>
+
+
