@@ -7,10 +7,6 @@
   font-family: 'Open Sans Condensed', sans-serif;
  }
 
-// .restaurant-card {
-//   margin: 1em 0;
-// }
-
 .step {
   padding-bottom: 5em;
   position: relative;
@@ -77,4 +73,27 @@
 
 body {
   background-color: #fafafa;
+}
+
+#show-submit {
+  background: #ededed;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 0px;
+  z-index: 20;
+  right: 0;
+  #button-eat {
+    margin: 5px;
+  }
+}
+
+#show-submit.visible {
+  height: 56px;
+  transition: height ease 0.3s;
+}
+
+.relativeness {
+  display: flex;
+  justify-content: center;
 }
