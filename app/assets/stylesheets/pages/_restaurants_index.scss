@@ -86,10 +86,11 @@ body {
   #button-eat {
     margin: 5px;
   }
-  .visible {
-    height: 0;
-    transition: height ease 0.3s;
-  }
+}
+
+#show-submit.visible {
+  height: 56px;
+  transition: height ease 0.3s;
 }
 
 .relativeness {

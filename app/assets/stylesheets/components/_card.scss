@@ -17,6 +17,15 @@
     }
 }
 
+.restaurant-card.selected-card {
+  .trip-ranking {
+    background: $green;
+  p {
+    color: white;
+    }
+  }
+}
+
 .trip-ranking {
   background: #FFF;
   padding: 7px;
@@ -41,22 +50,7 @@
   z-index:2;
 
   input[type="radio"] {
-    opacity: 1;
-  }
-}
-
-.selected {
-  .restaurant-card {
-    box-shadow: 0 14px 28px rgba(122, 219, 31, 0.60), 0 10px 10px rgba(122, 219, 31,0.30);
-    .trip-ranking {
-      background: $green;
-        p {
-          color: white;
-        }
-    }
-    &:hover {
-      box-shadow: 0 14px 28px rgba(122, 219, 31,0.60), 0 10px 10px rgba(122, 219, 31,0.30);
-    }
+    opacity: 0;
   }
 }
 

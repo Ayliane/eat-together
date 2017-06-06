@@ -16,18 +16,17 @@ $(document).ready(function() {
         foodTypeRequest2(foodType);
         countRestoRight();
       });
-      $('input').click(function () {
-        console.log("I detect your click");
-        $('input:not(:checked)').parent().removeClass("selected");
-        console.log("I remove class");
-        $('input:checked').parent().addClass("selected");
-        console.log("I add class")
+      $('#restaurants-form').on('change', function() {
+        $('input:not(:checked)').parent().parent().removeClass("selected-card");
+        $("input:checked").parent().parent().addClass("selected-card");
+        revealMenusButton()
       });
    }
+
    var counter = 0;
    $(document).on('ajaxComplete', function() {
       counter += 1;
-      if (counter == 4) {
+      if (counter >= 4) {
         leftEmpty();
         rightEmpty();
       }
@@ -133,8 +132,14 @@ function rightEmpty() {
   }
 }
 
-// function revealMenusButton() {
-//      $('.posting-menu').on('change', function() {
-//         $('.posting-menu').addClass(".selected");
-//       }
-// )};
+function revealMenusButton() {
+  if ($("input:checked").size() >= 1) {
+    $("#show-submit").addClass("visible");
+  }
+  if ($("input:checked").size() == 1) {
+    $("#button-eat").prop("disabled", true);
+  }
+  if ($("input:checked").size() == 2) {
+    $("#button-eat").prop("disabled", false);
+  }
+}

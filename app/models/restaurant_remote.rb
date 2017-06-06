@@ -48,15 +48,15 @@ class RestaurantRemote
   private
 
   def global_ranking
-    @restaurant.ranking if @restaurant.present?
+    @restaurant.present? ? @restaurant.ranking : "N/A"
   end
 
   def cook_ranking
-    @restaurant.cook_rank if @restaurant.present?
+    @restaurant.present? ? @restaurant.cook_rank : "N/A"
   end
 
   def quality_ranking
-    @restaurant.value_balance if @restaurant.present?
+    @restaurant.present? ? @restaurant.value_balance : "N/A"
   end
 
   def find_restaurant
