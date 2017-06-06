@@ -21,7 +21,11 @@ class RestaurantsController < ApplicationController
   end
 
   def foodora_show
-    @menu = Foodora.find(params[:url])
+    scraper = Foodora.new
+    scraper.find(params[:url])
+    @menu = scraper.foodora_restaurant_menu
+    # @restaurant_logo = scraper.logo_url
+    @modal_content = scraper.restaurant_remote
     render layout: false
   end
 

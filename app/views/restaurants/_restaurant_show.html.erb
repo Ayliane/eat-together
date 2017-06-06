@@ -2,32 +2,32 @@
 <div class="menu-list">
   <div class="menu-categories">
     <div class="menu-categories-vendor-logo">
-      <img class="menu-categories-vendor-logo-img" src="">
+      <img class="menu-categories-vendor-logo-img" src="<%= @modal_content.logo_url %>">
     </div>
     <div class="menu-categories-list-wrapper">
       <ul>
-        <%= @menu.each do |menu|%>
-          <li><a href="#burgers" class="menu-categories-list-item anchor-navigation"><%= menu[:category]%></a></li>
+        <% @menu.each do |key, value|%>
+          <li><a href="#burgers" class="menu-categories-list-item anchor-navigation"><%= key %></a></li>
         <% end %>
       </ul>
     </div>
   </div>
   <section class="menu-items-wrapper">
     <div class="menu-items">
-      <%= @menu.each do |menu|%>
+      <% @menu.each do |key, value|%>
         <div class="dish-category-header">
-          <h2 class="dish-category-title text-center" id="burgers"><%=@menu[:caterory]%></h2>
+          <h2 class="dish-category-title text-center" id="burgers"><%= key %></h2>
         </div>
         <div class="dish-list">
-          <%= @menu.each do |menu|%>
+          <% value.each do |dish|%>
             <li>
               <div class="dish-card hvr-shadow-radial">
                 <div class="dish-info">
-                  <h3 class="dish-name"><%= @menu[:data][:name] %></h3>
-                  <p class="dish-description"><%= @menu[:data][:description] %></p>
+                  <h3 class="dish-name"><%= dish[:name] %></h3>
+                  <p class="dish-description"><%= dish[:description] %></p>
                 </div>
                 <footer class="dish-price">
-                  <span class="price p-price"><%= @menu[:data][:price] %></span>
+                  <span class="price p-price"><%= dish[:price] %> €</span>
                 </footer>
               </div>
             </li>

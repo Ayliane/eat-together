@@ -20,6 +20,8 @@ class RestaurantRemote
     :name,
     :delivery_time,
     :address,
+    :logo_url,
+    :description,
     :photo_url,
     :price_fork,
     :food_type,
@@ -33,6 +35,8 @@ class RestaurantRemote
   def initialize(args)
     @name = args[:name]
     @address = args[:address]
+    @logo_url = args[:logo_url]
+    @description = args[:description]
     @photo_url = args[:photo_url]
     @price_fork = args[:price_fork]
     @food_type = args[:food_type]
