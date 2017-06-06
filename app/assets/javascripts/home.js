@@ -1,5 +1,4 @@
 
-
 if ($('.animation').length > 0) {
 function dataWord () {
 
@@ -31,6 +30,10 @@ $(window).on("load", dataWord);
 
 
 }
+
+$(document).ready(function() {
+  $('.selectize').selectize();
+});
 
 
 
