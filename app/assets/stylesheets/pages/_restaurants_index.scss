@@ -33,7 +33,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10;
+  z-index: 1;
 
   p {
     padding-top: 10px;
@@ -50,7 +50,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 10;
+    z-index: 1;
   }
 }
 
@@ -98,4 +98,26 @@ body {
   justify-content: center;
   align-items: center;
   margin-right: 5px;
+}
+
+#restaurants-list.container {
+  margin-top: 85px;
+}
+
+select#selection_food_type_1.form-control.select {
+  width: 400px;
+  border: none;
+  box-shadow: none;
+  color: $green;
+  font-size: 25px;
+  border-bottom: 1px solid $green;
+}
+
+select#selection_food_type_2.form-control.select {
+  width: 400px;
+  border: none;
+  box-shadow: none;
+  color: $green;
+  font-size: 25px;
+  border-bottom: 1px solid $green;
 }
