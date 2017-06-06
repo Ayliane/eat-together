@@ -16,15 +16,13 @@ $(document).ready(function() {
         foodTypeRequest2(foodType);
         countRestoRight();
       });
-      $('.fantom_radio').click(function () {
-        $('.fantom_radio:not(:checked)').parent().removeClass("selected");
-        $('.fantom_radio:checked').parent().addClass("selected");
+      $('input').click(function () {
+        console.log("I detect your click");
+        $('input:not(:checked)').parent().removeClass("selected");
+        console.log("I remove class");
+        $('input:checked').parent().addClass("selected");
+        console.log("I add class")
       });
-
-
-      // $('.fantom_radio').on('change', function() {
-      //   $('.posting-menu').addClass("selected");
-      // });
    }
    var counter = 0;
    $(document).on('ajaxComplete', function() {
