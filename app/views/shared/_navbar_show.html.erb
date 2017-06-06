@@ -1,0 +1,27 @@
+<div class="navbar-wagon navbar-wagon-fixed">
+
+  <!-- Logo -->
+  <%= link_to root_path, class: "navbar-wagon-brand" do %>
+    <%= image_tag "logo1.png" %>
+  <% end %>
+
+  <!-- Food types - fixed -->
+  <div class="nav-food-type">
+      <p>
+        <strong>Let's check all these dishes and share</strong>
+        <span class="navbar-food-type"> Food type 1</span>
+        <b><strong>&</strong></b>
+        <span class="navbar-food-type">Food type 2</span>
+        <strong>together !</strong>
+      </p>
+  </div>
+
+  <!-- Right Navigation -->
+  <div class="navbar-wagon-right hidden-xs hidden-sm">
+
+    <!-- Button (call-to-action) -->
+    <button type="button" class="navbar-wagon-item navbar-wagon-button" data-toggle="modal" data-target="#Modal">
+      Pass your order
+    </button>
+  </div>
+</div>

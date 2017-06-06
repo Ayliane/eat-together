@@ -1,7 +1,7 @@
 $(document).ready(function() {
   if ($('#restaurants-list').length > 0) {
-      var foodType1 = $('#food_type_1').val();
-      var foodType2 = $('#food_type_2').val();
+      var foodType1 = $('#selection_food_type_1').val();
+      var foodType2 = $('#selection_food_type_2').val();
       foodTypeRequest1(foodType1);
       foodTypeRequest2(foodType2);
       $('#selection_food_type_1').on('change', function() {
@@ -14,6 +14,7 @@ $(document).ready(function() {
         $(".right").empty();
         foodTypeRequest2(foodType);
       });
+
       $('#restaurants-form').on('change', function() {
         $('input:not(:checked)').parent().parent().removeClass("selected-card");
         $("input:checked").parent().parent().addClass("selected-card");
