@@ -22,14 +22,22 @@
     </div>
 
     <div class="row">
+
       <div class="step step-1">
         <div class="step-label">
           <p class="text-center">15-25 mn</p>
         </div>
 
         <div class="row">
-          <div class="col-xs-6 left"></div>
-          <div class="col-xs-6 right"></div>
+          <div class="col-xs-6">
+            <%= render 'restaurant_placeholder', position: "1-left", place: "left" %>
+            <div class="left"></div>
+          </div>
+
+          <div class="col-xs-6">
+            <%= render 'restaurant_placeholder', position: "1-right", place: "right" %>
+            <div class="right"></div>
+          </div>
         </div>
       </div>
 
@@ -37,10 +45,17 @@
         <div class="step-label">
           <p class="text-center">25-35 mn</p>
         </div>
-
         <div class="row">
-          <div class="col-xs-6 left"></div>
-          <div class="col-xs-6 right"></div>
+          <div class="col-xs-6">
+            <%= render 'restaurant_placeholder', position: "2-left", place: "left" %>
+            <div class="left"></div>
+          </div>
+
+          <div class="col-xs-6">
+            <%= render 'restaurant_placeholder', position: "2-right", place: "right" %>
+            <div class="right"></div>
+
+          </div>
         </div>
       </div>
 
@@ -48,20 +63,27 @@
         <div class="step-label">
           <p class="text-center">35-45 mn</p>
         </div>
-
         <div class="row">
-          <div class="col-xs-6 left"></div>
-          <div class="col-xs-6 right"></div>
-        </div>
-      </div>
+         <div class="col-xs-6">
 
-      <div id="show-submit">
-        <div class="relativeness">
-          <input type="submit" value="See the menus !" class="btn btn-primary btn-lg eat" id="button-eat">
+          <%= render 'restaurant_placeholder', position: "3-left", place: "left" %>
+          <div class="left"></div>
+
+        </div>
+        <div class="col-xs-6">
+          <%= render 'restaurant_placeholder', position: "3-right", place: "right" %>
+          <div class="right"></div>
+
         </div>
       </div>
     </div>
-  </form>
+    <div id="show-submit">
+      <div class="relativeness">
+        <input type="submit" value="See the menus !" class="btn btn-primary btn-lg eat" id="button-eat">
+      </div>
+    </div>
+
+  </div>
 </div>
 
 <div class="menu-animation-wrapper">
