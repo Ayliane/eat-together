@@ -5,10 +5,12 @@ class Api::V1::RestaurantsController < Api::V1::BaseController
   end
 
   def show
-    if @restaurant = Restaurant.find_by(name: params[:name])
-       @restaurant = Restaurant.find_by(name: params[:name])
+    restaurants = Restaurant.search(params[:name])
+
+    if restaurants.present?
+       @restaurant = restaurants.first
     else
-        render json: {message: params[:name] + " ne se trouve pas dans la db"}
+      render json: {message: params[:name] + " ne se trouve pas dans la db"}
     end
   end
 
