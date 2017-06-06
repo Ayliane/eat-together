@@ -1,5 +1,5 @@
 <div class="container" id="restaurants-list">
-<div class="row">
+  <div class="row">
     <div class="col-xs-12 text-center" id="index-title">
       <h2>Make your choice !</h2>
 
@@ -7,7 +7,7 @@
 
       <div class="col-xs-6">
         <%= simple_form_for :selection do |f| %>
-          <%= f.input :food_type_1, collection: food_types, selected: params[:food_type_1], label: false %>
+        <%= f.input :food_type_1, collection: food_types, selected: params[:food_type_1], label: false %>
         <% end %>
         <input type="hidden" id="food_type_1" value="<%= params[:food_type_1] %>">
         <div class="header-left"></div>
@@ -17,70 +17,117 @@
 
       <div class="col-xs-6">
         <%= simple_form_for :selection do |f| %>
-          <%= f.input :food_type_2, collection: food_types, selected: params[:food_type_2], label: false %>
+        <%= f.input :food_type_2, collection: food_types, selected: params[:food_type_2], label: false %>
         <% end %>
-          <input type="hidden" id="food_type_2" value="<%= params[:food_type_2] %>">
+        <input type="hidden" id="food_type_2" value="<%= params[:food_type_2] %>">
         <div class="header-right"></div>
       </div>
     </div>
   </div>
   <div class="row">
-  <form action="<%= menus_path %>" method="post" id="restaurants-form">
-  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-  <div class="step step-1">
-    <div class="step-label">
-      <p class="text-center">15-25 mn</p>
-    </div>
-    <div class="row">
-      <div class="col-xs-6 left">
+    <form action="<%= menus_path %>" method="post" id="restaurants-form">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <div class="step step-1">
+        <div class="step-label">
+          <p class="text-center">15-25 mn</p>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 left">
+
+            <div id="no-match-wrapper-1-left" style="display:hidden">
+              <div class="no-match-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path('no_match.jpg') %>')">
+                <div class="no-match-description">
+                  <p>There's no match for this delivery time, check below !</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-xs-6 right">
+
+            <div id="no-match-wrapper-1-right" style="display:hidden">
+              <div class="no-match-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path('no_match.jpg') %>')">
+                <div class="no-match-description">
+                  <p>There's no match for this delivery time, check below !</p>
+                </div>
+              </div>
+            </div>
 
 
+          </div>
+        </div>
       </div>
 
-      <div class="col-xs-6 right">
+      <div class="step step-2">
+        <div class="step-label">
+          <p class="text-center">25-35 mn</p>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 left">
+
+            <div id="no-match-wrapper-2-left" style="display:hidden">
+              <div class="no-match-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path('no_match.jpg') %>')">
+                <div class="no-match-description">
+                  <p>There's no match for this delivery time, check below !</p>
+                </div>
+              </div>
+            </div>
 
 
+          </div>
+          <div class="col-xs-6 right">
+
+            <div id="no-match-wrapper-2-right" style="display:hidden">
+              <div class="no-match-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path('no_match.jpg') %>')">
+                <div class="no-match-description">
+                  <p>There's no match for this delivery time, check below !</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
       </div>
+
+      <div class="step step-3">
+        <div class="step-label">
+          <p class="text-center">35-45 mn</p>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 left">
+
+            <div id="no-match-wrapper-3-left" style="display:hidden">
+              <div class="no-match-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path('no_match.jpg') %>')">
+                <div class="no-match-description">
+                  <p>There's no match for this delivery time, check below !</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-xs-6 right">
+
+            <div id="no-match-wrapper-3-right" style="display:hidden">
+              <div class="no-match-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path('no_match.jpg') %>')">
+                <div class="no-match-description">
+                  <p>There's no match for this delivery time, check below !</p>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+      <div id="show-submit">
+        <div class="relativeness">
+          <input type="submit" value="See the menus !" class="btn btn-primary btn-lg eat" id="button-eat">
+        </div>
+      </div>
+
     </div>
   </div>
-
-  <div class="step step-2">
-    <div class="step-label">
-      <p class="text-center">25-35 mn</p>
-    </div>
-    <div class="row">
-      <div class="col-xs-6 left">
-
-
-      </div>
-      <div class="col-xs-6 right">
-
-      </div>
-    </div>
-  </div>
-
-  <div class="step step-3">
-    <div class="step-label">
-      <p class="text-center">35-45 mn</p>
-    </div>
-    <div class="row">
-      <div class="col-xs-6 left">
-
-
-      </div>
-      <div class="col-xs-6 right">
-
-      </div>
-    </div>
-  </div>
-  <div id="show-submit">
-    <div class="relativeness">
-      <input type="submit" value="See the menus !" class="btn btn-primary btn-lg eat" id="button-eat">
-    </div>
-  </div>
-
-  </div>
-</div>
 
 </form>
 
