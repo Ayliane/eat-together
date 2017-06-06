@@ -20,18 +20,11 @@ $(document).ready(function() {
         revealMenusButton()
       });
    }
-   var counter = 0;
-   $(document).on('ajaxComplete', function() {
-      counter += 1;
-      if (counter >= 4) {
-        leftEmpty();
-        rightEmpty();
-      }
-   })
  });
 
 function foodTypeRequest1(typeOfFood) {
   showLoader();
+  $(".empty-no-match").hide();
   $.ajax({
     type: 'GET',
     url: '/foodora?food_type=' + typeOfFood,
@@ -62,6 +55,7 @@ function foodTypeRequest1(typeOfFood) {
 
 function foodTypeRequest2(typeOfFood) {
   showLoader();
+  $(".empty-no-match").hide();
   $.ajax({
     type: 'GET',
     url: '/foodora?food_type=' + typeOfFood,
@@ -91,7 +85,7 @@ function foodTypeRequest2(typeOfFood) {
 }
 
 function countRestoLeft() {
-  $(".header-left").empty()
+  $(".header-left").empty();
   var counting = $(".left .restaurant-card").size();
   if (counting == 0) {
     $(".header-left").append("<h3>" + counting + " restaurants found<h3>");
@@ -111,7 +105,7 @@ function countRestoRight() {
 }
 
 function leftEmpty() {
-  if ($('.step-1 .left').children().length == 0){
+  if ($('.step-1 .left').children().length == 0) {
     $("#no-match-wrapper-1-left").show()
   }
   if ($('.step-2 .left').children().length == 0) {
@@ -152,6 +146,8 @@ function checkLoader() {
   if ($.active == 1) {
     $('#restaurants-list').show();
     $(".menu-animation-wrapper").hide();
+    leftEmpty();
+    rightEmpty();
   };
 }
 

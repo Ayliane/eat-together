@@ -32,28 +32,15 @@
           <p class="text-center">15-25 mn</p>
         </div>
         <div class="row">
-          <div class="col-xs-6 left">
-
-            <div id="no-match-wrapper-1-left" style="display:hidden">
-              <div class="no-match-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path('no_match.jpg') %>')">
-                <div class="no-match-description">
-                  <p>There's no match for this delivery time, check below !</p>
-                </div>
-              </div>
-            </div>
+          <div class="col-xs-6">
+            <%= render 'restaurant_placeholder', position: "1-left", place: "left" %>
+            <div class="left"></div>
 
           </div>
 
-          <div class="col-xs-6 right">
-
-            <div id="no-match-wrapper-1-right" style="display:hidden">
-              <div class="no-match-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path('no_match.jpg') %>')">
-                <div class="no-match-description">
-                  <p>There's no match for this delivery time, check below !</p>
-                </div>
-              </div>
-            </div>
-
+          <div class="col-xs-6">
+            <%= render 'restaurant_placeholder', position: "1-right", place: "right" %>
+            <div class="right"></div>
 
           </div>
         </div>
@@ -64,27 +51,16 @@
           <p class="text-center">25-35 mn</p>
         </div>
         <div class="row">
-          <div class="col-xs-6 left">
+          <div class="col-xs-6">
 
-            <div id="no-match-wrapper-2-left" style="display:hidden">
-              <div class="no-match-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path('no_match.jpg') %>')">
-                <div class="no-match-description">
-                  <p>There's no match for this delivery time, check below !</p>
-                </div>
-              </div>
-            </div>
+            <%= render 'restaurant_placeholder', position: "2-left", place: "left" %>
+            <div class="left"></div>
 
 
           </div>
-          <div class="col-xs-6 right">
-
-            <div id="no-match-wrapper-2-right" style="display:hidden">
-              <div class="no-match-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path('no_match.jpg') %>')">
-                <div class="no-match-description">
-                  <p>There's no match for this delivery time, check below !</p>
-                </div>
-              </div>
-            </div>
+          <div class="col-xs-6">
+            <%= render 'restaurant_placeholder', position: "2-right", place: "right" %>
+            <div class="right"></div>
 
           </div>
         </div>
@@ -95,39 +71,28 @@
           <p class="text-center">35-45 mn</p>
         </div>
         <div class="row">
-          <div class="col-xs-6 left">
+         <div class="col-xs-6">
 
-            <div id="no-match-wrapper-3-left" style="display:hidden">
-              <div class="no-match-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path('no_match.jpg') %>')">
-                <div class="no-match-description">
-                  <p>There's no match for this delivery time, check below !</p>
-                </div>
-              </div>
-            </div>
+          <%= render 'restaurant_placeholder', position: "3-left", place: "left" %>
+          <div class="left"></div>
+
+
+        </div>
+        <div class="col-xs-6">
+            <%= render 'restaurant_placeholder', position: "3-right", place: "right" %>
+            <div class="right"></div>
 
           </div>
-          <div class="col-xs-6 right">
-
-            <div id="no-match-wrapper-3-right" style="display:hidden">
-              <div class="no-match-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path('no_match.jpg') %>')">
-                <div class="no-match-description">
-                  <p>There's no match for this delivery time, check below !</p>
-                </div>
-              </div>
-            </div>
-
-
-          </div>
-        </div>
       </div>
-      <div id="show-submit">
-        <div class="relativeness">
-          <input type="submit" value="See the menus !" class="btn btn-primary btn-lg eat" id="button-eat">
-        </div>
-      </div>
-
     </div>
+    <div id="show-submit">
+      <div class="relativeness">
+        <input type="submit" value="See the menus !" class="btn btn-primary btn-lg eat" id="button-eat">
+      </div>
+    </div>
+
   </div>
+</div>
 
 </form>
 
