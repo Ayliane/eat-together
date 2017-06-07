@@ -40,11 +40,11 @@ class RestaurantsController < ApplicationController
   private
 
   def set_deliveroo_host
-    session[:deliveroo_url] ||= Deliveroo.host_for(params[:user_input_autocomplete_address])
+    session[:deliveroo_url] ||= Deliveroo.host_for(params[:address])
   end
 
   def set_foodora_host
-    session[:foodora_url] ||= Foodora.host_for(params[:user_input_autocomplete_address])
+    session[:foodora_url] ||= Foodora.host_for(params[:address])
   end
 
   # def set_food_style1
