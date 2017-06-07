@@ -5,4 +5,8 @@ class ApplicationController < ActionController::Base
   def better_errors_hack
     request.env['puma.config'].options.user_options.delete :app
   end
+
+  def default_url_options
+    { host: ENV["HOST"] || "localhost:3000" }
+  end
 end
