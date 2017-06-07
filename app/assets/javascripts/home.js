@@ -1,5 +1,4 @@
 
-
 if ($('.animation').length > 0) {
 function dataWord () {
 
@@ -31,6 +30,18 @@ $(window).on("load", dataWord);
 
 
 }
+
+$(document).ready(function() {
+  $('[name="food_type_1"]').selectize({
+    openOnFocus: false,
+    placeholder: 'Your cuisine...'
+  });
+
+  $('[name="food_type_2"]').selectize({
+    openOnFocus: false,
+    placeholder: 'His/Her cuisine...'
+  });
+});
 
 
 

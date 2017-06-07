@@ -1,0 +1,73 @@
+.btn-primary {
+  margin-top:50px;
+}
+
+.search-form {
+  // padding: 40px;
+}
+
+.form-control {
+  height: 49px;
+  min-width: 300px;
+  font-size: 15px;
+  &:focus {
+    border-color: #ccc;
+    outline: none;
+  }
+}
+
+.eat {
+  margin-right: 10px;
+  // margin-left: 20px;
+  // padding: 10px;
+  &:focus {
+    outline: none;
+  }
+}
+
+#home {
+  display:flex;
+  justify-content: space-around;
+}
+
+// #home-2 {
+//   margin-bottom: 250px;
+// }
+
+#home-btn {
+  // margin-right: 10px;
+  // margin-left: 10px;
+  padding: 0 20px;
+  border-radius: 2px;
+  line-height: 44px;
+  margin-bottom: 50px;
+  background-color:$gray-base;
+  color: $green;
+  font-size: 20px;
+  // border: none;
+  border: 2px solid $green;
+}
+
+#home-btn:hover {
+  color: $gray-base;
+  background: $green;
+  border-color: $green;
+}
+
+#user_input_autocomplete_address {
+  min-width: 350px;
+  height: 36px;
+}
+
+/* Selectize.js */
+
+.selectize {
+  min-width: 200px;
+  text-align: left;
+}
+
+.selectize-input {
+    font-size: 15px;
+    line-height: 30px;
+    text-align: left;
+}

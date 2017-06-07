@@ -34,7 +34,14 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
   </head>
   <body>
+    <%= render "shared/navbar" %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
+
+    <!-- Include Google Maps JS API -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyAvUUtpnveq7v5n_0v2KVCKv7y65AV2Hhc"></script>
+
+    <!-- Custom JS code to bind to Autocomplete API -->
+    <script type="text/javascript" src="autocomplete.js"></script>
   </body>
 </html>
