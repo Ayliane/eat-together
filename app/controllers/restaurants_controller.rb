@@ -41,7 +41,7 @@ class RestaurantsController < ApplicationController
 
   def set_deliveroo_host
     if params[:address].present?
-      session[:deliveroo_url] ||= Deliveroo.host_for(params[:address])
+      session[:deliveroo_url] = Deliveroo.host_for(params[:address])
     else
       session[:deliveroo_url]
     end
@@ -49,15 +49,11 @@ class RestaurantsController < ApplicationController
 
   def set_foodora_host
     if params[:address].present?
-      session[:foodora_url] ||= Foodora.host_for(params[:address])
+      session[:foodora_url] = Foodora.host_for(params[:address])
     else
       session[:foodora_url]
     end
   end
-
-  # def set_food_style1
-  #   session[:food_style1]
-  # end
 
   def restaurant_params
     params.require(:restaurants).permit(:address, :url)
