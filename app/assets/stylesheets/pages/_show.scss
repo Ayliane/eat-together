@@ -7,6 +7,11 @@
   margin-top: 150px;
 }
 
+.menu-list {
+  max-height: 500px;
+  overflow: scroll;
+}
+
 .restaurant-menu-left, .restaurant-menu-right {
   display: flex
 }
