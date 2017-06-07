@@ -99,12 +99,7 @@ body {
 }
 
 #restaurants-list.container {
-  margin-top: 85px;
-}
-
-
-select, strong {
-  padding: 0 30px;
+  margin-top: 115px;
 }
 
 .index-page .form-inline .form-control {
@@ -151,6 +146,7 @@ div .nice-select.form-control.select.open {
 
 .navbar-wagon.navbar-wagon-fixed.index-page {
   position: fixed;
+  height: 110px;
 
   .navbar-wagon-brand {
     position: absolute;
@@ -164,4 +160,21 @@ div .nice-select.form-control.select.open {
 div .select-food-type {
   flex-grow: 1;
   margin-top: 15px;
+}
+
+.header-right, .header-left {
+  padding: 5px 0;
+  font-size: 14px;
+}
+
+.header-wrapper {
+  height: 48px;
+}
+
+select strong p {
+  padding: 5px 0;
+}
+
+.and-together {
+  padding: 50px;
 }
