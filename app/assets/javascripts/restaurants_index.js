@@ -89,9 +89,9 @@ function countRestoLeft() {
   $(".header-left").empty();
   var counting = $(".left .restaurant-card").size();
   if (counting == 0) {
-    $(".header-left").append("<h3>" + counting + " restaurants found<h3>");
+    $(".header-left").append("<p><strong>" + counting + "</strong> restaurants found<p>");
   } else {
-    $(".header-left").append("<h3>" + counting + " restaurants found<h3>");
+    $(".header-left").append("<p><strong>" + counting + "</strong> restaurants found<p>");
   }
 }
 
@@ -99,9 +99,9 @@ function countRestoRight() {
   $(".header-right").empty()
   var counting = $(".right .restaurant-card").size();
   if (counting == 0) {
-    $(".header-right").append("<h3>" + counting + " restaurants found<h3>");
+    $(".header-right").append("<p><strong>" + counting + "</strong> restaurants found<p>");
   } else {
-    $(".header-right").append("<h3>" + counting + " restaurants found<h3>");
+    $(".header-right").append("<p><strong>" + counting + "</strong> restaurants found<p>");
   }
 }
 
