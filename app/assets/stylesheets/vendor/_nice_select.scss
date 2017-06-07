@@ -10,7 +10,7 @@ $select-width: 400px !default;
 
 $gray_dark: #444 !default;
 // $gray: #999 !default;
-$gray_light: #e8e8e8 !default;
+// $gray_light: #e8e8e8 !default;
 $gray_lighter: #f6f6f6 !default;
 $primary_light: $gray !default;
 $arrow_color: $gray !default;
@@ -149,7 +149,7 @@ $arrow_color: $gray !default;
     text-align: left;
     transition: all 0.2s;
     &:hover, &.focus, &.selected.focus {
-      background-color: $gray_lighter;
+      background-color: $green;
     }
     &.selected {
       font-weight: bold;
