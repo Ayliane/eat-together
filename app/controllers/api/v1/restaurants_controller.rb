@@ -9,6 +9,7 @@ class Api::V1::RestaurantsController < Api::V1::BaseController
 
     if restaurants.present?
        @restaurant = restaurants.first
+      render json: @restaurant, callback: params[:callback]
     else
       render json: {message: params[:name] + " ne se trouve pas dans la db"}
     end
