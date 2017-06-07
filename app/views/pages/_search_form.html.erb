@@ -3,7 +3,7 @@
 
     <div class="form-group eat">
       <select class="selectize" name="food_type_1">
-        <option disable selected>My cuisine...</option>
+        <option></option>
         <% food_types.sort.each do |key, value| %>
           <option><%= key %></option>
         <% end %>
@@ -12,7 +12,7 @@
 
     <div class="form-group eat">
       <select class="selectize" name="food_type_2">
-        <option selected>His/Her cuisine...</option>
+        <option></option>
         <% food_types.sort.each do |key, value| %>
           <option><%= key %></option>
         <% end %>
@@ -22,7 +22,7 @@
       <label for="address"></label>
       <input type="text" class="form-control eat" id="address" name="address" placeholder="Enter your street address">
 
-    <button type="submit" class="btn btn-primary btn-lg" id="button-eat">Eat Now</button>
+    <button type="submit" class="btn btn-primary btn-lg" id="home-btn">Eat Now</button>
   </div>
 </form>
 
