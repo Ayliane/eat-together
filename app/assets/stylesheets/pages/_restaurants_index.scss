@@ -74,19 +74,17 @@ body {
 }
 
 #show-submit {
-  background: #ededed;
+  background: #eaeaea;
   position: fixed;
   bottom: 0;
   left: 0;
   height: 0px;
   z-index: 20;
   right: 0;
-  #button-eat {
-    margin: 5px;
-  }
 }
 
 #button-eat {
+  margin: 5px;
   padding: 0 20px;
   border-radius: 2px;
   line-height: 44px;
