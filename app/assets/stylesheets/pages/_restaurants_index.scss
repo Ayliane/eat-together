@@ -86,6 +86,26 @@ body {
   }
 }
 
+#button-eat {
+  padding: 0 20px;
+  border-radius: 2px;
+  line-height: 44px;
+  margin-bottom: 50px;
+  background-color:$gray-base;
+  color: $green;
+  font-size: 20px;
+  border: none;
+}
+
+#button-eat:focus {
+  outline: none;
+}
+
+#button-eat:hover {
+  color: $gray-base;
+  background: $green;
+}
+
 #show-submit.visible {
   height: 56px;
   transition: height ease 0.3s;
