@@ -11,6 +11,7 @@ gem 'nokogiri'
 gem 'rest-client'
 gem 'geocoder'
 gem "selectize-rails"
+gem 'pg_search'
 
 gem 'sass-rails'
 gem 'jquery-rails'
