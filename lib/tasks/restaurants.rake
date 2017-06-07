@@ -40,7 +40,7 @@ namespace :restaurants do
   task :cookrank => :environment do
     puts "Changing nul ranks to nil"
     nul_cook_rank_list = Restaurant.where("cook_rank = 0.0")
-    number = nul_cook_rank_list
+    number = nul_cook_rank_list.count
     nul_cook_rank_list.each { |restaurant| restaurant.update(cook_rank: nil) }
     puts "Cook rank : #{number} changes done"
   end
@@ -49,7 +49,7 @@ namespace :restaurants do
   task :valuebalance => :environment do
     puts "Changing nul ranks to nil"
     nul_value_balance_list = Restaurant.where("value_balance = 0.0")
-    number = nul_value_balance_list
+    number = nul_value_balance_list.count
     nul_value_balance_list.each { |restaurant| restaurant.update(value_balance: nil) }
     puts "Value balance : #{number} changes done"
   end
