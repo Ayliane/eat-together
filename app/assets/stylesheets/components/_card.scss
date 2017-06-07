@@ -17,6 +17,15 @@
     }
 }
 
+.restaurant-card.selected-card {
+  .trip-ranking {
+    background: $green;
+  p {
+    color: white;
+    }
+  }
+}
+
 .trip-ranking {
   background: #FFF;
   padding: 7px;
@@ -33,6 +42,17 @@
   }
 }
 
+.fantom_radio {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  z-index:2;
+
+  input[type="radio"] {
+    opacity: 0;
+  }
+}
 
 .card-features {
   z-index: 10;

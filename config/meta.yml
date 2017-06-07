@@ -1,0 +1,7 @@
+# config/meta.yml
+
+meta_product_name: "EATOGETHER"
+meta_title: "EATOGETHER - Your favorite restaurants delivered at the same time !"
+meta_description: "Your food - Your rules ! No more compromissions, let's enjoy two different cuisines at the same place and at the same time !"
+meta_image: "eatogether-photo.jpg" # should exist in `app/assets/images/`
+twitter_account: "@EaTogether_Fr"   # required for Twitter Cards
