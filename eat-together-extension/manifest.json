@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+
+  "name": "Eat",
+  "description": "add rank tripadvisor",
+  "version": "1.0",
+
+  "permissions": [
+    "activeTab",
+    "https://localhost:3000/"
+  ],
+  "content_scripts": [{
+    "matches": ["*://deliveroo.fr/*", "*://*.foodora.fr/*"],
+    "js": ["jquery-3.2.1.min.js", "eat-together.js"]
+  }]
+}
