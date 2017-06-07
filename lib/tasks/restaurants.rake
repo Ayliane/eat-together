@@ -1,6 +1,7 @@
 require 'json'
 
 namespace :restaurants do
+
   desc "Save restaurants from DB to a json in fixtures"
   task :save => :environment do
     puts "Writing json"
@@ -24,5 +25,32 @@ namespace :restaurants do
         url: restaurant["url"]
       )
     end
+  end
+
+  desc "Update nul ranking to nil"
+  task :ranking => :environment do
+    puts "Changing nul ranks to nil"
+    nul_rank_list = Restaurant.where("ranking = -1.0")
+    number = nul_rank_list.count
+    nul_rank_list.each { |restaurant| restaurant.update(ranking: nil) }
+    puts "Ranking : #{number} changes done"
+  end
+
+  desc "Update nul cook_rank to nil"
+  task :cookrank => :environment do
+    puts "Changing nul ranks to nil"
+    nul_cook_rank_list = Restaurant.where("cook_rank = 0.0")
+    number = nul_cook_rank_list.count
+    nul_cook_rank_list.each { |restaurant| restaurant.update(cook_rank: nil) }
+    puts "Cook rank : #{number} changes done"
+  end
+
+  desc "Update nul value_balance to nil"
+  task :valuebalance => :environment do
+    puts "Changing nul ranks to nil"
+    nul_value_balance_list = Restaurant.where("value_balance = 0.0")
+    number = nul_value_balance_list.count
+    nul_value_balance_list.each { |restaurant| restaurant.update(value_balance: nil) }
+    puts "Value balance : #{number} changes done"
   end
 end
