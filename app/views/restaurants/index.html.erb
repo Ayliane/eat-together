@@ -1,29 +1,21 @@
   <form action="<%= menus_path %>" method="post" id="restaurants-form">
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
-    <div class="navbar-wagon navbar-wagon-fixed">
+    <div class="navbar-wagon navbar-wagon-fixed index-page">
 
       <!-- Logo -->
       <%= link_to root_path, class: "navbar-wagon-brand" do %>
-      <%= image_tag "logo1.png" %>
+        <%= image_tag "logo1.png" %>
       <% end %>
 
       <!-- Food types - fixed -->
-      <div class="nav-food-type">
-      <div class="form-group select form-inline">
-          <%= select_tag "food_type_1", options_for_select(food_types, params[:food_type_1]), class: 'form-control select', id: "selection_food_type_1" %>
-          <b><strong>&</strong></b>
-          <%= select_tag "food_type_2", options_for_select(food_types, params[:food_type_2]), class: 'form-control select', id: "selection_food_type_2" %>
-        <strong>together !</strong>
+      <div class="select-food-type">
+        <div class="form-group select form-inline">
+            <%= select_tag "food_type_1", options_for_select(food_types, params[:food_type_1]), class: 'form-control select', id: "selection_food_type_1" %>
+            <b><strong>&</strong></b>
+            <%= select_tag "food_type_2", options_for_select(food_types, params[:food_type_2]), class: 'form-control select', id: "selection_food_type_2" %>
+    <!--         <strong>together !</strong> -->
         </div>
-
-
-      </div>
-
-      <!-- Right Navigation -->
-      <div class="navbar-wagon-right hidden-xs hidden-sm">
-
-        <!-- Button (call-to-action) -->
       </div>
     </div>
 
