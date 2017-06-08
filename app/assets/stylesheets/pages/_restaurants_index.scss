@@ -25,6 +25,8 @@
 }
 
 .step-label {
+  position: sticky;
+  top: 115px;
   display: flex;
   justify-content: center;
   align-items: center;
