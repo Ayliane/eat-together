@@ -2,37 +2,39 @@
 <div class="menu-list" data-name="<%= @modal_content.name %>" data-rank="<%= @modal_content.global_rank %>">
   <div class="menu-categories">
     <div class="menu-categories-vendor-logo">
-      <img class="menu-categories-vendor-logo-img" src="<%= @modal_content.logo_url %>">
+      <%= illustration_for(@modal_content) %>
     </div>
     <div class="menu-categories-list-wrapper">
       <ul>
         <% @menu.each do |key, value|%>
-          <li><a href="#burgers" class="menu-categories-list-item anchor-navigation"><%= key %></a></li>
+          <li><a href="#<%= key %>" class="menu-categories-list-item anchor-navigation"><%= key %></a></li>
         <% end %>
       </ul>
     </div>
   </div>
+
   <section class="menu-items-wrapper">
     <div class="menu-items">
       <% @menu.each do |key, value|%>
         <div class="dish-category-header">
-          <h2 class="dish-category-title text-center" id="burgers"><%= key %></h2>
+          <h2 class="dish-category-title text-center" id="<%= key %>"><%= key %></h2>
         </div>
         <div class="dish-list">
           <% value.each do |dish|%>
             <li>
               <div class="dish-card hvr-shadow-radial">
                 <div class="dish-info">
-                  <h3 class="dish-name"><%= dish[:name] %></h3>
+                  <h3 class="dish-name"><%= dish[:name] %> :</h3>
                   <p class="dish-description"><%= dish[:description] %></p>
                 </div>
                 <footer class="dish-price">
-                  <span class="price p-price"><%= dish[:price] %></span>
+                  <span class="price p-price"><%= number_to_currency(dish[:price], unit: "€", separator: ",", format: "%n %u") %></span>
                 </footer>
               </div>
             </li>
           <% end %>
         </div>
       <% end %>
-
-
+    </div>
+  </section>
+</div>

@@ -17,6 +17,23 @@
   text-align: right;
 }
 
+.logo-placeholder {
+  display: flex;
+}
+
+.logo-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 20px;
+  background: #EBEBEB;
+  text-align: center;
+  color: $gray-base;
+  min-height: 85px;
+  min-width: 185px;
+}
+
 .menu-categories-vendor-logo {
   padding: 24px 0 10px;
   margin: 0;
@@ -46,9 +63,9 @@
 }
 
 .anchor-navigation {
-  color: #333333;
+  color: $gray-base;
   &:hover{
-    color: #76BD73;
+    color: $green;
     opacity: 0.7;
   }
 }
@@ -57,11 +74,12 @@
 
 }
 
-.menu-item {
+
+.menu-items {
+  // overflow: scroll;
   position: relative;
   top: 5px;
   flex: 1 0 auto;
-
 }
 
 .dish-category-header {
@@ -126,7 +144,7 @@
 
 .dish-info {
   min-width: 400px;
-  min-height: 150px;
+  min-height: 110px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -145,10 +163,10 @@
 .dish-name{
   text-align: left;
   margin: 15px;
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 500;
   line-height: 1.3em;
-  color: #333;
+  color: $gray-base;
 }
 
 .dish-description{
@@ -170,7 +188,7 @@
 .price {
   position: absolute;
   right: 5px;
-  bottom: 3px;
+  bottom: -10px;
   margin: 0 16px 0 0;
   font-weight: 300;
   font-size: 15px;
@@ -199,7 +217,9 @@
 }
 
 /* Shadow Radial */
+
 .hvr-shadow-radial {
+  color: $green;
   display: inline-block;
   vertical-align: middle;
   -webkit-transform: perspective(1px) translateZ(0);
@@ -224,15 +244,16 @@
 }
 .hvr-shadow-radial:before {
   bottom: 100%;
-  background: -webkit-radial-gradient(50% 150%, ellipse, rgba(0, 0, 0, 0.6) 0%, transparent 50%);
-  background: radial-gradient(ellipse at 50% 150%, rgba(0, 0, 0, 0.6) 0%, transparent 50%);
+  background: -webkit-radial-gradient(50% 150%, ellipse, rgba(0, 0, 0, 0.6) 0%, transparent 70%);
+  background: radial-gradient(ellipse at 50% 150%, rgba(0, 0, 0, 0.6) 0%, transparent 70%);
 }
 .hvr-shadow-radial:after {
   top: 100%;
-  background: -webkit-radial-gradient(50% -50%, ellipse, rgba(0, 0, 0, 0.6) 0%, transparent 50%);
-  background: radial-gradient(ellipse at 50% -50%, rgba(0, 0, 0, 0.6) 0%, transparent 50%);
+  background: -webkit-radial-gradient(50% -50%, ellipse, rgba(0, 0, 0, 0.6) 0%, transparent 70%);
+  background: radial-gradient(ellipse at 50% -50%, rgba(0, 0, 0, 0.6) 0%, transparent 70%);
 }
 .hvr-shadow-radial:hover:before, .hvr-shadow-radial:focus:before, .hvr-shadow-radial:active:before, .hvr-shadow-radial:hover:after, .hvr-shadow-radial:focus:after, .hvr-shadow-radial:active:after {
   opacity: 1;
 }
+
 
