@@ -25,6 +25,8 @@
 }
 
 .step-label {
+  position: sticky;
+  top: 115px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -84,7 +86,11 @@ body {
 }
 
 #button-eat {
-  margin: 5px;
+  position: absolute;
+  right: 30px;
+  margin: 0;
+  opacity: 0;
+  transition: opacity ease 0.3s;
   padding: 0 20px;
   border-radius: 2px;
   line-height: 44px;
