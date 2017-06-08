@@ -18,11 +18,11 @@
             <div class="header-wrapper">
             <%= select_tag "food_type_2", options_for_select(food_types, params[:food_type_2]), class: 'form-control select', id: "selection_food_type_2" %>
             <div class="header-right text-center"></div>
-            </div>
-    <!--         <strong>together !</strong> -->
+          </div>
         </div>
-  <!-- </div> -->
       </div>
+
+      <input type="submit" value="See the menus !" class="btn btn-primary btn-lg eat" id="button-eat">
     </div>
 <div class="index-background" style="background-image:url('<%= image_path('eatogether-background-view.png') %>');">
     <div class="container" id="restaurants-list">
@@ -96,12 +96,6 @@
           </div>
         </div>
       </div>
-      <div id="show-submit">
-        <div class="relativeness">
-          <input type="submit" value="See the menus !" class="btn btn-primary btn-lg eat" id="button-eat">
-        </div>
-      </div>
-
     </div>
   </div>
   </div>

@@ -11,6 +11,7 @@
   ],
   "content_scripts": [{
     "matches": ["*://deliveroo.fr/*", "*://*.foodora.fr/*"],
-    "js": ["jquery-3.2.1.min.js", "eat-together.js"]
+    "js": ["jquery-3.2.1.min.js", "eat-together.js"],
+    "css": ["chrome-extension.css"]
   }]
 }

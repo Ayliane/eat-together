@@ -131,16 +131,33 @@ function rightEmpty() {
 }
 
 function revealMenusButton() {
+
+// With button directly in navbar
+
   if ($("input:checked").size() >= 1) {
-    $("#show-submit").addClass("visible");
+    $("#button-eat").css({ opacity: 1 });
   }
+
+  if ($("input:checked").size() == 2) {
+    $("#button-eat").prop("disabled", false);
+  }
+
   if ($("input:checked").size() == 1) {
     $("#button-eat").prop("disabled", true);
   }
-  if ($("input:checked").size() == 2) {
-    $("#button-eat").prop("disabled", false);
-    $("#two-menus").addClass("fadeOut");
-  }
+
+// With bottom-bar opening
+
+  // if ($("input:checked").size() >= 1) {
+  //   $("#show-submit").addClass("visible");
+  // }
+  // if ($("input:checked").size() == 1) {
+  //   $("#button-eat").prop("disabled", true);
+  // }
+  // if ($("input:checked").size() == 2) {
+  //   $("#button-eat").prop("disabled", false);
+  //   $("#two-menus").addClass("fadeOut");
+  // }
 }
 
 function checkLoader() {
