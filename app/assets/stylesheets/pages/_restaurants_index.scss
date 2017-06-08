@@ -104,6 +104,11 @@ body {
   background: $green;
 }
 
+#button-eat:disabled {
+  background-color: #cccccc;
+  color: #666666;
+}
+
 #show-submit.visible {
   height: 56px;
   transition: height ease 0.3s;
