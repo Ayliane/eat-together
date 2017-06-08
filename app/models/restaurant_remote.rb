@@ -52,18 +52,50 @@ class RestaurantRemote
   private
 
   def global_ranking
-    @restaurant.present? ? @restaurant.ranking : "N/A"
+    # @restaurant.present? ? @restaurant.ranking : "N/A"
+    if @restaurant.present?
+      if @restaurant.ranking.present?
+        @restaurant.ranking
+      else
+        "N/A"
+      end
+    else
+      "N/A"
+    end
   end
 
   def cook_ranking
-    @restaurant.present? ? @restaurant.cook_rank : "N/A"
+    # @restaurant.present? ? @restaurant.cook_rank : "N/A"
+    if @restaurant.present?
+      if @restaurant.cook_rank.present?
+        @restaurant.cook_rank
+      else
+        "N/A"
+      end
+    else
+      "N/A"
+    end
   end
 
   def quality_ranking
-    @restaurant.present? ? @restaurant.value_balance : "N/A"
+    # @restaurant.present? ? @restaurant.value_balance : "N/A"
+     if @restaurant.present?
+      if @restaurant.value_balance.present?
+        @restaurant.value_balance
+      else
+        "N/A"
+      end
+    else
+      "N/A"
+    end
   end
 
   def find_restaurant
-    Restaurant.find_by('name iLike ? OR address iLIKE ?', "%#{@name}%", "%#{address}%")
+    restaurants = Restaurant.search("#{@name} #{@address}")
+    if restaurants.present?
+      restaurants.first
+    else
+      nil
+    end
   end
 end

@@ -1,18 +1,18 @@
-<div class="navbar-wagon navbar-wagon-fixed">
+<div class="navbar-wagon-show navbar-wagon-fixed">
 
   <!-- Logo -->
-  <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "logo1.png" %>
+  <%= link_to root_path, class: "navbar-show-brand" do %>
+    <%= image_tag "eatogether-logo3.png" %>
   <% end %>
 
   <!-- Food types - fixed -->
   <div class="nav-food-type">
       <p>
-        <strong>Let's check all these dishes and share</strong>
-        <span class="navbar-food-type"> Food type 1</span>
-        <b><strong>&</strong></b>
-        <span class="navbar-food-type">Food type 2</span>
-        <strong>together !</strong>
+        Let's check the menus and share
+        <span class="navbar-food-type"><strong><%= params[:food_type_1]%></strong></span>
+        <b>&</b>
+        <span class="navbar-food-type"><strong><%= params[:food_type_2]%></strong></span>
+        cuisine together !
       </p>
   </div>
 
@@ -20,7 +20,7 @@
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
     <!-- Button (call-to-action) -->
-    <button type="button" class="navbar-wagon-item navbar-wagon-button" data-toggle="modal" data-target="#Modal">
+    <button type="button" class="navbar-show-item navbar-show-button" data-toggle="modal" data-target="#Modal">
       Pass your order
     </button>
   </div>

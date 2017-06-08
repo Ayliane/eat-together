@@ -1,7 +1,7 @@
 /* Navbar show modal */
 
 .modal-dialog{
-  margin-top: 5em;
+  margin-top: 4em;
 }
 
 .modal-header {
@@ -11,6 +11,31 @@
 .modal-thank {
   color: $green;
   margin-top: 5px;
+  margin-bottom: 25px;
+}
+
+
+.modal-explaination {
+  font-weight: lighter;
+  padding: 15px 10px 10px 10px;
+}
+
+.modal-follow {
+  font-weight: lighter;
+  font-size: 20px;
+}
+
+.social-link a {
+  color: $gray-base;
+  font-size: 30px;
+  transition: color 0.5s ease;
+  &:hover {
+    color: $green;
+  }
+}
+
+#restaurant-recap {
+  margin-top: 30px;
 }
 
 .modal-restaurant-summary {
@@ -19,25 +44,50 @@
   // border: 1px solid $gray;
 }
 
-.modal-explaination {
+.modal-restaurant-summary h6 {
   font-weight: lighter;
-  padding: 15px 40px 25px 40px;
+  font-style: italic;
+  margin-bottom: 5px;
+  margin-top: 5px;
 }
 
-.modal-list {
-  margin-top: 25px;
-  margin-bottom: 25px;
+.modal-restaurant-summary h6 p {
+  display: inline-block;
+  // font-weight: lighter;
+  font-style: italic;
+  margin-bottom: 0px;
+  margin-top: 0px;
 }
 
-.modal-li {
-  font-size: 15px;
-  font-weight: lighter;
-  margin: 10px 0px 10px 0px;
-  list-style: none;
-  text-align: left;
-}
+
+// .modal-list {
+//   margin-top: 25px;
+//   margin-bottom: 25px;
+// }
+
+// .modal-li {
+//   font-size: 15px;
+//   font-weight: lighter;
+//   margin: 10px 0px 10px 0px;
+//   list-style: none;
+//   text-align: left;
+// }
 
 .modal-call-action {
+  margin-top: 20px;
   padding-top: 5px;
   padding-bottom: 10px;
 }
+
+.modal-contact {
+  font-size: 15px;
+  font-style: italic;
+  font-weight: lighter;
+  padding: 15px 10px 10px 10px;
+}
+
+#modal-email-link {
+  color: $green;
+  font-weight: lighter;
+}
+

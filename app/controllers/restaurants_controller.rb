@@ -8,6 +8,7 @@ class RestaurantsController < ApplicationController
   def show
     @url_left = complete_url(params[:left_url])
     @url_right = complete_url(params[:right_url])
+    render layout: 'application_show'
   end
 
   def deliveroo

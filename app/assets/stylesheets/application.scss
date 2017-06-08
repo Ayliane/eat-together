@@ -8,8 +8,13 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "vendor/index";
+@import "selectize";
+@import "selectize.default";
+@import "vendor/*";
 
 // Your CSS
 @import "layout/*";
 @import "components/*";
 @import "pages/*";
+
+

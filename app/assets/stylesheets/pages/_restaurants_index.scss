@@ -1,8 +1,3 @@
-/* -------------------------------------
- * CSS code specific to home page
- * (margin/padding adjustments)
- * ------------------------------------- */
-
  h3, p {
   font-family: 'Open Sans Condensed', sans-serif;
  }
@@ -30,10 +25,12 @@
 }
 
 .step-label {
+  position: sticky;
+  top: 115px;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10;
+  z-index: 1;
 
   p {
     padding-top: 10px;
@@ -50,7 +47,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 10;
+    z-index: 1;
   }
 }
 
@@ -64,11 +61,14 @@
 #selection_food_type_1 {
   margin-bottom: 15px;
   margin-top: 20px;
+  margin-right: 15px;
 }
 
 #selection_food_type_2 {
   margin-bottom: 15px;
   margin-top: 20px;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 
 body {
@@ -76,16 +76,43 @@ body {
 }
 
 #show-submit {
-  background: #ededed;
+  background: #eaeaea;
   position: fixed;
   bottom: 0;
   left: 0;
   height: 0px;
   z-index: 20;
   right: 0;
-  #button-eat {
-    margin: 5px;
-  }
+}
+
+#button-eat {
+  position: absolute;
+  right: 30px;
+  margin: 0;
+  opacity: 0;
+  transition: opacity ease 0.3s;
+  padding: 0 20px;
+  border-radius: 2px;
+  line-height: 44px;
+  margin-bottom: 50px;
+  background-color:$gray-base;
+  color: $green;
+  font-size: 14px;
+  border: none;
+}
+
+#button-eat:focus {
+  outline: none;
+}
+
+#button-eat:hover {
+  color: $gray-base;
+  background: $green;
+}
+
+#button-eat:disabled {
+  background-color: #cccccc;
+  color: #666666;
 }
 
 #show-submit.visible {
@@ -98,4 +125,86 @@ body {
   justify-content: center;
   align-items: center;
   margin-right: 5px;
+}
+
+#restaurants-list.container {
+  padding-top: 25px;
+  margin-top: 0;
+}
+
+.index-page .form-inline .form-control {
+    width: $select-width;
+}
+
+div .nice-select.form-control.select.open {
+  background: $green;
+  border-left-color: $light-gray;
+}
+
+.nice-select.form-control.select ul {
+  position: absolute;
+  top: 100%;
+  left: -4px; /* move content -4px because of container left border */
+  padding: 5px 0px;
+  border-left: 4px solid $light-gray;
+  background: #fff;
+  -webkit-box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  -moz-box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.nice-select.form-control.select ul li { font-size: 0.9em; }
+
+.nice-select.form-control.select ul li:hover {
+  color: white;
+  font-weight: bold;
+  background: $green;
+}
+
+
+.select-food-type .form-group {
+  flex-grow: 1;
+  display: flex;
+  min-width: 60%;
+  align-items: center;
+  justify-content: center;
+}
+
+.nice-select.select.open ul {
+  display: block;
+}
+
+.navbar-wagon.navbar-wagon-fixed.index-page {
+  position: fixed;
+  height: 110px;
+
+  .navbar-wagon-brand {
+    position: absolute;
+    // left: 20px;
+    display: flex;
+    align-items: center;
+  }
+
+}
+
+div .select-food-type {
+  flex-grow: 1;
+  margin-top: 15px;
+}
+
+.header-right, .header-left {
+  padding: 5px 0;
+  font-size: 14px;
+}
+
+.header-wrapper {
+  height: 48px;
+}
+
+select strong p {
+  padding: 5px 0;
+}
+
+.and-together {
+  padding: 50px;
 }

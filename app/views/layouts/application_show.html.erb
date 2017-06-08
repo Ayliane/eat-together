@@ -34,7 +34,7 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
   </head>
   <body class="<%= params[:controller] %> <%= params[:action] %>">
-    <%= render "shared/navbar" %>
+    <%= render "shared/navbar_show" %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
 

@@ -61,7 +61,7 @@ class Deliveroo
         @deliveroo_restaurant_menu[category] << {
           name: menu_item_html.search('.list-item-title').text.strip,
           description: menu_item_html.search('.list-item-description').text.strip,
-          price: menu_item_html.search('.item-price').text.strip
+          price: menu_item_html.search('.item-price').text.strip.gsub(',', '.').to_f
         }
       end
     end
