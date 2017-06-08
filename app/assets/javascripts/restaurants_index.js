@@ -132,6 +132,8 @@ function rightEmpty() {
 
 function revealMenusButton() {
 
+// With button directly in navbar
+
   if ($("input:checked").size() >= 1) {
     $("#button-eat").css({ opacity: 1 });
   }
@@ -144,10 +146,7 @@ function revealMenusButton() {
     $("#button-eat").prop("disabled", true);
   }
 
-  // } else {
-  //   $("#button-eat").css({ opacity: 0 });
-  // }
-
+// With bottom-bar opening
 
   // if ($("input:checked").size() >= 1) {
   //   $("#show-submit").addClass("visible");
