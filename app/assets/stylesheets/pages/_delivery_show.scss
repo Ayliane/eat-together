@@ -30,8 +30,14 @@
   background: #EBEBEB;
   text-align: center;
   color: $gray-base;
-  min-height: 85px;
-  min-width: 185px;
+  width: 100%;
+  min-height: 60px;
+}
+
+.menu-categories {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  // min-width: 210px;
 }
 
 .menu-categories-vendor-logo {
@@ -50,6 +56,10 @@
   list-style: none;
   text-align: left;
   padding-top: 10px;
+}
+
+.menu-categories-list-wrapper ul {
+  padding-left: 10px;
 }
 
 .menu-categories-list-item {
@@ -143,7 +153,7 @@
 }
 
 .dish-info {
-  min-width: 400px;
+  min-width: 430px;
   min-height: 110px;
   display: -webkit-box;
   display: -ms-flexbox;
