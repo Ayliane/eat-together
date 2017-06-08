@@ -1,4 +1,7 @@
 function enhanceFoodoraUI() {
+  var str = "<link rel='stylesheets' href='chrome-extension.css' type='text/css'/>";
+    $("head").append(str);
+
   $(".vendor-info .name").each(function() {
     var $resto = $(this);
     var $envoi = $resto.next();
@@ -7,14 +10,15 @@ function enhanceFoodoraUI() {
       type: "GET",
       url: "https://localhost:3000/api/v1/restaurants/" + restaurants_name,
       success: function(data) {
-        if (data.ranking != undefined) {
-          $envoi.append($('<span>').text("・ note:" + " " + data.ranking));
-        } else {
-          $envoi.append($('<span>').text("・" + "" + " N/A"));
+          if (data.ranking != undefined) {
+            var stars = starsMarkup();
+              $envoi.append(stars);
+            } else {
+            $envoi.append($('<span>').text("・" + "" + " N/A"));
         }
       },
       error: function(jqXHR) {
-        console.log('error')
+        console.log('error');
       }
     });
   });
@@ -35,10 +39,18 @@ function enhanceDeliverooUI() {
         }
       },
       error: function(jqXHR) {
-        console.log('error')
+        console.log('error');
       }
     });
   });
+}
+
+function starsMarkup() {
+  var html = "";
+  for (var i = 0; i<5; i++) {
+    html += '<span class="star-icon full">☆</span>';
+  }
+  return html;
 }
 
 function isFoodora() {
@@ -53,3 +65,4 @@ $(function() {
     enhanceDeliverooUI();
   }
 });
+
