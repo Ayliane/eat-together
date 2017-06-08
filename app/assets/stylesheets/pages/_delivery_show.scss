@@ -1,6 +1,6 @@
 .menu-list {
   max-height: 560px;
-  overflow: scroll;
+  // overflow: scroll;
   border: 1px solid #EBEBEB;
   background-color: white;
   display: flex;
@@ -71,7 +71,7 @@
 }
 
 .menu-items-wrapper {
-
+  overflow: scroll;
 }
 
 
