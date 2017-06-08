@@ -1,6 +1,8 @@
 .menu-list {
+  max-height: 560px;
+  overflow: scroll;
+  border: 1px solid #EBEBEB;
   background-color: white;
-  // position: absolute;
   display: flex;
   margin-left: -12px;
   margin-right: -12px;
@@ -68,7 +70,7 @@
 }
 
 .dish-category-title {
-  color: #888;
+  color: $gray-base;
   font-weight: 500;
   font-size: 20px;
   position: relative;
@@ -141,17 +143,19 @@
 }
 
 .dish-name{
-  margin: 20px;
-  font-size: 25px;
+  text-align: left;
+  margin: 15px;
+  font-size: 20px;
   font-weight: 500;
   line-height: 1.3em;
   color: #333;
 }
 
 .dish-description{
+  text-align: left;
   font-style: italic;
   margin: 2px 0 15px;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.3em;
   font-weight: 300;
   color: $gray-base;
