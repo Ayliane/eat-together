@@ -131,16 +131,34 @@ function rightEmpty() {
 }
 
 function revealMenusButton() {
+
   if ($("input:checked").size() >= 1) {
-    $("#show-submit").addClass("visible");
+    $("#button-eat").css({ opacity: 1 });
   }
+
+  if ($("input:checked").size() == 2) {
+    $("#button-eat").prop("disabled", false);
+  }
+
   if ($("input:checked").size() == 1) {
     $("#button-eat").prop("disabled", true);
   }
-  if ($("input:checked").size() == 2) {
-    $("#button-eat").prop("disabled", false);
-    $("#two-menus").addClass("fadeOut");
-  }
+
+  // } else {
+  //   $("#button-eat").css({ opacity: 0 });
+  // }
+
+
+  // if ($("input:checked").size() >= 1) {
+  //   $("#show-submit").addClass("visible");
+  // }
+  // if ($("input:checked").size() == 1) {
+  //   $("#button-eat").prop("disabled", true);
+  // }
+  // if ($("input:checked").size() == 2) {
+  //   $("#button-eat").prop("disabled", false);
+  //   $("#two-menus").addClass("fadeOut");
+  // }
 }
 
 function checkLoader() {
