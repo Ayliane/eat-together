@@ -80,3 +80,13 @@
   background: $green;
   border-color: $green;
 }
+
+.navbar-show-button:focus {
+  outline: none;
+}
+
+.navbar-show-button:visited {
+  color: $gray-base;
+  background: $green;
+  border-color: $green;
+}
