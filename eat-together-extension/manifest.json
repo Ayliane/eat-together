@@ -1,8 +1,7 @@
 {
   "manifest_version": 2,
-
-  "name": "Eat",
-  "description": "add rank tripadvisor",
+  "name": "Eat-together",
+  "description": "Integration des notes tripadvisor sur foodora et deliveroo",
   "version": "3.0",
 
   "permissions": [
