@@ -4,7 +4,7 @@
 }
 
 #show-general {
-  margin-top: 100px;
+  margin-top: 130px;
 }
 
 .restaurant-menu-left, .restaurant-menu-right {
@@ -17,4 +17,8 @@
 
 .restaurant-menu-right {
   margin-left: 15px;
+}
+
+.restaurants.show .banner {
+  align-items: flex-start;
 }

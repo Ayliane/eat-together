@@ -1,5 +1,5 @@
 .menu-list {
-  max-height: 560px;
+  max-height: calc(100vh - 160px);
   // overflow: scroll;
   border: 1px solid #EBEBEB;
   background-color: white;
