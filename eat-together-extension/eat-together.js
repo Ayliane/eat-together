@@ -43,7 +43,7 @@ function starsMarkup(ranking) {
   console.log(ranking);
   var html = "<div class='stars-wrapper'>";
   for (var i = 0; i < 5; i++) {
-    if (ranking > i + 1) {
+    if (ranking >= i + 1) {
       html += '<span class="star-icon full">☆</span>';
     } else if (ranking > i) {
       html += '<span class="star-icon half">☆</span>';
