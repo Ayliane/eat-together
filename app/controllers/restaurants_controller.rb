@@ -1,6 +1,7 @@
 class RestaurantsController < ApplicationController
   before_action :set_deliveroo_host
   before_action :set_foodora_host
+  before_action :generate_uuid, only: [:foodora_show, :deliveroo_show]
 
   def index
   end
@@ -39,6 +40,10 @@ class RestaurantsController < ApplicationController
   end
 
   private
+
+  def generate_uuid
+    @uuid = SecureRandom.uuid
+  end
 
   def set_deliveroo_host
     if params[:address].present?

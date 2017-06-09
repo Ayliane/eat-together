@@ -1,4 +1,3 @@
-
 <div class="menu-list" data-name="<%= @modal_content.name %>" data-rank="<%= @modal_content.global_rank %>">
   <div class="menu-categories">
     <div class="menu-categories-vendor-logo">
@@ -7,7 +6,7 @@
     <div class="menu-categories-list-wrapper">
       <ul>
         <% @menu.each do |key, value|%>
-          <li><a href="#<%= key %>" class="menu-categories-list-item anchor-navigation"><%= key %></a></li>
+          <li><a href="#<%= "#{key}-#{@uuid}" %>" class="menu-categories-list-item anchor-navigation"><%= key %></a></li>
         <% end %>
       </ul>
     </div>
@@ -17,7 +16,7 @@
     <div class="menu-items">
       <% @menu.each do |key, value|%>
         <div class="dish-category-header">
-          <h2 class="dish-category-title text-center" id="<%= key %>"><%= key %></h2>
+          <h2 class="dish-category-title text-center" id="<%= "#{key}-#{@uuid}" %>"><%= key %></h2>
         </div>
         <div class="dish-list">
           <% value.each do |dish|%>
