@@ -7,7 +7,7 @@
 
   "permissions": [
     "activeTab",
-    "https://localhost:3000/"
+    "https://eatogether-wagon.herokuapp.com/"
   ],
   "content_scripts": [{
     "matches": ["*://deliveroo.fr/*", "*://*.foodora.fr/*"],
