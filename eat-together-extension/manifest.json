@@ -3,11 +3,11 @@
 
   "name": "Eat",
   "description": "add rank tripadvisor",
-  "version": "1.0",
+  "version": "3.0",
 
   "permissions": [
     "activeTab",
-    "https://eatogether-wagon.herokuapp.com/"
+    "https://www.eatogether.uk/"
   ],
   "content_scripts": [{
     "matches": ["*://deliveroo.fr/*", "*://*.foodora.fr/*"],
