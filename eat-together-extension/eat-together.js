@@ -4,7 +4,7 @@ function enhanceFoodoraUI() {
     var name = $resto.find('.name').text().replace(/^\s+|\s+$/g, '');
     $.ajax({
       type: "GET",
-      url: "https://www.eatogether.uk/api/v1/restaurants/" + encodeURI(name),
+      url: "https://eatogether-wagon.herokuapp.com/api/v1/restaurants/" + encodeURI(name),
       success: function(data) {
         if (data.ranking != undefined) {
           var stars = starsMarkup(data.ranking);
@@ -24,7 +24,7 @@ function enhanceDeliverooUI() {
     var restaurants_name = encodeURI($resto.find('h3').text().replace(/^\s+|\s+$/g, ''));
     $.ajax({
       type: "GET",
-      url: "https://www.eatogether.uk/api/v1/restaurants/" + restaurants_name,
+      url: "https://eatogether-wagon.herokuapp.com/api/v1/restaurants/" + restaurants_name,
       success: function(data) {
         if (data.ranking != undefined) {
           // $resto.find('p').append($('<span>').text("・note:"+ " " + data.ranking)).css();

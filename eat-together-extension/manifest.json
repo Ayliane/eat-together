@@ -2,11 +2,11 @@
   "manifest_version": 2,
   "name": "Eat-together",
   "description": "Integration des notes tripadvisor sur foodora et deliveroo",
-  "version": "3.0",
+  "version": "3.1",
 
   "permissions": [
     "activeTab",
-    "https://www.eatogether.uk/"
+    "https://eatogether-wagon.herokuapp.com/"
   ],
   "content_scripts": [{
     "matches": ["*://deliveroo.fr/*", "*://*.foodora.fr/*"],
