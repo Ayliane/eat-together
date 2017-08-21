@@ -44,24 +44,26 @@ class Deliveroo
     response = RestClient.get('https://deliveroo.fr/fr/' + url)
     n_html = Nokogiri::HTML.parse(response)
 
+    # Changed css tags for Restaurant Remote since Deliveroo made change in DOM
+
     @restaurant_remote = RestaurantRemote.new({
-      name: n_html.search('.restaurant-details h1').text.strip,
-      description: n_html.search('.restaurant-details .restaurant-description').text.strip,
-      address: n_html.search('.restaurant-details .restaurant-info .metadata:nth-child(2)').text.strip.split(',')[0]
+      name: n_html.search('.restaurant__name').text,
+      description: n_html.search('.restaurant__description').text,
+      address: n_html.search('.address').text
     })
 
     @deliveroo_restaurant_menu = {}
 
-    n_html.search('.results-group').each do |group_html|
-      category = group_html.search('.results-group-title').text.strip
+    n_html.search('.menu-index-page__menu-category').each do |group_html|
+      category = group_html.search('h3').text
 
       @deliveroo_restaurant_menu[category] = []
 
-      group_html.search('.results-list li').each do |menu_item_html|
+      group_html.search('.menu-index-page__item').each do |menu_item_html|
         @deliveroo_restaurant_menu[category] << {
-          name: menu_item_html.search('.list-item-title').text.strip,
+          name: menu_item_html.search('.menu-index-page__item-title span').text,
           description: menu_item_html.search('.list-item-description').text.strip,
-          price: menu_item_html.search('.item-price').text.strip.gsub(',', '.').to_f
+          price: menu_item_html.search('.menu-index-page__item-price').text
         }
       end
     end
