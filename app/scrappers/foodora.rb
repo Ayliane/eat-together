@@ -54,6 +54,9 @@ class Foodora
     response = RestClient.get url
     n_html = Nokogiri::HTML.parse(response)
 
+    # Removed logo, description and adress from show scrapper because they no longer exist on
+    # Foodora website. Also change the class for the name.
+
     # n_html.search('.vendor-info-main-headline').text.strip
 
     @restaurant_remote = RestaurantRemote.new({

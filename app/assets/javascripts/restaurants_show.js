@@ -63,5 +63,3 @@ function menuRequest2(url) {
     })
   }
 }
-
-

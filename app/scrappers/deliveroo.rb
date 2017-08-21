@@ -44,10 +44,12 @@ class Deliveroo
     response = RestClient.get('https://deliveroo.fr/fr/' + url)
     n_html = Nokogiri::HTML.parse(response)
 
+    # Changed css tags for Restaurant Remote since Deliveroo made change in DOM
+
     @restaurant_remote = RestaurantRemote.new({
-      name: n_html.search('.restaurant-details h1').text.strip,
-      description: n_html.search('.restaurant-details .restaurant-description').text.strip,
-      address: n_html.search('.restaurant-details .restaurant-info .metadata:nth-child(2)').text.strip.split(',')[0]
+      name: n_html.search('.restaurant__name').text,
+      description: n_html.search('.restaurant__description').text,
+      address: n_html.search('.address').text
     })
 
     @deliveroo_restaurant_menu = {}
