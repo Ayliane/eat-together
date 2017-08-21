@@ -54,11 +54,13 @@ class Foodora
     response = RestClient.get url
     n_html = Nokogiri::HTML.parse(response)
 
+    # n_html.search('.vendor-info-main-headline').text.strip
+
     @restaurant_remote = RestaurantRemote.new({
-      logo_url: n_html.search('.menu__categories__vendor-logo-img').attr('src').value,
-      name: n_html.search('.hero-menu__info__headline').text.strip,
-      description: n_html.search('.hero-menu__info__description').text,
-      address: n_html.search('.hero-menu__info-extra__address').first.attr('data-street')
+      # logo_url: n_html.search('.menu__categories__vendor-logo-img').attr('src').value,
+      name: n_html.search('.vendor-info-main-headline').text.strip,
+      # description: n_html.search('.hero-menu__info__description').text,
+      # address: n_html.search('.hero-menu__info-extra__address').first.attr('data-street')
     })
 
     @foodora_restaurant_menu = {}
