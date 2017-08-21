@@ -59,7 +59,7 @@ class Deliveroo
 
       @deliveroo_restaurant_menu[category] = []
 
-      group_html.search('.menu-index-page__items').each do |menu_item_html|
+      group_html.search('.menu-index-page__item').each do |menu_item_html|
         @deliveroo_restaurant_menu[category] << {
           name: menu_item_html.search('.menu-index-page__item-title span').text,
           description: menu_item_html.search('.list-item-description').text.strip,
