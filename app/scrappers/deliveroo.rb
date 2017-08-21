@@ -54,16 +54,16 @@ class Deliveroo
 
     @deliveroo_restaurant_menu = {}
 
-    n_html.search('.results-group').each do |group_html|
-      category = group_html.search('.results-group-title').text.strip
+    n_html.search('.menu-index-page__menu-category').each do |group_html|
+      category = group_html.search('h3').text
 
       @deliveroo_restaurant_menu[category] = []
 
-      group_html.search('.results-list li').each do |menu_item_html|
+      group_html.search('.menu-index-page__items').each do |menu_item_html|
         @deliveroo_restaurant_menu[category] << {
-          name: menu_item_html.search('.list-item-title').text.strip,
+          name: menu_item_html.search('.menu-index-page__item-title span').text,
           description: menu_item_html.search('.list-item-description').text.strip,
-          price: menu_item_html.search('.item-price').text.strip.gsub(',', '.').to_f
+          price: menu_item_html.search('.menu-index-page__item-price').text
         }
       end
     end
